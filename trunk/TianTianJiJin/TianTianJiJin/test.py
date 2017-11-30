@@ -4,16 +4,16 @@ if __name__=='__main__':
     # sname = str(input("请输入学生姓名："))
     sage = int(input("请输入学生年龄："))
     """
-    # 1.基金信息表
-    create table jijin_base_info(
+    # 1.基金概况表
+    create table fund_base_info(
     id int unsigned primary key auto_increment not null,
     Platform varchar(20) default 'Plan',            # 平台
     Fund_currency varchar(20) default 'CNY',        # 基金货币
     Domicile varchar(20) default 'China',           # 基金注册地
-    Inception_Date date,                            # 成立时间
-    Launch_Date date,                               # 发行时间
     Fund_name varchar(50),                          # 基金名称
     Fund_code int,                                  # ISIN/基金代码
+    Inception_Date date,                            # 成立时间
+    Launch_Date date,                               # 发行时间
     Min_Purchase int,                               # 基金申购门槛
     Max_Initial_Charge float,                       # 最高申购费率
     Management_Fee float,                           # 管理费率
@@ -26,7 +26,7 @@ if __name__=='__main__':
     # 2.规模变动表
     create table Fund_size_change(
     id int unsigned primary key auto_increment not null,
-    Fund_code
+    Fund_code       
     Fund_size_change_Date date,                     # 日期
     Period_Purchase(0.1Billion) float,              # 期间申购（亿份）
     Period_Redeem(0.1Billion) float,                # 期间赎回（亿份）
@@ -90,7 +90,7 @@ if __name__=='__main__':
     # 9.投资风格表StyleBox
     (Large,Middle,Small,Value,Blend,Growth)         # （大 中 小、价值 均衡 成长）
     
-    # 10.基金经理变动表Fund_manager
+    # 10.基金经理变动表Fund_manager_change
     Fund_code
     Start_date date,                                # 起始日期
     Ending_date date,                               # 截止期
@@ -98,7 +98,7 @@ if __name__=='__main__':
     Appointment_time                                # 任职时间
     Appointment_return                              # 任职回报
     
-    # 11.基金经理人详情表 managed_funds(
+    # 11.基金经理人详情表 this_manager(
     Fund_code int,                                  # 基金代码
     Fund_name varchar(50),                          # 基金名称
     Fund_type varchar(10),                          # 基金类型
@@ -112,10 +112,12 @@ if __name__=='__main__':
     
     # 12.财务报表 Main_financial_index      http://fund.eastmoney.com/f10/FundArchivesDatas.aspx?type=cwzb&code={0}&showtype=1
     Fund_code
+    Financial_index_date                                            # 日期
     Period_data_and_index :                         # 期间数据和指标
     Period_realized_revenue float,                  # 本期已实现收益
     Period_profits float,                           # 本期利润
     Period_profits_of_weighted_average_shares,      # 加权平均基金份额本期利润
+    Period_profits_rate                             # 本期加权平均净值利润率
     Period_growth_of_NAV                            # 本期基金份额净值增长率
     
     Ending_data_and_index:                          # 期末数据和指标
@@ -255,6 +257,11 @@ if __name__=='__main__':
     Purchase_status                                 # 申购状态
     Redeem_status                                   # 赎回状态
     
+    # 20.收益率表（本基金、同类、沪深300）
+    this_fund_rate = scrapy.Field()                 #本基金
+    similar_fund_rate = scrapy.Field()              #同类
+    hs300_rate = scrapy.Field()                     #沪深300
+    
     
     
     
@@ -276,32 +283,5 @@ if __name__=='__main__':
     cls_id int unsigned default 0
 )
     """
-
-
-
-
-
-
-    conn=connect(host='localhost',port=3306,user='root',password='shizairenwei',database='tiantianjijin',charset='utf8')
-    try:
-        #创建Connection连接
-        #获得Cursor对象
-        cs1=conn.cursor()
-        #构造参数列表
-        params = [sage]
-        #执行insert语句，并返回受影响的行数：添加一条学生数据
-        count = cs1.execute('insert into students(age) values(%s)', params)
-        #打印受影响的行数
-        print(count)
-        #关闭Cursor对象
-        cs1.close()
-        #提交之前的操作，此处为insert操作
-        conn.commit()
-    except Exception as e:
-        print(e)
-    finally:
-        #关闭Connection对象
-        conn.close()
-
 
 
