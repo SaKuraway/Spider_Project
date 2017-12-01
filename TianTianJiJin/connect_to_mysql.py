@@ -8,8 +8,11 @@ def main():
     try:
         # 使用cursor()方法获取操作游标
         cur = mysql_client.cursor()
-        cur.execute("select * from fund_info")
-        print(cur.fetchall())
+        code = '002196'
+        date = "2017-06-30"
+        count = cur.execute("select * from 财务报表 where Fund_code="+"'"+code+"'"+" and Financial_index_date="+"'"+date +"'"+";")
+        print(count)
+        # print(cur.fetchall())
         # cur.execute("insert into 交通运输、仓储和邮政业行业市盈率(id,date,static_PE) VALUES(%s,%s,%s)",
         #             (int(flag), int((int(item[0]) / 1000)), float(item[1])))
         # cur.execute("update 交通运输、仓储和邮政业行业市盈率 set dynamic_PE=%s where id=%s", (float(item[1]), int(flag)))
