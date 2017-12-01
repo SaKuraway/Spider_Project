@@ -11,9 +11,10 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/TianTianJiJin$requests_jbgk.coverage" NAME="requests_jbgk Coverage Results" MODIFIED="1511516682020" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/TianTianJiJin$main.coverage" NAME="main Coverage Results" MODIFIED="1512039051584" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TianTianJiJin" />
+    <SUITE FILE_PATH="coverage/TianTianJiJin$main.coverage" NAME="main Coverage Results" MODIFIED="1512123930996" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TianTianJiJin" />
     <SUITE FILE_PATH="coverage/TianTianJiJin$requests_test.coverage" NAME="requests_test Coverage Results" MODIFIED="1511861713333" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/TianTianJiJin$connect_to_mysql.coverage" NAME="connect_to_mysql Coverage Results" MODIFIED="1511941354540" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TianTianJiJin$xiaxiang_requests.coverage" NAME="xiaxiang_requests Coverage Results" MODIFIED="1512119355518" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TianTianJiJin$connect_to_mysql.coverage" NAME="connect_to_mysql Coverage Results" MODIFIED="1512109772059" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TianTianJiJin$test.coverage" NAME="test Coverage Results" MODIFIED="1510642606815" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TianTianJiJin" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
@@ -22,8 +23,8 @@
       <file leaf-file-name="items.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TianTianJiJin/items.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="197" column="53" lean-forward="true" selection-start-line="197" selection-start-column="53" selection-end-line="197" selection-end-column="53" />
+            <state relative-caret-position="108">
+              <caret line="4" column="23" lean-forward="true" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -32,49 +33,67 @@
       <file leaf-file-name="pipelines.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TianTianJiJin/pipelines.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="112" column="24" lean-forward="false" selection-start-line="112" selection-start-column="24" selection-end-line="112" selection-end-column="24" />
+            <state relative-caret-position="-2872">
+              <caret line="8" column="11" lean-forward="true" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
               <folding>
                 <element signature="e#192#206#0" expanded="true" />
-                <marker date="1512039238980" expanded="true" signature="1808:1965" ph="insert into aqi_data... " />
-                <marker date="1512039238980" expanded="true" signature="2193:2348" ph="insert into fund_info... " />
-                <marker date="1512039238980" expanded="true" signature="2193:2656" ph="insert into 交通运输... " />
-                <marker date="1512039238980" expanded="true" signature="3532:3583" ph="insert into 规模变动表... " />
-                <marker date="1512039238980" expanded="true" signature="3532:3599" ph="insert into 规模变动表... " />
-                <marker date="1512039238980" expanded="true" signature="3532:3613" ph="insert into 规模变动表... " />
-                <marker date="1512039238980" expanded="true" signature="3532:3627" ph="insert into 规模变动表... " />
-                <marker date="1512039238980" expanded="true" signature="3532:3645" ph="insert into 规模变动表... " />
-                <marker date="1512039238980" expanded="true" signature="3532:3662" ph="insert into 规模变动表... " />
-                <marker date="1512039238980" expanded="true" signature="3532:3691" ph="insert into 基金规模变动表... " />
-                <marker date="1512039238980" expanded="true" signature="4049:4168" ph="insert into 基金持有人结构表... " />
-                <marker date="1512039238980" expanded="true" signature="4624:4808" ph="insert into 基金持有人结构表... " />
-                <marker date="1512039238980" expanded="true" signature="5350:5546" ph="insert into 重大变动表... " />
-                <marker date="1512039238980" expanded="true" signature="5937:6050" ph="insert into 行业配置表... " />
-                <marker date="1512039238980" expanded="true" signature="6471:6640" ph="insert into 行业配置比较表... " />
-                <marker date="1512039238980" expanded="true" signature="6906:6974" ph="insert into 投资风格表... " />
-                <marker date="1512039238980" expanded="true" signature="7062:7173" ph="insert into 跟踪指数指标表... " />
-                <marker date="1512039238980" expanded="true" signature="7538:7667" ph="insert into 基金经理变动表... " />
-                <marker date="1512039238980" expanded="true" signature="8274:8529" ph="insert into 基金经理人历任基金表... " />
-                <marker date="1512039238980" expanded="true" signature="8274:8540" ph="insert into 基金经理人历任基金表... " />
-                <marker date="1512039238980" expanded="true" signature="9453:9792" ph="insert into 财务报表... " />
-                <marker date="1512039238980" expanded="true" signature="12030:12971" ph="insert into 资产负债表... " />
-                <marker date="1512039238980" expanded="true" signature="15211:15897" ph="insert into 利润表... " />
-                <marker date="1512039238980" expanded="true" signature="16865:17049" ph="insert into 收入分析表... " />
-                <marker date="1512039238980" expanded="true" signature="17912:18265" ph="insert into 费用分析表... " />
-                <marker date="1512039238980" expanded="true" signature="18895:19059" ph="insert into 基金资产分类配置表... " />
-                <marker date="1512039238980" expanded="true" signature="19495:19647" ph="insert into 历史净值明细表... " />
-                <marker date="1512039238980" expanded="true" signature="19977:20086" ph="insert into 收益率走势表... " />
+                <marker date="1512123319544" expanded="true" signature="1808:1965" ph="insert into aqi_data... " />
+                <marker date="1512123319544" expanded="true" signature="2187:2266" ph="select * fro... 财务报表" />
+                <marker date="1512123319544" expanded="true" signature="2303:2427" ph="select * fro... 基金概况表" />
+                <marker date="1512123319544" expanded="true" signature="2482:2604" ph="delete from " />
+                <marker date="1512123319544" expanded="true" signature="2482:2611" ph="delete from " />
+                <marker date="1512123319544" expanded="true" signature="2659:2814" ph="insert into fund_info... " />
+                <marker date="1512123319544" expanded="true" signature="2659:3122" ph="insert into 交通运输... " />
+                <marker date="1512123319544" expanded="true" signature="3989:4097" ph="select * fro... 基金规模变动表" />
+                <marker date="1512123319544" expanded="true" signature="3989:4126" ph="select * fro... 基金概况表" />
+                <marker date="1512123319544" expanded="true" signature="4185:4236" ph="insert into 规模变动表... " />
+                <marker date="1512123319544" expanded="true" signature="4185:4252" ph="insert into 规模变动表... " />
+                <marker date="1512123319544" expanded="true" signature="4185:4266" ph="insert into 规模变动表... " />
+                <marker date="1512123319544" expanded="true" signature="4185:4280" ph="insert into 规模变动表... " />
+                <marker date="1512123319544" expanded="true" signature="4185:4298" ph="insert into 规模变动表... " />
+                <marker date="1512123319544" expanded="true" signature="4185:4315" ph="insert into 规模变动表... " />
+                <marker date="1512123319544" expanded="true" signature="4185:4344" ph="insert into 基金规模变动表... " />
+                <marker date="1512123319544" expanded="true" signature="5010:5139" ph="select * fro... 基金持有人结构表" />
+                <marker date="1512123319544" expanded="true" signature="5198:5317" ph="insert into 基金持有人结构表... " />
+                <marker date="1512123319544" expanded="true" signature="5831:5965" ph="select * fro... 基金持仓明细表" />
+                <marker date="1512123319544" expanded="true" signature="5831:6020" ph="select * fro... 基金持仓明细表" />
+                <marker date="1512123319544" expanded="true" signature="6079:6263" ph="insert into 基金持有人结构表... " />
+                <marker date="1512123319544" expanded="true" signature="6863:7078" ph="select * fro... 重大变动表" />
+                <marker date="1512123319544" expanded="true" signature="7137:7333" ph="insert into 重大变动表... " />
+                <marker date="1512123319544" expanded="true" signature="7782:7945" ph="select * fro... 行业配置表" />
+                <marker date="1512123319544" expanded="true" signature="8004:8117" ph="insert into 行业配置表... " />
+                <marker date="1512123319544" expanded="true" signature="8596:8781" ph="select * fro... 行业配置比较表" />
+                <marker date="1512123319544" expanded="true" signature="8840:9009" ph="insert into 行业配置比较表... " />
+                <marker date="1512123319544" expanded="true" signature="9333:9494" ph="select * fro... 投资风格表" />
+                <marker date="1512123319544" expanded="true" signature="9553:9621" ph="insert into 投资风格表... " />
+                <marker date="1512123319544" expanded="true" signature="9767:9868" ph="select * fro... 跟踪指数指标表" />
+                <marker date="1512123319544" expanded="true" signature="9767:9929" ph="select * fro... 跟踪指数指标表" />
+                <marker date="1512123319544" expanded="true" signature="9767:9960" ph="select * fro... 跟踪指数指标表" />
+                <marker date="1512123319544" expanded="true" signature="10015:10126" ph="insert into 跟踪指数指标表... " />
+                <marker date="1512123319544" expanded="true" signature="10541:10708" ph="select * fro... 基金经理变动表" />
+                <marker date="1512123319544" expanded="true" signature="10541:10755" ph="select * fro... 基金经理变动表" />
+                <marker date="1512123319544" expanded="true" signature="10814:10943" ph="insert into 基金经理变动表... " />
+                <marker date="1512123319544" expanded="true" signature="11608:11885" ph="select * fro... 基金经理人历任基金表" />
+                <marker date="1512123319544" expanded="true" signature="11944:12199" ph="insert into 基金经理人历任基金表... " />
+                <marker date="1512123319544" expanded="true" signature="11944:12210" ph="insert into 基金经理人历任基金表... " />
+                <marker date="1512123319544" expanded="true" signature="13181:13314" ph="select * fro... 财务报表" />
+                <marker date="1512123319544" expanded="true" signature="13181:13315" ph="select * fro... 财务报表" />
+                <marker date="1512123319544" expanded="true" signature="13373:13712" ph="insert into 财务报表... " />
+                <marker date="1512123319544" expanded="true" signature="16008:16124" ph="select * fro... 资产负债表" />
+                <marker date="1512123319544" expanded="true" signature="16183:17124" ph="insert into 资产负债表... " />
+                <marker date="1512123319544" expanded="true" signature="19422:19536" ph="select * fro... 利润表" />
+                <marker date="1512123319544" expanded="true" signature="19595:20281" ph="insert into 利润表... " />
+                <marker date="1512123319544" expanded="true" signature="21307:21441" ph="select * fro... 收入分析表" />
+                <marker date="1512123319544" expanded="true" signature="21500:21684" ph="insert into 收入分析表... " />
+                <marker date="1512123319544" expanded="true" signature="22605:22743" ph="select * fro... 费用分析表" />
+                <marker date="1512123319544" expanded="true" signature="22802:23155" ph="insert into 费用分析表... " />
+                <marker date="1512123319544" expanded="true" signature="23843:23983" ph="select * fro... 基金资产分类配置表" />
+                <marker date="1512123319544" expanded="true" signature="24042:24206" ph="insert into 基金资产分类配置表... " />
+                <marker date="1512123319544" expanded="true" signature="24700:24828" ph="select * fro... 历史净值明细表" />
+                <marker date="1512123319544" expanded="true" signature="24887:25039" ph="insert into 历史净值明细表... " />
+                <marker date="1512123319544" expanded="true" signature="25427:25546" ph="select * fro... 收益率走势表" />
+                <marker date="1512123319544" expanded="true" signature="25605:25714" ph="insert into 收益率走势表... " />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Mysql错误日志.log" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TianTianJiJin/Data/Mysql错误日志.log">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="376">
-              <caret line="1356" column="0" lean-forward="false" selection-start-line="1356" selection-start-column="0" selection-end-line="1356" selection-end-column="64" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -82,10 +101,27 @@
       <file leaf-file-name="tiantian_jijin.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TianTianJiJin/spiders/tiantian_jijin.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="688" column="35" lean-forward="false" selection-start-line="688" selection-start-column="35" selection-end-line="688" selection-end-column="35" />
+            <state relative-caret-position="108">
+              <caret line="4" column="13" lean-forward="true" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="connect_to_mysql.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/connect_to_mysql.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="12" column="73" lean-forward="true" selection-start-line="12" selection-start-column="73" selection-end-line="12" selection-end-column="73" />
               <folding>
-                <element signature="e#24#35#0" expanded="true" />
+                <marker date="1512109905750" expanded="true" signature="392:427" ph="select * fro... 财务报表" />
+                <marker date="1512109905750" expanded="true" signature="392:469" ph="select * fro... 财务报表" />
+                <marker date="1512109905750" expanded="true" signature="392:471" ph="select * fro... 财务报表" />
+                <marker date="1512109905750" expanded="true" signature="392:483" ph="select * fro... 财务报表" />
+                <marker date="1512109905750" expanded="true" signature="392:487" ph="select * fro... 财务报表" />
+                <marker date="1512109905750" expanded="true" signature="392:488" ph="select * fro... 财务报表" />
+                <marker date="1512109905750" expanded="true" signature="392:489" ph="select * fro... 财务报表" />
+                <marker date="1512109905750" expanded="true" signature="392:1205" ph="select * fro... 财务报表" />
               </folding>
             </state>
           </provider>
@@ -94,8 +130,8 @@
       <file leaf-file-name="ALL_TEST.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TianTianJiJin/Data/ALL_TEST.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="197">
-              <caret line="4059" column="21" lean-forward="false" selection-start-line="4059" selection-start-column="15" selection-end-line="4059" selection-end-column="21" />
+            <state relative-caret-position="334125">
+              <caret line="12375" column="29" lean-forward="false" selection-start-line="12375" selection-start-column="29" selection-end-line="12375" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -104,11 +140,11 @@
       <file leaf-file-name="requests_test.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/requests_test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="27">
-              <caret line="55" column="39" lean-forward="false" selection-start-line="55" selection-start-column="39" selection-end-line="55" selection-end-column="39" />
+            <state relative-caret-position="54">
+              <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="15" />
               <folding>
-                <marker date="1511924759010" expanded="true" signature="1698:1762" ph="insert into 交通运输... " />
-                <marker date="1511924759010" expanded="true" signature="2554:2607" ph="update 交通运输、... " />
+                <marker date="1512118697344" expanded="true" signature="2384:2448" ph="insert into 交通运输... " />
+                <marker date="1512118697344" expanded="true" signature="3240:3293" ph="update 交通运输、... " />
               </folding>
             </state>
           </provider>
@@ -129,18 +165,13 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Fund_size_change_Date</find>
-      <find>Net_asset_change</find>
-      <find>Fund_size</find>
-      <find>item[</find>
-      <find>Unit</find>
       <find>Fund_holder_Date</find>
       <find>Institution</find>
       <find>CSRC_setors_code</find>
@@ -166,6 +197,11 @@
       <find>Income</find>
       <find>Dividends_distribution</find>
       <find>Operand</find>
+      <find>1</find>
+      <find>Financial_index_date</find>
+      <find>and</find>
+      <find>last_year = int(year_list[-1])</find>
+      <find>print</find>
     </findStrings>
     <replaceStrings>
       <replace>&quot;$1&quot;:&quot;$2&quot;,</replace>
@@ -190,6 +226,8 @@
       <replace>response.xpath(&quot;//table[@class='w782 comm lsjz']/tbody/tr/td[7]//text()&quot;).extract()</replace>
       <replace>[i.xpath('.//text()').extract_first() if i.xpath('.//text()').extract_first() else '' for i in response.xpath(&quot;//table[@class='w782 comm lsjz']/tbody/tr/td[7]&quot;)]</replace>
       <replace>,</replace>
+      <replace>last_year = int(year_list[-1]) if year_list else current_year</replace>
+      <replace># print</replace>
     </replaceStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -205,12 +243,15 @@
         <option value="$PROJECT_DIR$/requests_jbgk.py" />
         <option value="$PROJECT_DIR$/TianTianJiJin/fund_jbgk.html" />
         <option value="$PROJECT_DIR$/TianTianJiJin/Data/ALL_TEST.txt" />
-        <option value="$PROJECT_DIR$/requests_test.py" />
         <option value="$PROJECT_DIR$/TianTianJiJin/settings.py" />
-        <option value="$PROJECT_DIR$/connect_to_mysql.py" />
         <option value="$PROJECT_DIR$/TianTianJiJin/test.py" />
         <option value="$PROJECT_DIR$/TianTianJiJin/Data/Mysql错误日志.log" />
         <option value="$PROJECT_DIR$/TianTianJiJin/items.py" />
+        <option value="$PROJECT_DIR$/connect_to_mysql.py" />
+        <option value="$PROJECT_DIR$/requests_test.py" />
+        <option value="$PROJECT_DIR$/xiaxiang.html" />
+        <option value="$PROJECT_DIR$/xiaxiang_requests.py" />
+        <option value="$PROJECT_DIR$/TianTianJiJin/spiders/elegomall.py" />
         <option value="$PROJECT_DIR$/TianTianJiJin/pipelines.py" />
         <option value="$PROJECT_DIR$/TianTianJiJin/spiders/tiantian_jijin.py" />
       </list>
@@ -243,7 +284,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -308,6 +348,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -349,25 +390,6 @@
       <module name="TianTianJiJin" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TianTianJiJin/main.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/TianTianJiJin" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="TianTianJiJin" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TianTianJiJin/test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -425,6 +447,25 @@
       <module name="TianTianJiJin" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/connect_to_mysql.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="xiaxiang_requests" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="TianTianJiJin" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/xiaxiang_requests.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -581,18 +622,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.main" />
-      <item index="1" class="java.lang.String" itemvalue="Python.test" />
-      <item index="2" class="java.lang.String" itemvalue="Python.requests_test" />
-      <item index="3" class="java.lang.String" itemvalue="Python.requests_jbgk" />
-      <item index="4" class="java.lang.String" itemvalue="Python.connect_to_mysql" />
+      <item index="1" class="java.lang.String" itemvalue="Python.requests_test" />
+      <item index="2" class="java.lang.String" itemvalue="Python.requests_jbgk" />
+      <item index="3" class="java.lang.String" itemvalue="Python.connect_to_mysql" />
+      <item index="4" class="java.lang.String" itemvalue="Python.xiaxiang_requests" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.main" />
-        <item index="1" class="java.lang.String" itemvalue="Python.connect_to_mysql" />
-        <item index="2" class="java.lang.String" itemvalue="Python.requests_test" />
-        <item index="3" class="java.lang.String" itemvalue="Python.requests_jbgk" />
-        <item index="4" class="java.lang.String" itemvalue="Python.test" />
+        <item index="1" class="java.lang.String" itemvalue="Python.xiaxiang_requests" />
+        <item index="2" class="java.lang.String" itemvalue="Python.connect_to_mysql" />
+        <item index="3" class="java.lang.String" itemvalue="Python.requests_test" />
+        <item index="4" class="java.lang.String" itemvalue="Python.requests_jbgk" />
       </list>
     </recent_temporary>
   </component>
@@ -622,7 +663,7 @@
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1633888" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16792738" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32973805" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="调试" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31432974" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32973805" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
@@ -630,8 +671,8 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32973805" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="运行" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.8135593" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.8597843" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="运行" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.91217256" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -649,28 +690,28 @@
     </layout>
     <layout-to-restore>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32973805" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="调试" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31432974" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32973805" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32973805" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="运行" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.798151" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1633888" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="运行" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.8135593" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16792738" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Concurrent Activities Diagram" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32973805" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Concurrent Activities Diagram" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32973805" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="找到" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="找到" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
@@ -696,36 +737,11 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/TianTianJiJin/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2808">
-          <caret line="104" column="25" lean-forward="false" selection-start-line="104" selection-start-column="25" selection-end-line="104" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TianTianJiJin/items.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1296">
-          <caret line="48" column="0" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TianTianJiJin/Data/ACworth_TEST.txt">
-      <provider selected="true" editor-type-id="LargeFileEditor">
-        <state relative-caret-position="405">
-          <caret line="15" column="54" lean-forward="false" selection-start-line="15" selection-start-column="54" selection-end-line="15" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TianTianJiJin/spiders/tiantian_jijin.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3510">
           <caret line="130" column="38" lean-forward="false" selection-start-line="130" selection-start-column="38" selection-end-line="130" selection-end-column="38" />
-          <folding>
-            <element signature="e#24#35#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -763,9 +779,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3510">
           <caret line="130" column="38" lean-forward="false" selection-start-line="130" selection-start-column="38" selection-end-line="130" selection-end-column="38" />
-          <folding>
-            <element signature="e#24#35#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -803,9 +817,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3510">
           <caret line="130" column="38" lean-forward="false" selection-start-line="130" selection-start-column="38" selection-end-line="130" selection-end-column="38" />
-          <folding>
-            <element signature="e#24#35#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -843,9 +855,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3510">
           <caret line="130" column="38" lean-forward="true" selection-start-line="130" selection-start-column="38" selection-end-line="130" selection-end-column="38" />
-          <folding>
-            <element signature="e#24#35#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -883,9 +893,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1674">
           <caret line="62" column="43" lean-forward="true" selection-start-line="62" selection-start-column="43" selection-end-line="62" selection-end-column="43" />
-          <folding>
-            <element signature="e#24#35#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -929,9 +937,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1296">
           <caret line="48" column="38" lean-forward="true" selection-start-line="48" selection-start-column="38" selection-end-line="48" selection-end-column="38" />
-          <folding>
-            <element signature="e#24#35#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1026,13 +1032,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/connect_to_mysql.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="13" column="60" lean-forward="false" selection-start-line="13" selection-start-column="60" selection-end-line="13" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TianTianJiJin/test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="999">
@@ -1041,86 +1040,154 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/TianTianJiJin/Data/Mysql错误日志.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="727">
+          <caret line="1356" column="40" lean-forward="true" selection-start-line="1356" selection-start-column="40" selection-end-line="1356" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/TianTianJiJin/Data/ALL_TEST.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="4059" column="21" lean-forward="false" selection-start-line="4059" selection-start-column="15" selection-end-line="4059" selection-end-column="21" />
+        <state relative-caret-position="334125">
+          <caret line="12375" column="29" lean-forward="false" selection-start-line="12375" selection-start-column="29" selection-end-line="12375" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TianTianJiJin/Data/Mysql错误日志.log">
+    <entry file="file://$PROJECT_DIR$/xiaxiang.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="376">
-          <caret line="1356" column="0" lean-forward="false" selection-start-line="1356" selection-start-column="0" selection-end-line="1356" selection-end-column="64" />
+        <state relative-caret-position="314">
+          <caret line="5101" column="31" lean-forward="false" selection-start-line="5101" selection-start-column="31" selection-end-line="5101" selection-end-column="31" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/connect_to_mysql.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="12" column="73" lean-forward="true" selection-start-line="12" selection-start-column="73" selection-end-line="12" selection-end-column="73" />
+          <folding>
+            <marker date="1512109905750" expanded="true" signature="392:427" ph="select * fro... 财务报表" />
+            <marker date="1512109905750" expanded="true" signature="392:469" ph="select * fro... 财务报表" />
+            <marker date="1512109905750" expanded="true" signature="392:471" ph="select * fro... 财务报表" />
+            <marker date="1512109905750" expanded="true" signature="392:483" ph="select * fro... 财务报表" />
+            <marker date="1512109905750" expanded="true" signature="392:487" ph="select * fro... 财务报表" />
+            <marker date="1512109905750" expanded="true" signature="392:488" ph="select * fro... 财务报表" />
+            <marker date="1512109905750" expanded="true" signature="392:489" ph="select * fro... 财务报表" />
+            <marker date="1512109905750" expanded="true" signature="392:1205" ph="select * fro... 财务报表" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TianTianJiJin/spiders/elegomall.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="20" column="58" lean-forward="true" selection-start-line="20" selection-start-column="58" selection-end-line="20" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xiaxiang_requests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="12" column="75" lean-forward="false" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="75" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/requests_test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="55" column="39" lean-forward="false" selection-start-line="55" selection-start-column="39" selection-end-line="55" selection-end-column="39" />
+        <state relative-caret-position="54">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="15" />
           <folding>
-            <marker date="1511924759010" expanded="true" signature="1698:1762" ph="insert into 交通运输... " />
-            <marker date="1511924759010" expanded="true" signature="2554:2607" ph="update 交通运输、... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TianTianJiJin/pipelines.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="112" column="24" lean-forward="false" selection-start-line="112" selection-start-column="24" selection-end-line="112" selection-end-column="24" />
-          <folding>
-            <element signature="e#192#206#0" expanded="true" />
-            <marker date="1512039238980" expanded="true" signature="1808:1965" ph="insert into aqi_data... " />
-            <marker date="1512039238980" expanded="true" signature="2193:2348" ph="insert into fund_info... " />
-            <marker date="1512039238980" expanded="true" signature="2193:2656" ph="insert into 交通运输... " />
-            <marker date="1512039238980" expanded="true" signature="3532:3583" ph="insert into 规模变动表... " />
-            <marker date="1512039238980" expanded="true" signature="3532:3599" ph="insert into 规模变动表... " />
-            <marker date="1512039238980" expanded="true" signature="3532:3613" ph="insert into 规模变动表... " />
-            <marker date="1512039238980" expanded="true" signature="3532:3627" ph="insert into 规模变动表... " />
-            <marker date="1512039238980" expanded="true" signature="3532:3645" ph="insert into 规模变动表... " />
-            <marker date="1512039238980" expanded="true" signature="3532:3662" ph="insert into 规模变动表... " />
-            <marker date="1512039238980" expanded="true" signature="3532:3691" ph="insert into 基金规模变动表... " />
-            <marker date="1512039238980" expanded="true" signature="4049:4168" ph="insert into 基金持有人结构表... " />
-            <marker date="1512039238980" expanded="true" signature="4624:4808" ph="insert into 基金持有人结构表... " />
-            <marker date="1512039238980" expanded="true" signature="5350:5546" ph="insert into 重大变动表... " />
-            <marker date="1512039238980" expanded="true" signature="5937:6050" ph="insert into 行业配置表... " />
-            <marker date="1512039238980" expanded="true" signature="6471:6640" ph="insert into 行业配置比较表... " />
-            <marker date="1512039238980" expanded="true" signature="6906:6974" ph="insert into 投资风格表... " />
-            <marker date="1512039238980" expanded="true" signature="7062:7173" ph="insert into 跟踪指数指标表... " />
-            <marker date="1512039238980" expanded="true" signature="7538:7667" ph="insert into 基金经理变动表... " />
-            <marker date="1512039238980" expanded="true" signature="8274:8529" ph="insert into 基金经理人历任基金表... " />
-            <marker date="1512039238980" expanded="true" signature="8274:8540" ph="insert into 基金经理人历任基金表... " />
-            <marker date="1512039238980" expanded="true" signature="9453:9792" ph="insert into 财务报表... " />
-            <marker date="1512039238980" expanded="true" signature="12030:12971" ph="insert into 资产负债表... " />
-            <marker date="1512039238980" expanded="true" signature="15211:15897" ph="insert into 利润表... " />
-            <marker date="1512039238980" expanded="true" signature="16865:17049" ph="insert into 收入分析表... " />
-            <marker date="1512039238980" expanded="true" signature="17912:18265" ph="insert into 费用分析表... " />
-            <marker date="1512039238980" expanded="true" signature="18895:19059" ph="insert into 基金资产分类配置表... " />
-            <marker date="1512039238980" expanded="true" signature="19495:19647" ph="insert into 历史净值明细表... " />
-            <marker date="1512039238980" expanded="true" signature="19977:20086" ph="insert into 收益率走势表... " />
+            <marker date="1512118697344" expanded="true" signature="2384:2448" ph="insert into 交通运输... " />
+            <marker date="1512118697344" expanded="true" signature="3240:3293" ph="update 交通运输、... " />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/TianTianJiJin/items.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="197" column="53" lean-forward="true" selection-start-line="197" selection-start-column="53" selection-end-line="197" selection-end-column="53" />
+        <state relative-caret-position="108">
+          <caret line="4" column="23" lean-forward="true" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TianTianJiJin/pipelines.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2872">
+          <caret line="8" column="11" lean-forward="true" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
+          <folding>
+            <element signature="e#192#206#0" expanded="true" />
+            <marker date="1512123319544" expanded="true" signature="1808:1965" ph="insert into aqi_data... " />
+            <marker date="1512123319544" expanded="true" signature="2187:2266" ph="select * fro... 财务报表" />
+            <marker date="1512123319544" expanded="true" signature="2303:2427" ph="select * fro... 基金概况表" />
+            <marker date="1512123319544" expanded="true" signature="2482:2604" ph="delete from " />
+            <marker date="1512123319544" expanded="true" signature="2482:2611" ph="delete from " />
+            <marker date="1512123319544" expanded="true" signature="2659:2814" ph="insert into fund_info... " />
+            <marker date="1512123319544" expanded="true" signature="2659:3122" ph="insert into 交通运输... " />
+            <marker date="1512123319544" expanded="true" signature="3989:4097" ph="select * fro... 基金规模变动表" />
+            <marker date="1512123319544" expanded="true" signature="3989:4126" ph="select * fro... 基金概况表" />
+            <marker date="1512123319544" expanded="true" signature="4185:4236" ph="insert into 规模变动表... " />
+            <marker date="1512123319544" expanded="true" signature="4185:4252" ph="insert into 规模变动表... " />
+            <marker date="1512123319544" expanded="true" signature="4185:4266" ph="insert into 规模变动表... " />
+            <marker date="1512123319544" expanded="true" signature="4185:4280" ph="insert into 规模变动表... " />
+            <marker date="1512123319544" expanded="true" signature="4185:4298" ph="insert into 规模变动表... " />
+            <marker date="1512123319544" expanded="true" signature="4185:4315" ph="insert into 规模变动表... " />
+            <marker date="1512123319544" expanded="true" signature="4185:4344" ph="insert into 基金规模变动表... " />
+            <marker date="1512123319544" expanded="true" signature="5010:5139" ph="select * fro... 基金持有人结构表" />
+            <marker date="1512123319544" expanded="true" signature="5198:5317" ph="insert into 基金持有人结构表... " />
+            <marker date="1512123319544" expanded="true" signature="5831:5965" ph="select * fro... 基金持仓明细表" />
+            <marker date="1512123319544" expanded="true" signature="5831:6020" ph="select * fro... 基金持仓明细表" />
+            <marker date="1512123319544" expanded="true" signature="6079:6263" ph="insert into 基金持有人结构表... " />
+            <marker date="1512123319544" expanded="true" signature="6863:7078" ph="select * fro... 重大变动表" />
+            <marker date="1512123319544" expanded="true" signature="7137:7333" ph="insert into 重大变动表... " />
+            <marker date="1512123319544" expanded="true" signature="7782:7945" ph="select * fro... 行业配置表" />
+            <marker date="1512123319544" expanded="true" signature="8004:8117" ph="insert into 行业配置表... " />
+            <marker date="1512123319544" expanded="true" signature="8596:8781" ph="select * fro... 行业配置比较表" />
+            <marker date="1512123319544" expanded="true" signature="8840:9009" ph="insert into 行业配置比较表... " />
+            <marker date="1512123319544" expanded="true" signature="9333:9494" ph="select * fro... 投资风格表" />
+            <marker date="1512123319544" expanded="true" signature="9553:9621" ph="insert into 投资风格表... " />
+            <marker date="1512123319544" expanded="true" signature="9767:9868" ph="select * fro... 跟踪指数指标表" />
+            <marker date="1512123319544" expanded="true" signature="9767:9929" ph="select * fro... 跟踪指数指标表" />
+            <marker date="1512123319544" expanded="true" signature="9767:9960" ph="select * fro... 跟踪指数指标表" />
+            <marker date="1512123319544" expanded="true" signature="10015:10126" ph="insert into 跟踪指数指标表... " />
+            <marker date="1512123319544" expanded="true" signature="10541:10708" ph="select * fro... 基金经理变动表" />
+            <marker date="1512123319544" expanded="true" signature="10541:10755" ph="select * fro... 基金经理变动表" />
+            <marker date="1512123319544" expanded="true" signature="10814:10943" ph="insert into 基金经理变动表... " />
+            <marker date="1512123319544" expanded="true" signature="11608:11885" ph="select * fro... 基金经理人历任基金表" />
+            <marker date="1512123319544" expanded="true" signature="11944:12199" ph="insert into 基金经理人历任基金表... " />
+            <marker date="1512123319544" expanded="true" signature="11944:12210" ph="insert into 基金经理人历任基金表... " />
+            <marker date="1512123319544" expanded="true" signature="13181:13314" ph="select * fro... 财务报表" />
+            <marker date="1512123319544" expanded="true" signature="13181:13315" ph="select * fro... 财务报表" />
+            <marker date="1512123319544" expanded="true" signature="13373:13712" ph="insert into 财务报表... " />
+            <marker date="1512123319544" expanded="true" signature="16008:16124" ph="select * fro... 资产负债表" />
+            <marker date="1512123319544" expanded="true" signature="16183:17124" ph="insert into 资产负债表... " />
+            <marker date="1512123319544" expanded="true" signature="19422:19536" ph="select * fro... 利润表" />
+            <marker date="1512123319544" expanded="true" signature="19595:20281" ph="insert into 利润表... " />
+            <marker date="1512123319544" expanded="true" signature="21307:21441" ph="select * fro... 收入分析表" />
+            <marker date="1512123319544" expanded="true" signature="21500:21684" ph="insert into 收入分析表... " />
+            <marker date="1512123319544" expanded="true" signature="22605:22743" ph="select * fro... 费用分析表" />
+            <marker date="1512123319544" expanded="true" signature="22802:23155" ph="insert into 费用分析表... " />
+            <marker date="1512123319544" expanded="true" signature="23843:23983" ph="select * fro... 基金资产分类配置表" />
+            <marker date="1512123319544" expanded="true" signature="24042:24206" ph="insert into 基金资产分类配置表... " />
+            <marker date="1512123319544" expanded="true" signature="24700:24828" ph="select * fro... 历史净值明细表" />
+            <marker date="1512123319544" expanded="true" signature="24887:25039" ph="insert into 历史净值明细表... " />
+            <marker date="1512123319544" expanded="true" signature="25427:25546" ph="select * fro... 收益率走势表" />
+            <marker date="1512123319544" expanded="true" signature="25605:25714" ph="insert into 收益率走势表... " />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/TianTianJiJin/spiders/tiantian_jijin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="688" column="35" lean-forward="false" selection-start-line="688" selection-start-column="35" selection-end-line="688" selection-end-column="35" />
-          <folding>
-            <element signature="e#24#35#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="108">
+          <caret line="4" column="13" lean-forward="true" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -17,20 +17,20 @@ class TiantianJijinSpider(scrapy.Spider):
 
     # 1.基金排行页面
     def parse(self, response):
-        # print(response.body.decode())
-        # print(len(response.xpath("//div[@class='mainFrame'][7]//tbody//tr")))
+        # # print(response.body.decode())
+        # # print(len(response.xpath("//div[@class='mainFrame'][7]//tbody//tr")))
         json_html = response.body.decode()
-        # print(json_html)
+        # # print(json_html)
         py_json = json.loads(json_html[22:-150])
-        print(py_json)
-        print('len:', len(py_json))
+        # print(py_json)
+        # print('len:', len(py_json))
         list1 = py_json[0].split(',')
         list2 = py_json[1].split(',')
         list3 = py_json[2].split(',')
-        print(list1)
-        print('len:', len(list1))
-        print('len:', len(list2))
-        print('len:', len(list3))
+        # print(list1)
+        # print('len:', len(list1))
+        # print('len:', len(list2))
+        # print('len:', len(list3))
         for list in py_json:
             item = JijinDataItem()
             each = list.split(',')
@@ -53,9 +53,9 @@ class TiantianJijinSpider(scrapy.Spider):
             item['Procedures_Fee'] = each[20]
             fund_info_url = 'http://fund.eastmoney.com/f10/jbgk_{0}.html'.format(each[0])
             yield scrapy.Request(url=fund_info_url, callback=self.parse_fundinfo, meta={'fund_item': item})
-            break
+            # break
         # item = JijinDataItem()
-        # item['Fund_code'] = '000457'
+        # item['Fund_code'] = '002196'
         # fund_info_url = 'http://fund.eastmoney.com/f10/jbgk_{0}.html'.format(item['Fund_code'])
         # yield scrapy.Request(url=fund_info_url, callback=self.parse_fundinfo, meta={'fund_item': item})
 
@@ -85,7 +85,7 @@ class TiantianJijinSpider(scrapy.Spider):
 
         fund_size_change_url = 'http://fund.eastmoney.com/f10/FundArchivesDatas.aspx?type=gmbd&mode=0&code={0}'.format(
             item['Fund_code'])
-        # print(fund_js_url)
+        # # print(fund_js_url)
         yield scrapy.Request(url=fund_size_change_url, callback=self.parse_fund_size_change, meta={'fund_item': item})
 
 
@@ -95,34 +95,34 @@ class TiantianJijinSpider(scrapy.Spider):
     #     # / *基金/股票名称 * /
     #     year_list_pattern_fundName = re.compile(r'var fS_name = "(.*?)";', re.S)
     #     item['Fund_name'] = year_list_pattern_fundName.findall(json_html)[0]
-    #     # print(fundName)
+    #     # # print(fundName)
     #     # /*股票仓位测算图*/
     #     # year_list_pattern_fundSharesPositions = re.compile(r'var Data_fundSharesPositions = (.*?);',re.S)
     #     # fundSharesPositions = year_list_pattern_fundSharesPositions.findall(json_html)[0]
-    #     # print(fundSharesPositions)
+    #     # # print(fundSharesPositions)
     #     # /*单位净值走势 equityReturn-净值回报 unitMoney-每份派送金*/
     #     # year_list_pattern_netWorthTrend  = re.compile(r'var Data_netWorthTrend = (.*?);',re.S)
     #     # netWorthTrend = year_list_pattern_netWorthTrend.findall(json_html)[0]
-    #     # print(netWorthTrend)
+    #     # # print(netWorthTrend)
     #     # /*累计净值走势*/
     #     # year_list_pattern_ACWorthTrend = re.compile(r'var Data_ACWorthTrend = (.*?);', re.S)
     #     # item['ACWorthTrend'] = year_list_pattern_ACWorthTrend.findall(json_html)[0]
-    #     # print(ACWorthTrend)
+    #     # # print(ACWorthTrend)
     #     # /*现任基金经理：任职时间、任期收益、同类平均*/
     #     year_list_pattern_currentFundManager = re.compile(r'var Data_currentFundManager =(.*?);', re.S)
     #     item['currentFundManager'] = year_list_pattern_currentFundManager.findall(json_html)[0]
-    #     # print(currentFundManager)
+    #     # # print(currentFundManager)
     #     # /*资产配置占比*/
     #     year_list_pattern_assetAllocation = re.compile(r'var Data_assetAllocation = {"series":(.*?),"categories"', re.S)
     #     item['assetAllocation'] = year_list_pattern_assetAllocation.findall(json_html)[0]
-    #     # print(assetAllocation)
+    #     # # print(assetAllocation)
     #     # /*累计收益率走势(本基金、沪深300、同类平均)*/
     #     year_list_pattern_grandTotal = re.compile(r'var Data_grandTotal = (.*?);', re.S)
     #     item['grandTotal'] = year_list_pattern_grandTotal.findall(json_html)[0]
-    #     # print(grandTotal)
+    #     # # print(grandTotal)
     #     acworth_url = 'http://fund.eastmoney.com/f10/F10DataApi.aspx?type=lsjz&code={0}&page=1&per=10000'.format(
     #         item['Fund_code'])
-    #     # print(fund_js_url)
+    #     # # print(fund_js_url)
     #     yield scrapy.Request(url=acworth_url, callback=self.parse_acworth, meta={'fund_item': item})
 
     # 3.基金规模变动
@@ -164,14 +164,14 @@ class TiantianJijinSpider(scrapy.Spider):
         item = response.meta['fund_item']
         # if response.xpath('//tr/td/text()'):
         for i in response.xpath("//div[@class='box']"):
-            # print(i.xpath('.//label[1]/text()').extract())
+            # # print(i.xpath('.//label[1]/text()').extract())
             fund_holding_season = (
                 (len(i.xpath('.//tr')) - 1) * str((
                                                       i.xpath(
                                                           ".//label[1]/text()").extract_first()).strip() + ',')).split(
                 ',')
             del fund_holding_season[-1]
-            print(fund_holding_season)
+            # print(fund_holding_season)
             item['Fund_holding_season'] += fund_holding_season
             item['Fund_holding_id'] += i.xpath(".//tr//td[1]//text()").extract()
             item['Stock_code'] += i.xpath(".//tr//td[2]//text()").extract()
@@ -189,9 +189,9 @@ class TiantianJijinSpider(scrapy.Spider):
         current_year_pattern = re.compile(r',curyear:(.*?)};', re.S)
         year_list = json.loads(year_list_pattern.findall(response.body.decode())[0])  # [2017,2016,2015,2014]
         current_year = int(current_year_pattern.findall(response.body.decode())[0])
-        last_year = int(year_list[-1])
-        print('last_year:', last_year)
-        print('current_year:', current_year)
+        last_year = int(year_list[-1]) if year_list else current_year
+        # print('last_year:', last_year)
+        # print('current_year:', current_year)
         if current_year <= last_year:
             item['Transaction_details_season'] = []
             item['Transaction_details_id'] = []
@@ -221,7 +221,7 @@ class TiantianJijinSpider(scrapy.Spider):
                                                           ".//label[1]/text()").extract_first()).strip() + ',')).split(
                 ',')
             del transaction_details_season[-1]
-            print(transaction_details_season)
+            # print(transaction_details_season)
             item['Transaction_details_season'] += transaction_details_season
             item['Transaction_details_id'] += i.xpath(".//tr//td[1]//text()").extract()
             item['Buying_stock_code'] += i.xpath(".//tr//td[2]//text()").extract()
@@ -233,9 +233,9 @@ class TiantianJijinSpider(scrapy.Spider):
         current_year_pattern = re.compile(r',curyear:(.*?)};', re.S)
         year_list = json.loads(year_list_pattern.findall(response.body.decode())[0])  # [2017,2016,2015,2014]
         current_year = int(current_year_pattern.findall(response.body.decode())[0])
-        last_year = int(year_list[-1])
-        print('last_year:', last_year)
-        print('current_year:', current_year)
+        last_year = int(year_list[-1]) if year_list else current_year
+        # print('last_year:', last_year)
+        # print('current_year:', current_year)
         if current_year <= last_year:
             item['Setors_season'] = []  # 年份季度
             item['Setors_id'] = []  # 序号
@@ -266,7 +266,7 @@ class TiantianJijinSpider(scrapy.Spider):
                                                           ".//label[1]/text()").extract_first()).strip() + ',')).split(
                 ',')
             del setors_season[-1]
-            print(setors_season)
+            # print(setors_season)
             item['Setors_season'] += setors_season
             item['Setors_id'] += i.xpath(".//tr//td[1]//text()").extract()
             item['Setors'] += i.xpath(".//tr//td[2]//text()").extract()
@@ -281,9 +281,9 @@ class TiantianJijinSpider(scrapy.Spider):
         current_year_pattern = re.compile(r',curyear:(.*?)};', re.S)
         year_list = json.loads(year_list_pattern.findall(response.body.decode())[0])  # [2017,2016,2015,2014]
         current_year = int(current_year_pattern.findall(response.body.decode())[0])
-        last_year = int(year_list[-1])
-        print('last_year:', last_year)
-        print('current_year:', current_year)
+        last_year = int(year_list[-1]) if year_list else current_year
+        # print('last_year:', last_year)
+        # print('current_year:', current_year)
         if current_year <= last_year:
             self.year = 2017
             setors_comparation_url = 'http://fund.eastmoney.com/f10/FundArchivesDatas.aspx?type=hypzsy&code={0}'.format(
@@ -303,7 +303,7 @@ class TiantianJijinSpider(scrapy.Spider):
         try:
             date = year_list_pattern.findall(response.body.decode())[0][-17:-7]
         except:
-            print(response.body.decode())
+            # print(response.body.decode())
             date = ''
         comparation_date = ((len(response.xpath('//tr')) - 1) * (str(date) + ',')).split(',')
         del comparation_date[-1]
@@ -321,11 +321,11 @@ class TiantianJijinSpider(scrapy.Spider):
     # 10.投资风格：http://fund.eastmoney.com/f10/tsdata_{0}.html
     # 11.跟踪指数指标Tracking:http://fund.eastmoney.com/f10/tsdata_{0}.html
     def parse_style_box_and_tracking(self, response):
-        print('投资风格--------------------')
+        # print('投资风格--------------------')
         item = response.meta['fund_item']
         item['Style_season'] = response.xpath("//div[@class='tzfg']//tr/td[1]//text()").extract()
         item['Style_box'] = response.xpath("//div[@class='tzfg']//tr/td[2]//text()").extract()
-        print('跟踪指数--------------------')
+        # print('跟踪指数--------------------')
         item['Tracking_index'] = response.xpath("//div[@id='jjzsfj']//tr[2]/td[1]//text()").extract_first() if response.xpath("//div[@id='jjzsfj']//tr[2]/td[1]//text()").extract_first() else ''
         item['Tracking_error'] = response.xpath("//div[@id='jjzsfj']//tr[2]/td[2]//text()").extract_first() if response.xpath("//div[@id='jjzsfj']//tr[2]/td[2]//text()").extract_first() else ''
         item['Similar_average_tracking_error'] = response.xpath(
@@ -337,7 +337,7 @@ class TiantianJijinSpider(scrapy.Spider):
 
     # 12.基金经理变动表 Fund_manager_change：http://fund.eastmoney.com/f10/jjjl_{0}.html
     def parse_fund_manger_change(self, response):
-        print('基金经理人------------------------------')
+        # print('基金经理人------------------------------')
         item = response.meta['fund_item']
         table1_item = response.xpath("//div[@class='txt_in']/div[@class='box']//tr")
         item['Start_date'] = [i.xpath('.//text()').extract_first() if i.xpath('.//text()').extract_first() else '' for i in table1_item.xpath('.//td[1]')] # 起始日期
@@ -375,7 +375,7 @@ class TiantianJijinSpider(scrapy.Spider):
                              meta={'fund_item': item})
 
     def parse_main_financial_index(self, response):
-        print('财务报表-----------------')
+        # print('财务报表-----------------')
         item = response.meta['fund_item']
         item['Financial_index_date'] += response.xpath("//table[1]//th//text()").extract()[1:]  # 日期
         # item['Period_data_and_index'] = response.xpath("//table[1]//tbody/tr[1]//text()").extract()[1:]  # 期间数据和指标
@@ -401,9 +401,9 @@ class TiantianJijinSpider(scrapy.Spider):
         current_year_pattern = re.compile(r',curyear:(.*?)};', re.S)
         year_list = json.loads(year_list_pattern.findall(response.body.decode())[0])  # [2017,2016,2015,2014]
         current_year = int(current_year_pattern.findall(response.body.decode())[0])
-        last_year = int(year_list[-1])
-        print('last_year:', last_year)
-        print('current_year:', current_year)
+        last_year = int(year_list[-1]) if year_list else current_year
+        # print('last_year:', last_year)
+        # print('current_year:', current_year)
         if current_year <= last_year:
             self.year = 2017
             assets_balance_sheet_url = 'http://fund.eastmoney.com/f10/FundArchivesDatas.aspx?type=zcfzb&code={0}&showtype=1&year='.format(
@@ -513,9 +513,9 @@ class TiantianJijinSpider(scrapy.Spider):
         current_year_pattern = re.compile(r',curyear:(.*?)};', re.S)
         year_list = json.loads(year_list_pattern.findall(response.body.decode())[0])  # [2017,2016,2015,2014]
         current_year = int(current_year_pattern.findall(response.body.decode())[0])
-        last_year = int(year_list[-1])
-        print('last_year:', last_year)
-        print('current_year:', current_year)
+        last_year = int(year_list[-1]) if year_list else current_year
+        # print('last_year:', last_year)
+        # print('current_year:', current_year)
         if current_year <= last_year:
             self.year = 2017
             income_statements_url = 'http://fund.eastmoney.com/f10/FundArchivesDatas.aspx?type=lrfpb&code={0}&showtype=1&year='.format(
@@ -598,9 +598,9 @@ class TiantianJijinSpider(scrapy.Spider):
         current_year_pattern = re.compile(r',curyear:(.*?)};', re.S)
         year_list = json.loads(year_list_pattern.findall(response.body.decode())[0])  # [2017,2016,2015,2014]
         current_year = int(current_year_pattern.findall(response.body.decode())[0])
-        last_year = int(year_list[-1])
-        print('last_year:', last_year)
-        print('current_year:', current_year)
+        last_year = int(year_list[-1]) if year_list else current_year
+        # print('last_year:', last_year)
+        # print('current_year:', current_year)
         if current_year <= last_year:
             self.year = 2017
             income_analysis_url = 'http://fund.eastmoney.com/f10/srfx_{0}.html'.format(item['Fund_code'])
@@ -688,7 +688,7 @@ class TiantianJijinSpider(scrapy.Spider):
     def parse_acworth(self,response):
         item = response.meta['fund_item']
         dict_json = json.loads(response.body.decode())
-        item['ACWorth_date'] = [int(i[0])/1000  for i in dict_json[0]['data']]
+        item['ACWorth_date'] = [str(int(int(i[0])/1000)) for i in dict_json[0]['data']]
         item['this_fund_rate'] = [i[1] for i in dict_json[0]['data']]
         item['similar_fund_rate'] = [i[1] for i in dict_json[1]['data']]
         item['hs300_rate'] = [i[1] for i in dict_json[2]['data']]
