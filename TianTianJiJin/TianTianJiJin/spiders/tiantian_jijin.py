@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import json
 import re
-
+import time
 import scrapy
 
 from ..items import JijinDataItem
@@ -21,7 +21,10 @@ class TiantianJijinSpider(scrapy.Spider):
         # # print(len(response.xpath("//div[@class='mainFrame'][7]//tbody//tr")))
         json_html = response.body.decode()
         # # print(json_html)
-        py_json = json.loads(json_html[22:-150])
+        data_pattern = re.compile(r'var rankData = {datas:(.*?),allRecords', re.S)
+        py_json = json.loads(data_pattern.findall(response.body.decode())[0])  # [2017,2016,2015,2014]
+
+        # py_json = json.loads(json_html[22:-159])
         # print(py_json)
         # print('len:', len(py_json))
         list1 = py_json[0].split(',')
@@ -54,40 +57,46 @@ class TiantianJijinSpider(scrapy.Spider):
             fund_info_url = 'http://fund.eastmoney.com/f10/jbgk_{0}.html'.format(each[0])
             yield scrapy.Request(url=fund_info_url, callback=self.parse_fundinfo, meta={'fund_item': item})
             # break
-        # item = JijinDataItem()
-        # item['Fund_code'] = '002196'
-        # fund_info_url = 'http://fund.eastmoney.com/f10/jbgk_{0}.html'.format(item['Fund_code'])
-        # yield scrapy.Request(url=fund_info_url, callback=self.parse_fundinfo, meta={'fund_item': item})
+            # item = JijinDataItem()
+            # item['Fund_code'] = '002196'
+            # fund_info_url = 'http://fund.eastmoney.com/f10/jbgk_{0}.html'.format(item['Fund_code'])
+            # yield scrapy.Request(url=fund_info_url, callback=self.parse_fundinfo, meta={'fund_item': item})
 
     # 2.基金概况页面
     def parse_fundinfo(self, response):
         item = response.meta['fund_item']
-        table_item = response.xpath('//div[@class="txt_in"]//table[@class="info w790"]//td')
-        item['Fund_name'] = ''.join(table_item[0].xpath('.//text()').extract()) if table_item[0] else ''
-        item['Min_Purchase'] = ''.join(response.xpath(
-            "//div[@id='bodydiv']//div[@class='basic-new ']//div[@class='col-left']//a[@class='btn  btn-red ']//span//text()").extract())
-        item['Fund_Type'] = ''.join(table_item[3].xpath('.//text()').extract()) if table_item[3] else ''  # 基金类型
-        item['Risk_Level'] = response.xpath(
-            "//div[@class='txt_cont']/div[@class='txt_in']/div[@class='box nb']/div[@class='boxitem w790']/p//text()").extract_first().strip() if response.xpath(
-            "//div[@class='detail']/div[@class='txt_cont']/div[@class='txt_in']/div[@class='box nb']/div[@class='boxitem w790']/p//text()") else ''  # 风险等级
-        item['Launch_Date'] = ''.join(table_item[4].xpath('.//text()').extract()) if table_item[4] else ''  # 成立时间
-        item['Inception_Date'] = ''.join(table_item[5].xpath('.//text()').extract()) if table_item[5] else ''  # 成立时间
-        item['assetsScale'] = ''.join(table_item[6].xpath('.//text()').extract()) if table_item[6] else ''  # 资产管理规模
-        item['shareScale'] = ''.join(table_item[7].xpath('.//text()').extract()) if table_item[7] else ''  # 份额规模
-        item['fundAdministrator'] = ''.join(table_item[8].xpath('.//text()').extract()) if table_item[
-            8] else ''  # 基金管理人
-        item['fundCustodian'] = ''.join(table_item[9].xpath('.//text()').extract()) if table_item[9] else ''  # 基金托管人
-        item['Management_Fee'] = ''.join(table_item[12].xpath('.//text()').extract()) if table_item[12] else ''  # 管理费率
-        item['custodianRate'] = ''.join(table_item[13].xpath('.//text()').extract()) if table_item[13] else ''  # 托管费率
-        item['Max_Initial_Charge'] = ''.join(table_item[16].xpath('.//text()').extract()) if table_item[16] else ''
-        item['Max_Redemption_charge'] = ''.join(table_item[17].xpath('.//text()').extract()) if table_item[17] else ''
-        item['Benchmark'] = ''.join(table_item[18].xpath('.//text()').extract()) if table_item[18] else ''
+        try:
+            table_item = response.xpath('//div[@class="txt_in"]//table[@class="info w790"]//td')
+            item['Fund_name'] = ''.join(table_item[0].xpath('.//text()').extract()) if table_item[0] else ''
+            item['Min_Purchase'] = ''.join(response.xpath(
+                "//div[@id='bodydiv']//div[@class='basic-new ']//div[@class='col-left']//a[@class='btn  btn-red ']//span//text()").extract())
+            item['Fund_Type'] = ''.join(table_item[3].xpath('.//text()').extract()) if table_item[3] else ''  # 基金类型
+            item['Risk_Level'] = response.xpath(
+                "//div[@class='txt_cont']/div[@class='txt_in']/div[@class='box nb']/div[@class='boxitem w790']/p//text()").extract_first().strip() if response.xpath(
+                "//div[@class='detail']/div[@class='txt_cont']/div[@class='txt_in']/div[@class='box nb']/div[@class='boxitem w790']/p//text()") else ''  # 风险等级
+            item['Launch_Date'] = ''.join(table_item[4].xpath('.//text()').extract()) if table_item[4] else ''  # 成立时间
+            item['Inception_Date'] = ''.join(table_item[5].xpath('.//text()').extract()) if table_item[5] else ''  # 成立时间
+            item['assetsScale'] = ''.join(table_item[6].xpath('.//text()').extract()) if table_item[6] else ''  # 资产管理规模
+            item['shareScale'] = ''.join(table_item[7].xpath('.//text()').extract()) if table_item[7] else ''  # 份额规模
+            item['fundAdministrator'] = ''.join(table_item[8].xpath('.//text()').extract()) if table_item[
+                8] else ''  # 基金管理人
+            item['fundCustodian'] = ''.join(table_item[9].xpath('.//text()').extract()) if table_item[9] else ''  # 基金托管人
+            item['Management_Fee'] = ''.join(table_item[12].xpath('.//text()').extract()) if table_item[12] else ''  # 管理费率
+            item['custodianRate'] = ''.join(table_item[13].xpath('.//text()').extract()) if table_item[13] else ''  # 托管费率
+            item['Max_Initial_Charge'] = ''.join(table_item[16].xpath('.//text()').extract()) if table_item[16] else ''
+            item['Max_Redemption_charge'] = ''.join(table_item[17].xpath('.//text()').extract()) if table_item[17] else ''
+            item['Benchmark'] = ''.join(table_item[18].xpath('.//text()').extract()) if table_item[18] else ''
+        except Exception as e:
+            print(e)
+            with open('Data/' + '错误日志' + '.log', 'a', encoding='utf-8') as f:
+                print('正在写入错误信息：', e)
+                f.write(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())) + '：' + str(e) + '\r\n')
+            f.close()
 
         fund_size_change_url = 'http://fund.eastmoney.com/f10/FundArchivesDatas.aspx?type=gmbd&mode=0&code={0}'.format(
             item['Fund_code'])
         # # print(fund_js_url)
         yield scrapy.Request(url=fund_size_change_url, callback=self.parse_fund_size_change, meta={'fund_item': item})
-
 
     # def parse_fundjs(self, response):
     #     item = response.meta['fund_item']
@@ -128,12 +137,19 @@ class TiantianJijinSpider(scrapy.Spider):
     # 3.基金规模变动
     def parse_fund_size_change(self, response):
         item = response.meta['fund_item']
-        item['Fund_size_change_Date'] = response.xpath("//tr//td[1]//text()").extract()
-        item['Period_Purchase'] = response.xpath("//tr//td[2]//text()").extract()
-        item['Period_Redeem'] = response.xpath("//tr//td[3]//text()").extract()
-        item['Ending_shares'] = response.xpath("//tr//td[4]//text()").extract()
-        item['Ending_net_asset'] = response.xpath("//tr//td[5]//text()").extract()
-        item['Net_asset_change'] = response.xpath("//tr//td[6]//text()").extract()
+        try:
+            item['Fund_size_change_Date'] = response.xpath("//tr//td[1]//text()").extract()
+            item['Period_Purchase'] = response.xpath("//tr//td[2]//text()").extract()
+            item['Period_Redeem'] = response.xpath("//tr//td[3]//text()").extract()
+            item['Ending_shares'] = response.xpath("//tr//td[4]//text()").extract()
+            item['Ending_net_asset'] = response.xpath("//tr//td[5]//text()").extract()
+            item['Net_asset_change'] = response.xpath("//tr//td[6]//text()").extract()
+        except Exception as e:
+            print(e)
+            with open('Data/' + '错误日志' + '.log', 'a', encoding='utf-8') as f:
+                print('正在写入错误信息：', e)
+                f.write(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())) + '：' + str(e) + '\r\n')
+            f.close()
 
         fund_holder_url = 'http://fund.eastmoney.com/f10/FundArchivesDatas.aspx?type=cyrjg&code={0}'.format(
             item['Fund_code'])
@@ -142,19 +158,27 @@ class TiantianJijinSpider(scrapy.Spider):
     # 4.基金持有人结构
     def parse_fund_holder(self, response):
         item = response.meta['fund_item']
-        item['Fund_holder_Date'] = response.xpath("//tr//td[1]//text()").extract()
-        item['Institution'] = response.xpath("//tr//td[2]//text()").extract()
-        item['Individual'] = response.xpath("//tr//td[3]//text()").extract()
-        item['Internal'] = response.xpath("//tr//td[4]//text()").extract()
-        item['Total_shares'] = response.xpath("//tr//td[5]//text()").extract()
-        item['Fund_holding_season'] = []
-        item['Fund_holding_id'] = []
-        item['Stock_code'] = []
-        item['Stock_name'] = []
-        item['Single_stock_percent'] = []
-        item['Stock_holding_quantity'] = []
-        item['Stock_holding_value'] = []
-        self.year = 2017
+        try:
+            item['Fund_holder_Date'] = response.xpath("//tr//td[1]//text()").extract()
+            item['Institution'] = response.xpath("//tr//td[2]//text()").extract()
+            item['Individual'] = response.xpath("//tr//td[3]//text()").extract()
+            item['Internal'] = response.xpath("//tr//td[4]//text()").extract()
+            item['Total_shares'] = response.xpath("//tr//td[5]//text()").extract()
+            item['Fund_holding_season'] = []
+            item['Fund_holding_id'] = []
+            item['Stock_code'] = []
+            item['Stock_name'] = []
+            item['Single_stock_percent'] = []
+            item['Stock_holding_quantity'] = []
+            item['Stock_holding_value'] = []
+            self.year = 2017
+        except Exception as e:
+            print(e)
+            with open('Data/' + '错误日志' + '.log', 'a', encoding='utf-8') as f:
+                print('正在写入错误信息：', e)
+                f.write(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())) + '：' + str(e) + '\r\n')
+            f.close()
+
         fund_holding_url = 'http://fund.eastmoney.com/f10/FundArchivesDatas.aspx?type=jjcc&code={0}&topline=10&year=&month=1,2,3,4,5,6,7,8,9,10,11,12'.format(
             item['Fund_code'])
         yield scrapy.Request(url=fund_holding_url, callback=self.parse_fund_holding, meta={'fund_item': item})
@@ -162,28 +186,35 @@ class TiantianJijinSpider(scrapy.Spider):
     # 5.基金持仓明细
     def parse_fund_holding(self, response):
         item = response.meta['fund_item']
-        # if response.xpath('//tr/td/text()'):
-        for i in response.xpath("//div[@class='box']"):
-            # # print(i.xpath('.//label[1]/text()').extract())
-            fund_holding_season = (
-                (len(i.xpath('.//tr')) - 1) * str((
-                                                      i.xpath(
-                                                          ".//label[1]/text()").extract_first()).strip() + ',')).split(
-                ',')
-            del fund_holding_season[-1]
-            # print(fund_holding_season)
-            item['Fund_holding_season'] += fund_holding_season
-            item['Fund_holding_id'] += i.xpath(".//tr//td[1]//text()").extract()
-            item['Stock_code'] += i.xpath(".//tr//td[2]//text()").extract()
-            item['Stock_name'] += i.xpath(".//tr//td[3]//text()").extract()
-            if i.xpath(".//tr//td[9]//text()"):
-                item['Single_stock_percent'] += i.xpath(".//tr//td[7]//text()").extract()
-                item['Stock_holding_quantity'] += i.xpath(".//tr//td[8]//text()").extract()
-                item['Stock_holding_value'] += i.xpath(".//tr//td[9]//text()").extract()
-            else:
-                item['Single_stock_percent'] += i.xpath(".//tr//td[5]//text()").extract()
-                item['Stock_holding_quantity'] += i.xpath(".//tr//td[6]//text()").extract()
-                item['Stock_holding_value'] += i.xpath(".//tr//td[7]//text()").extract()
+        try:
+            # if response.xpath('//tr/td/text()'):
+            for i in response.xpath("//div[@class='box']"):
+                # # print(i.xpath('.//label[1]/text()').extract())
+                fund_holding_season = (
+                    (len(i.xpath('.//tr')) - 1) * str((
+                                                          i.xpath(
+                                                              ".//label[1]/text()").extract_first()).strip() + ',')).split(
+                    ',')
+                del fund_holding_season[-1]
+                # print(fund_holding_season)
+                item['Fund_holding_season'] += fund_holding_season
+                item['Fund_holding_id'] += i.xpath(".//tr//td[1]//text()").extract()
+                item['Stock_code'] += i.xpath(".//tr//td[2]//text()").extract()
+                item['Stock_name'] += i.xpath(".//tr//td[3]//text()").extract()
+                if i.xpath(".//tr//td[9]//text()"):
+                    item['Single_stock_percent'] += i.xpath(".//tr//td[7]//text()").extract()
+                    item['Stock_holding_quantity'] += i.xpath(".//tr//td[8]//text()").extract()
+                    item['Stock_holding_value'] += i.xpath(".//tr//td[9]//text()").extract()
+                else:
+                    item['Single_stock_percent'] += i.xpath(".//tr//td[5]//text()").extract()
+                    item['Stock_holding_quantity'] += i.xpath(".//tr//td[6]//text()").extract()
+                    item['Stock_holding_value'] += i.xpath(".//tr//td[7]//text()").extract()
+        except Exception as e:
+            print(e)
+            with open('Data/' + '错误日志' + '.log', 'a', encoding='utf-8') as f:
+                print('正在写入错误信息：', e)
+                f.write(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())) + '：' + str(e) + '\r\n')
+            f.close()
 
         year_list_pattern = re.compile(r'arryear:(.*?),curyear', re.S)
         current_year_pattern = re.compile(r',curyear:(.*?)};', re.S)
@@ -192,6 +223,7 @@ class TiantianJijinSpider(scrapy.Spider):
         last_year = int(year_list[-1]) if year_list else current_year
         # print('last_year:', last_year)
         # print('current_year:', current_year)
+
         if current_year <= last_year:
             item['Transaction_details_season'] = []
             item['Transaction_details_id'] = []
@@ -213,21 +245,29 @@ class TiantianJijinSpider(scrapy.Spider):
     # 6.重大变动
     def parse_transaction_details(self, response):
         item = response.meta['fund_item']
-        # if response.xpath('//tr/td/text()'):
-        for i in response.xpath("//div[@class='box']"):
-            transaction_details_season = (
-                (len(i.xpath('.//tr')) - 1) * str((
-                                                      i.xpath(
-                                                          ".//label[1]/text()").extract_first()).strip() + ',')).split(
-                ',')
-            del transaction_details_season[-1]
-            # print(transaction_details_season)
-            item['Transaction_details_season'] += transaction_details_season
-            item['Transaction_details_id'] += i.xpath(".//tr//td[1]//text()").extract()
-            item['Buying_stock_code'] += i.xpath(".//tr//td[2]//text()").extract()
-            item['Buying_stock_name'] += i.xpath(".//tr//td[3]//text()").extract()
-            item['Accumulated_buy_value'] += i.xpath(".//tr//td[5]//text()").extract()
-            item['Accumulated_buy_percent_of_NAV'] += i.xpath(".//tr//td[6]//text()").extract()
+        try:
+            # if response.xpath('//tr/td/text()'):
+            for i in response.xpath("//div[@class='box']"):
+                transaction_details_season = (
+                    (len(i.xpath('.//tr')) - 1) * str((
+                                                          i.xpath(
+                                                              ".//label[1]/text()").extract_first()).strip() + ',')).split(
+                    ',')
+                del transaction_details_season[-1]
+                # print(transaction_details_season)
+                item['Transaction_details_season'] += transaction_details_season
+                item['Transaction_details_id'] += i.xpath(".//tr//td[1]//text()").extract()
+                item['Buying_stock_code'] += i.xpath(".//tr//td[2]//text()").extract()
+                item['Buying_stock_name'] += i.xpath(".//tr//td[3]//text()").extract()
+                item['Accumulated_buy_value'] += i.xpath(".//tr//td[5]//text()").extract()
+                item['Accumulated_buy_percent_of_NAV'] += i.xpath(".//tr//td[6]//text()").extract()
+
+        except Exception as e:
+            print(e)
+            with open('Data/' + '错误日志' + '.log', 'a', encoding='utf-8') as f:
+                print('正在写入错误信息：', e)
+                f.write(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())) + '：' + str(e) + '\r\n')
+            f.close()
 
         year_list_pattern = re.compile(r'arryear:(.*?),curyear', re.S)
         current_year_pattern = re.compile(r',curyear:(.*?)};', re.S)
@@ -258,24 +298,32 @@ class TiantianJijinSpider(scrapy.Spider):
     # 7.行业配置
     def parse_setors(self, response):
         item = response.meta['fund_item']
-        # if response.xpath('//tr/td/text()'):
-        for i in response.xpath("//div[@class='box']"):
-            setors_season = (
-                (len(i.xpath('.//tr')) - 1) * str((
-                                                      i.xpath(
-                                                          ".//label[1]/text()").extract_first()).strip() + ',')).split(
-                ',')
-            del setors_season[-1]
-            # print(setors_season)
-            item['Setors_season'] += setors_season
-            item['Setors_id'] += i.xpath(".//tr//td[1]//text()").extract()
-            item['Setors'] += i.xpath(".//tr//td[2]//text()").extract()
-            if i.xpath(".//tr//td[5]"):
-                item['Setors_percent'] += i.xpath(".//tr//td[4]//text()").extract()
-                item['Setors_value'] += i.xpath(".//tr//td[5]//text()").extract()
-            else:
-                item['Setors_percent'] += i.xpath(".//tr//td[3]//text()").extract()
-                item['Setors_value'] += i.xpath(".//tr//td[4]//text()").extract()
+        try:
+            # if response.xpath('//tr/td/text()'):
+            for i in response.xpath("//div[@class='box']"):
+                setors_season = (
+                    (len(i.xpath('.//tr')) - 1) * str((
+                                                          i.xpath(
+                                                              ".//label[1]/text()").extract_first()).strip() + ',')).split(
+                    ',')
+                del setors_season[-1]
+                # print(setors_season)
+                item['Setors_season'] += setors_season
+                item['Setors_id'] += i.xpath(".//tr//td[1]//text()").extract()
+                item['Setors'] += i.xpath(".//tr//td[2]//text()").extract()
+                if i.xpath(".//tr//td[5]"):
+                    item['Setors_percent'] += i.xpath(".//tr//td[4]//text()").extract()
+                    item['Setors_value'] += i.xpath(".//tr//td[5]//text()").extract()
+                else:
+                    item['Setors_percent'] += i.xpath(".//tr//td[3]//text()").extract()
+                    item['Setors_value'] += i.xpath(".//tr//td[4]//text()").extract()
+
+        except Exception as e:
+            print(e)
+            with open('Data/' + '错误日志' + '.log', 'a', encoding='utf-8') as f:
+                print('正在写入错误信息：', e)
+                f.write(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())) + '：' + str(e) + '\r\n')
+            f.close()
 
         year_list_pattern = re.compile(r'arryear:(.*?),curyear', re.S)
         current_year_pattern = re.compile(r',curyear:(.*?)};', re.S)
@@ -299,21 +347,30 @@ class TiantianJijinSpider(scrapy.Spider):
     # 9.行业配置比较表 Setors_comparation
     def parse_setors_comparation(self, response):
         item = response.meta['fund_item']
-        year_list_pattern = re.compile(r'日期：(.*?)"};', re.S)
         try:
-            date = year_list_pattern.findall(response.body.decode())[0][-17:-7]
-        except:
-            # print(response.body.decode())
-            date = ''
-        comparation_date = ((len(response.xpath('//tr')) - 1) * (str(date) + ',')).split(',')
-        del comparation_date[-1]
-        item['Comparation_date'] = []
-        item['Comparation_date'] += comparation_date
-        item['CSRC_setors_code'] = response.xpath('//tr/td[1]//text()').extract()
-        item['Setors_name'] = response.xpath('//tr/td[2]//text()').extract()
-        item['Fund_setor_weight'] = response.xpath('//tr/td[3]//text()').extract()
-        item['Similarfund_setor_weight'] = response.xpath('//tr/td[4]//text()').extract()
-        item['Fund_setor_different'] = response.xpath('//tr/td[5]//text()').extract()
+            year_list_pattern = re.compile(r'日期：(.*?)"};', re.S)
+            try:
+                date = year_list_pattern.findall(response.body.decode())[0][-17:-7]
+            except:
+                # print(response.body.decode())
+                date = ''
+            comparation_date = ((len(response.xpath('//tr')) - 1) * (str(date) + ',')).split(',')
+            del comparation_date[-1]
+            item['Comparation_date'] = []
+            item['Comparation_date'] += comparation_date
+            item['CSRC_setors_code'] = response.xpath('//tr/td[1]//text()').extract()
+            item['Setors_name'] = response.xpath('//tr/td[2]//text()').extract()
+            item['Fund_setor_weight'] = response.xpath('//tr/td[3]//text()').extract()
+            item['Similarfund_setor_weight'] = response.xpath('//tr/td[4]//text()').extract()
+            item['Fund_setor_different'] = response.xpath('//tr/td[5]//text()').extract()
+
+        except Exception as e:
+            print(e)
+            with open('Data/' + '错误日志' + '.log', 'a', encoding='utf-8') as f:
+                print('正在写入错误信息：', e)
+                f.write(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())) + '：' + str(e) + '\r\n')
+            f.close()
+
         parse_style_box_and_tracking_url = 'http://fund.eastmoney.com/f10/tsdata_{0}.html'.format(item['Fund_code'])
         yield scrapy.Request(url=parse_style_box_and_tracking_url, callback=self.parse_style_box_and_tracking,
                              meta={'fund_item': item})
@@ -323,14 +380,27 @@ class TiantianJijinSpider(scrapy.Spider):
     def parse_style_box_and_tracking(self, response):
         # print('投资风格--------------------')
         item = response.meta['fund_item']
-        item['Style_season'] = response.xpath("//div[@class='tzfg']//tr/td[1]//text()").extract()
-        item['Style_box'] = response.xpath("//div[@class='tzfg']//tr/td[2]//text()").extract()
-        # print('跟踪指数--------------------')
-        item['Tracking_index'] = response.xpath("//div[@id='jjzsfj']//tr[2]/td[1]//text()").extract_first() if response.xpath("//div[@id='jjzsfj']//tr[2]/td[1]//text()").extract_first() else ''
-        item['Tracking_error'] = response.xpath("//div[@id='jjzsfj']//tr[2]/td[2]//text()").extract_first() if response.xpath("//div[@id='jjzsfj']//tr[2]/td[2]//text()").extract_first() else ''
-        item['Similar_average_tracking_error'] = response.xpath(
-            "//div[@id='jjzsfj']//tr[2]/td[3]//text()").extract_first() if response.xpath(
-            "//div[@id='jjzsfj']//tr[2]/td[3]//text()").extract_first() else ''
+        try:
+            item['Style_season'] = response.xpath("//div[@class='tzfg']//tr/td[1]//text()").extract()
+            item['Style_box'] = response.xpath("//div[@class='tzfg']//tr/td[2]//text()").extract()
+            # print('跟踪指数--------------------')
+            item['Tracking_index'] = response.xpath(
+                "//div[@id='jjzsfj']//tr[2]/td[1]//text()").extract_first() if response.xpath(
+                "//div[@id='jjzsfj']//tr[2]/td[1]//text()").extract_first() else ''
+            item['Tracking_error'] = response.xpath(
+                "//div[@id='jjzsfj']//tr[2]/td[2]//text()").extract_first() if response.xpath(
+                "//div[@id='jjzsfj']//tr[2]/td[2]//text()").extract_first() else ''
+            item['Similar_average_tracking_error'] = response.xpath(
+                "//div[@id='jjzsfj']//tr[2]/td[3]//text()").extract_first() if response.xpath(
+                "//div[@id='jjzsfj']//tr[2]/td[3]//text()").extract_first() else ''
+
+        except Exception as e:
+            print(e)
+            with open('Data/' + '错误日志' + '.log', 'a', encoding='utf-8') as f:
+                print('正在写入错误信息：', e)
+                f.write(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())) + '：' + str(e) + '\r\n')
+            f.close()
+
         fund_manger_change_url = 'http://fund.eastmoney.com/f10/jjjl_{0}.html'.format(item['Fund_code'])
         yield scrapy.Request(url=fund_manger_change_url, callback=self.parse_fund_manger_change,
                              meta={'fund_item': item})
@@ -339,63 +409,99 @@ class TiantianJijinSpider(scrapy.Spider):
     def parse_fund_manger_change(self, response):
         # print('基金经理人------------------------------')
         item = response.meta['fund_item']
-        table1_item = response.xpath("//div[@class='txt_in']/div[@class='box']//tr")
-        item['Start_date'] = [i.xpath('.//text()').extract_first() if i.xpath('.//text()').extract_first() else '' for i in table1_item.xpath('.//td[1]')] # 起始日期
-        item['Ending_date'] = [i.xpath('.//text()').extract_first() if i.xpath('.//text()').extract_first() else '' for i in table1_item.xpath('.//td[2]')]  # 截止期
-        item['Fund_managers'] = [i.xpath('.//text()').extract_first() if i.xpath('.//text()').extract_first() else '' for i in table1_item.xpath('.//td[3]')]  # 基金经理
-        item['Current_fund_manager'] = item['Fund_managers'][0]  # 基金经理
-        item['Appointment_time'] = [i.xpath('.//text()').extract_first() if i.xpath('.//text()').extract_first() else '' for i in table1_item.xpath('.//td[4]')]  # 任职时间
-        item['Appointment_return'] = [i.xpath('.//text()').extract_first() if i.xpath('.//text()').extract_first() else '' for i in table1_item.xpath('.//td[5]')]  # 任职回报
+        try:
+            table1_item = response.xpath("//div[@class='txt_in']/div[@class='box']//tr")
+            item['Start_date'] = [i.xpath('.//text()').extract_first() if i.xpath('.//text()').extract_first() else '' for i
+                                  in table1_item.xpath('.//td[1]')]  # 起始日期
+            item['Ending_date'] = [i.xpath('.//text()').extract_first() if i.xpath('.//text()').extract_first() else '' for
+                                   i in table1_item.xpath('.//td[2]')]  # 截止期
+            item['Fund_managers'] = [i.xpath('.//text()').extract_first() if i.xpath('.//text()').extract_first() else ''
+                                     for i in table1_item.xpath('.//td[3]')]  # 基金经理
+            item['Current_fund_manager'] = item['Fund_managers'][0]  # 基金经理
+            item['Appointment_time'] = [i.xpath('.//text()').extract_first() if i.xpath('.//text()').extract_first() else ''
+                                        for i in table1_item.xpath('.//td[4]')]  # 任职时间
+            item['Appointment_return'] = [
+                i.xpath('.//text()').extract_first() if i.xpath('.//text()').extract_first() else '' for i in
+                table1_item.xpath('.//td[5]')]  # 任职回报
 
-        table2_item = response.xpath("//div[@class='txt_in']/div[@class='box nb']//tr")
-        item['Held_fund_code'] = [i.xpath('.//text()').extract_first() if i.xpath('.//text()').extract_first() else '' for i in table2_item.xpath('.//td[1]')]  # 基金名称
-        item['Held_fund_name'] = [i.xpath('.//text()').extract_first() if i.xpath('.//text()').extract_first() else '' for i in table2_item.xpath('.//td[2]')]  # 基金名称
-        item['Held_fund_type'] = [i.xpath('.//text()').extract_first() if i.xpath('.//text()').extract_first() else '' for i in table2_item.xpath('.//td[3]')]  # 基金类型
-        item['Held_fund_start_time'] = [i.xpath('.//text()').extract_first() if i.xpath('.//text()').extract_first() else '' for i in table2_item.xpath('.//td[4]')]  # 起始日期
-        item['Held_fund_end_time'] = [i.xpath('.//text()').extract_first() if i.xpath('.//text()').extract_first() else '' for i in table2_item.xpath('.//td[5]')]  # 截止日期
-        item['Held_fund_appointment_time'] = [i.xpath('.//text()').extract_first() if i.xpath('.//text()').extract_first() else '' for i in table2_item.xpath('.//td[6]')]  # 任职天数
-        item['Held_fund_repayment'] = [i.xpath('.//text()').extract_first() if i.xpath('.//text()').extract_first() else '' for i in table2_item.xpath('.//td[7]')]  # 任职回报
-        item['Held_fund_similar_average'] = [i.xpath('.//text()').extract_first() if i.xpath('.//text()').extract_first() else '' for i in table2_item.xpath('.//td[8]')]  # 同类平均
-        item['Held_fund_similar_ranking'] = [i.xpath('.//text()').extract_first() if i.xpath('.//text()').extract_first() else '' for i in table2_item.xpath('.//td[9]')]  # 同类排名
+            table2_item = response.xpath("//div[@class='txt_in']/div[@class='box nb']//tr")
+            item['Held_fund_code'] = [i.xpath('.//text()').extract_first() if i.xpath('.//text()').extract_first() else ''
+                                      for i in table2_item.xpath('.//td[1]')]  # 基金名称
+            item['Held_fund_name'] = [i.xpath('.//text()').extract_first() if i.xpath('.//text()').extract_first() else ''
+                                      for i in table2_item.xpath('.//td[2]')]  # 基金名称
+            item['Held_fund_type'] = [i.xpath('.//text()').extract_first() if i.xpath('.//text()').extract_first() else ''
+                                      for i in table2_item.xpath('.//td[3]')]  # 基金类型
+            item['Held_fund_start_time'] = [
+                i.xpath('.//text()').extract_first() if i.xpath('.//text()').extract_first() else '' for i in
+                table2_item.xpath('.//td[4]')]  # 起始日期
+            item['Held_fund_end_time'] = [
+                i.xpath('.//text()').extract_first() if i.xpath('.//text()').extract_first() else '' for i in
+                table2_item.xpath('.//td[5]')]  # 截止日期
+            item['Held_fund_appointment_time'] = [
+                i.xpath('.//text()').extract_first() if i.xpath('.//text()').extract_first() else '' for i in
+                table2_item.xpath('.//td[6]')]  # 任职天数
+            item['Held_fund_repayment'] = [
+                i.xpath('.//text()').extract_first() if i.xpath('.//text()').extract_first() else '' for i in
+                table2_item.xpath('.//td[7]')]  # 任职回报
+            item['Held_fund_similar_average'] = [
+                i.xpath('.//text()').extract_first() if i.xpath('.//text()').extract_first() else '' for i in
+                table2_item.xpath('.//td[8]')]  # 同类平均
+            item['Held_fund_similar_ranking'] = [
+                i.xpath('.//text()').extract_first() if i.xpath('.//text()').extract_first() else '' for i in
+                table2_item.xpath('.//td[9]')]  # 同类排名
+            item['Financial_index_date'] = []
+            item['Period_realized_revenue'] = []
+            item['Period_profits'] = []
+            item['Period_profits_of_weighted_average_shares'] = []
+            item['Period_profits_rate'] = []
+            item['Period_growth_of_NAV'] = []
+            item['Ending_distributable_profits'] = []
+            item['Ending_distributable_profits_of_shares'] = []
+            item['Ending_net_asset_value_of_fund'] = []
+            item['Ending_NAV'] = []
+            item['Growth_of_ANAV'] = []
+
+        except Exception as e:
+            print(e)
+            with open('Data/' + '错误日志' + '.log', 'a', encoding='utf-8') as f:
+                print('正在写入错误信息：', e)
+                f.write(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())) + '：' + str(e) + '\r\n')
+            f.close()
+
         main_financial_index_url = 'http://fund.eastmoney.com/f10/FundArchivesDatas.aspx?type=cwzb&code={0}&showtype=1&year='.format(
             item['Fund_code'])
-        item['Financial_index_date'] = []
-        item['Period_realized_revenue'] = []
-        item['Period_profits'] = []
-        item['Period_profits_of_weighted_average_shares'] = []
-        item['Period_profits_rate'] = []
-        item['Period_growth_of_NAV'] = []
-        item['Ending_distributable_profits'] = []
-        item['Ending_distributable_profits_of_shares'] = []
-        item['Ending_net_asset_value_of_fund'] = []
-        item['Ending_NAV'] = []
-        item['Growth_of_ANAV'] = []
-
         yield scrapy.Request(url=main_financial_index_url, callback=self.parse_main_financial_index,
                              meta={'fund_item': item})
 
     def parse_main_financial_index(self, response):
         # print('财务报表-----------------')
         item = response.meta['fund_item']
-        item['Financial_index_date'] += response.xpath("//table[1]//th//text()").extract()[1:]  # 日期
-        # item['Period_data_and_index'] = response.xpath("//table[1]//tbody/tr[1]//text()").extract()[1:]  # 期间数据和指标
-        item['Period_realized_revenue'] += response.xpath("//table[1]//tbody/tr[1]//text()").extract()[1:]  # 本期已实现收益
-        item['Period_profits'] += response.xpath("//table[1]//tbody/tr[2]//text()").extract()[1:]  # 本期利润
-        item['Period_profits_of_weighted_average_shares'] += response.xpath(
-            "//table[1]//tbody/tr[3]//text()").extract()[1:]  # 加权平均基金份额本期利润
-        item['Period_profits_rate'] += response.xpath("//table[1]//tbody/tr[4]//text()").extract()[1:]  # 本期加权平均净值利润率
-        item['Period_growth_of_NAV'] += response.xpath("//table[1]//tbody/tr[5]//text()").extract()[1:]  # 本期基金份额净值增长率
+        try:
+            item['Financial_index_date'] += response.xpath("//table[1]//th//text()").extract()[1:]  # 日期
+            # item['Period_data_and_index'] = response.xpath("//table[1]//tbody/tr[1]//text()").extract()[1:]  # 期间数据和指标
+            item['Period_realized_revenue'] += response.xpath("//table[1]//tbody/tr[1]//text()").extract()[1:]  # 本期已实现收益
+            item['Period_profits'] += response.xpath("//table[1]//tbody/tr[2]//text()").extract()[1:]  # 本期利润
+            item['Period_profits_of_weighted_average_shares'] += response.xpath(
+                "//table[1]//tbody/tr[3]//text()").extract()[1:]  # 加权平均基金份额本期利润
+            item['Period_profits_rate'] += response.xpath("//table[1]//tbody/tr[4]//text()").extract()[1:]  # 本期加权平均净值利润率
+            item['Period_growth_of_NAV'] += response.xpath("//table[1]//tbody/tr[5]//text()").extract()[1:]  # 本期基金份额净值增长率
 
-        # item['Ending_data_and_index'] = response.xpath("//table[1]//tbody/tr[1]//text()").extract()[1:]  # 期末数据和指标
-        item['Ending_distributable_profits'] += response.xpath("//table[2]//tbody/tr[1]//text()").extract()[
-                                                1:]  # 期末可供分配利润
-        item['Ending_distributable_profits_of_shares'] += response.xpath("//table[2]//tbody/tr[2]//text()").extract()[
-                                                          1:]  # 期末可供分配基金份额利润
-        item['Ending_net_asset_value_of_fund'] += response.xpath("//table[2]//tbody/tr[3]//text()").extract()[
-                                                  1:]  # 期末基金资产净值
-        item['Ending_NAV'] += response.xpath("//table[2]//tbody/tr[4]//text()").extract()[1:]  # 期末基金份额净值
+            # item['Ending_data_and_index'] = response.xpath("//table[1]//tbody/tr[1]//text()").extract()[1:]  # 期末数据和指标
+            item['Ending_distributable_profits'] += response.xpath("//table[2]//tbody/tr[1]//text()").extract()[
+                                                    1:]  # 期末可供分配利润
+            item['Ending_distributable_profits_of_shares'] += response.xpath("//table[2]//tbody/tr[2]//text()").extract()[
+                                                              1:]  # 期末可供分配基金份额利润
+            item['Ending_net_asset_value_of_fund'] += response.xpath("//table[2]//tbody/tr[3]//text()").extract()[
+                                                      1:]  # 期末基金资产净值
+            item['Ending_NAV'] += response.xpath("//table[2]//tbody/tr[4]//text()").extract()[1:]  # 期末基金份额净值
 
-        item['Growth_of_ANAV'] += response.xpath("//table[3]//tbody/tr[1]//text()").extract()[1:]  # 基金份额累计净值增长率
+            item['Growth_of_ANAV'] += response.xpath("//table[3]//tbody/tr[1]//text()").extract()[1:]  # 基金份额累计净值增长率
+        except Exception as e:
+            print(e)
+            with open('Data/' + '错误日志' + '.log', 'a', encoding='utf-8') as f:
+                print('正在写入错误信息：', e)
+                f.write(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())) + '：' + str(e) + '\r\n')
+            f.close()
 
         year_list_pattern = re.compile(r'arryear:(.*?),curyear', re.S)
         current_year_pattern = re.compile(r',curyear:(.*?)};', re.S)
@@ -457,57 +563,64 @@ class TiantianJijinSpider(scrapy.Spider):
 
     def parse_assets_balance_sheet(self, response):
         item = response.meta['fund_item']
-        # item['Assets'] = []  # 资产
-        item['Assets_date'] += response.xpath("//table[1]//th//text()").extract()[1:]  # 资产
-        item['Bank_deposit'] += response.xpath("//table[1]//tbody/tr[2]//text()").extract()[1:]  # 银行存款
-        item['Settlement_reserve'] += response.xpath("//table[1]//tbody/tr[3]//text()").extract()[1:]  # 结算备付金
-        item['Guarantee_deposit_paid'] += response.xpath("//table[1]//tbody/tr[4]//text()").extract()[1:]  # 存出保证金
-        item['Trading_financial_asset'] += response.xpath("//table[1]//tbody/tr[5]//text()").extract()[1:]  # 交易性金融资产
-        item['Stock_investment'] += response.xpath("//table[1]//tbody/tr[6]//text()").extract()[1:]  # 其中：股票投资
-        item['Fund_investment'] += response.xpath("//table[1]//tbody/tr[7]//text()").extract()[2:]  # 其中：基金投资
-        item['Bond_investment'] += response.xpath("//table[1]//tbody/tr[8]//text()").extract()[2:]  # 其中：债券投资
-        item['Asset_backed_securities_investment'] += response.xpath("//table[1]//tbody/tr[9]//text()").extract()[
-                                                      2:]  # 其中：资产支持证券投资
-        item['Derivative_financial_assets'] += response.xpath("//table[1]//tbody/tr[10]//text()").extract()[
-                                               1:]  # 衍生金融资产
-        item['Purchase_resale_financial_assets'] += response.xpath("//table[1]//tbody/tr[11]//text()").extract()[
-                                                    1:]  # 买入返售金融资产
-        item['Securities_settlement_receivable'] += response.xpath("//table[1]//tbody/tr[12]//text()").extract()[
-                                                    1:]  # 应收证券清算款
-        item['Interest_receivable'] += response.xpath("//table[1]//tbody/tr[13]//text()").extract()[1:]  # 应收利息
-        item['Dividends_receivable'] += response.xpath("//table[1]//tbody/tr[14]//text()").extract()[1:]  # 应收股利
-        item['Purchase_receivable'] += response.xpath("//table[1]//tbody/tr[15]//text()").extract()[1:]  # 应收申购款
-        item['Deferred_income_tax_assets'] += response.xpath("//table[1]//tbody/tr[16]//text()").extract()[
-                                              1:]  # 递延所得税资产
-        item['Other_assets'] += response.xpath("//table[1]//tbody/tr[17]//text()").extract()[1:]  # 其他资产
-        item['Total_assets'] += response.xpath("//table[1]//tbody/tr[18]//text()").extract()[1:]  # 资产总计
-        # item['Debt'] = response.xpath("//table[1]//tbody/tr[2]//text()").extract()[1:]  # 负债：
-        item['Short_term_loan'] += response.xpath("//table[2]//tbody/tr[2]//text()").extract()[1:]  # 短期借款
-        item['Trading_financial_liability'] += response.xpath("//table[2]//tbody/tr[3]//text()").extract()[
-                                               1:]  # 交易性金融负债
-        item['Derivative_financial_liability'] += response.xpath("//table[2]//tbody/tr[4]//text()").extract()[
-                                                  1:]  # 衍生金融负债
-        item['Sell_repurchase_financial_assets'] += response.xpath("//table[2]//tbody/tr[5]//text()").extract()[
-                                                    1:]  # 卖出回购金融资产款
-        item['Securities_settlement_payable'] += response.xpath("//table[2]//tbody/tr[6]//text()").extract()[
-                                                 1:]  # 应付证券清算款
-        item['Redeem_payables'] += response.xpath("//table[2]//tbody/tr[7]//text()").extract()[1:]  # 应付赎回款
-        item['Managerial_compensation_payable'] += response.xpath("//table[2]//tbody/tr[8]//text()").extract()[
-                                                   1:]  # 应付管理人报酬
-        item['Trustee_fee_payable'] += response.xpath("//table[2]//tbody/tr[9]//text()").extract()[1:]  # 应付托管费
-        item['Sales_service_fee_payable'] += response.xpath("//table[2]//tbody/tr[10]//text()").extract()[1:]  # 应付销售服务费
-        item['Taxation_payable'] += response.xpath("//table[2]//tbody/tr[11]//text()").extract()[1:]  # 应付税费
-        item['Interest_payable'] += response.xpath("//table[2]//tbody/tr[12]//text()").extract()[1:]  # 应付利息
-        item['Profits_receivable'] += response.xpath("//table[2]//tbody/tr[13]//text()").extract()[1:]  # 应收利润
-        item['Deferred_income_tax_liability'] += response.xpath("//table[2]//tbody/tr[14]//text()").extract()[
-                                                 1:]  # 递延所得税负债
-        item['Other_liabilities'] += response.xpath("//table[2]//tbody/tr[15]//text()").extract()[1:]  # 其他负债
-        item['Total_liabilities'] += response.xpath("//table[2]//tbody/tr[16]//text()").extract()[1:]  # 负债合计
-        # item['Owner_equity'] = response.xpath("//table[2]//tbody/tr[17]//text()").extract()[1:]  # 所有者权益：
-        item['Paid_in_fund'] += response.xpath("//table[2]//tbody/tr[18]//text()").extract()[1:]  # 实收基金
-        item['Total_owner_equity'] += response.xpath("//table[2]//tbody/tr[19]//text()").extract()[1:]  # 所有者权益合计
-        item['Total_debt_and_owner_equity'] += response.xpath("//table[2]//tbody/tr[20]//text()").extract()[
-                                               1:]  # 负债和所有者权益合计
+        try:
+            # item['Assets'] = []  # 资产
+            item['Assets_date'] += response.xpath("//table[1]//th//text()").extract()[1:]  # 资产
+            item['Bank_deposit'] += response.xpath("//table[1]//tbody/tr[2]//text()").extract()[1:]  # 银行存款
+            item['Settlement_reserve'] += response.xpath("//table[1]//tbody/tr[3]//text()").extract()[1:]  # 结算备付金
+            item['Guarantee_deposit_paid'] += response.xpath("//table[1]//tbody/tr[4]//text()").extract()[1:]  # 存出保证金
+            item['Trading_financial_asset'] += response.xpath("//table[1]//tbody/tr[5]//text()").extract()[1:]  # 交易性金融资产
+            item['Stock_investment'] += response.xpath("//table[1]//tbody/tr[6]//text()").extract()[1:]  # 其中：股票投资
+            item['Fund_investment'] += response.xpath("//table[1]//tbody/tr[7]//text()").extract()[2:]  # 其中：基金投资
+            item['Bond_investment'] += response.xpath("//table[1]//tbody/tr[8]//text()").extract()[2:]  # 其中：债券投资
+            item['Asset_backed_securities_investment'] += response.xpath("//table[1]//tbody/tr[9]//text()").extract()[
+                                                          2:]  # 其中：资产支持证券投资
+            item['Derivative_financial_assets'] += response.xpath("//table[1]//tbody/tr[10]//text()").extract()[
+                                                   1:]  # 衍生金融资产
+            item['Purchase_resale_financial_assets'] += response.xpath("//table[1]//tbody/tr[11]//text()").extract()[
+                                                        1:]  # 买入返售金融资产
+            item['Securities_settlement_receivable'] += response.xpath("//table[1]//tbody/tr[12]//text()").extract()[
+                                                        1:]  # 应收证券清算款
+            item['Interest_receivable'] += response.xpath("//table[1]//tbody/tr[13]//text()").extract()[1:]  # 应收利息
+            item['Dividends_receivable'] += response.xpath("//table[1]//tbody/tr[14]//text()").extract()[1:]  # 应收股利
+            item['Purchase_receivable'] += response.xpath("//table[1]//tbody/tr[15]//text()").extract()[1:]  # 应收申购款
+            item['Deferred_income_tax_assets'] += response.xpath("//table[1]//tbody/tr[16]//text()").extract()[
+                                                  1:]  # 递延所得税资产
+            item['Other_assets'] += response.xpath("//table[1]//tbody/tr[17]//text()").extract()[1:]  # 其他资产
+            item['Total_assets'] += response.xpath("//table[1]//tbody/tr[18]//text()").extract()[1:]  # 资产总计
+            # item['Debt'] = response.xpath("//table[1]//tbody/tr[2]//text()").extract()[1:]  # 负债：
+            item['Short_term_loan'] += response.xpath("//table[2]//tbody/tr[2]//text()").extract()[1:]  # 短期借款
+            item['Trading_financial_liability'] += response.xpath("//table[2]//tbody/tr[3]//text()").extract()[
+                                                   1:]  # 交易性金融负债
+            item['Derivative_financial_liability'] += response.xpath("//table[2]//tbody/tr[4]//text()").extract()[
+                                                      1:]  # 衍生金融负债
+            item['Sell_repurchase_financial_assets'] += response.xpath("//table[2]//tbody/tr[5]//text()").extract()[
+                                                        1:]  # 卖出回购金融资产款
+            item['Securities_settlement_payable'] += response.xpath("//table[2]//tbody/tr[6]//text()").extract()[
+                                                     1:]  # 应付证券清算款
+            item['Redeem_payables'] += response.xpath("//table[2]//tbody/tr[7]//text()").extract()[1:]  # 应付赎回款
+            item['Managerial_compensation_payable'] += response.xpath("//table[2]//tbody/tr[8]//text()").extract()[
+                                                       1:]  # 应付管理人报酬
+            item['Trustee_fee_payable'] += response.xpath("//table[2]//tbody/tr[9]//text()").extract()[1:]  # 应付托管费
+            item['Sales_service_fee_payable'] += response.xpath("//table[2]//tbody/tr[10]//text()").extract()[1:]  # 应付销售服务费
+            item['Taxation_payable'] += response.xpath("//table[2]//tbody/tr[11]//text()").extract()[1:]  # 应付税费
+            item['Interest_payable'] += response.xpath("//table[2]//tbody/tr[12]//text()").extract()[1:]  # 应付利息
+            item['Profits_receivable'] += response.xpath("//table[2]//tbody/tr[13]//text()").extract()[1:]  # 应收利润
+            item['Deferred_income_tax_liability'] += response.xpath("//table[2]//tbody/tr[14]//text()").extract()[
+                                                     1:]  # 递延所得税负债
+            item['Other_liabilities'] += response.xpath("//table[2]//tbody/tr[15]//text()").extract()[1:]  # 其他负债
+            item['Total_liabilities'] += response.xpath("//table[2]//tbody/tr[16]//text()").extract()[1:]  # 负债合计
+            # item['Owner_equity'] = response.xpath("//table[2]//tbody/tr[17]//text()").extract()[1:]  # 所有者权益：
+            item['Paid_in_fund'] += response.xpath("//table[2]//tbody/tr[18]//text()").extract()[1:]  # 实收基金
+            item['Total_owner_equity'] += response.xpath("//table[2]//tbody/tr[19]//text()").extract()[1:]  # 所有者权益合计
+            item['Total_debt_and_owner_equity'] += response.xpath("//table[2]//tbody/tr[20]//text()").extract()[
+                                                   1:]  # 负债和所有者权益合计
+        except Exception as e:
+            print(e)
+            with open('Data/' + '错误日志' + '.log', 'a', encoding='utf-8') as f:
+                print('正在写入错误信息：', e)
+                f.write(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())) + '：' + str(e) + '\r\n')
+            f.close()
 
         year_list_pattern = re.compile(r'arryear:(.*?),curyear', re.S)
         current_year_pattern = re.compile(r',curyear:(.*?)};', re.S)
@@ -561,38 +674,45 @@ class TiantianJijinSpider(scrapy.Spider):
 
     def parse_income_statements(self, response):
         item = response.meta['fund_item']
-        item['Income_date'] += response.xpath('//table//tr/th//text()').extract()  # 收入日期
-        item['Income'] += response.xpath('//table//tr[1]/td//text()').extract()[1:]  # 收入
-        item['Interest_income'] += response.xpath('//table//tr[2]/td//text()').extract()[1:]  # 利息收入
-        item['Interest_income_of_deposit'] += response.xpath('//table//tr[3]/td//text()').extract()[1:]  # 其中：存款利息收入
-        item['Interest_income_of_bond'] += response.xpath('//table//tr[4]/td//text()').extract()[2:]  # 其中：债券利息收入
-        item['Interest_income_of_asset_backed_securities'] += response.xpath('//table//tr[5]/td//text()').extract()[
-                                                             2:]  # 其中：资产支持证券利息收入
-        item['Investment_income'] += response.xpath('//table//tr[6]/td//text()').extract()[2:]  # 投资收益
-        item['Income_of_stock_investment'] += response.xpath('//table//tr[7]/td//text()').extract()[2:]  # 其中：股票投资收益
-        item['Income_of_fund_investment'] += response.xpath('//table//tr[8]/td//text()').extract()[2:]  # 其中：基金投资收益
-        item['Income_of_bond_investment'] += response.xpath('//table//tr[9]/td//text()').extract()[2:]  # 其中：债券投资收益
-        item['Income_of_asset_backed_securities_investment'] += response.xpath('//table//tr[10]/td//text()').extract()[
-                                                               2:]  # 其中：资产支持证券投资收益
-        item['Income_of_derivatives'] += response.xpath('//table//tr[11]/td//text()').extract()[2:]  # 其中：衍生工具收益
-        item['Dividend_income'] += response.xpath('//table//tr[12]/td//text()').extract()[2:]  # 其中：股利收益
-        item['Income_of_fair_value_change'] += response.xpath('//table//tr[13]/td//text()').extract()[2:]  # 公允价值变动收益
-        item['Exchange_earnings'] += response.xpath('//table//tr[14]/td//text()').extract()[2:]  # 汇兑收益
-        item['Other_Income'] += response.xpath('//table//tr[15]/td//text()').extract()[2:]  # 其他收入
-        item['Expense'] += response.xpath('//table//tr[16]/td//text()').extract()[1:]  # 费用
-        item['Managerial_compensation'] += response.xpath('//table//tr[17]/td//text()').extract()[1:]  # 管理人报酬
-        item['Trustee_fee'] += response.xpath('//table//tr[18]/td//text()').extract()[1:]  # 托管费
-        item['Sales_service_fee'] += response.xpath('//table//tr[19]/td//text()').extract()[1:]  # 销售服务费
-        item['Transaction_cost'] += response.xpath('//table//tr[20]/td//text()').extract()[1:]  # 交易费用
-        item['Interest_expense'] += response.xpath('//table//tr[21]/td//text()').extract()[1:]  # 利息支出
-        item['Sell_repurchase_financial_assets_expense'] += response.xpath('//table//tr[22]/td//text()').extract()[
-                                                           1:]  # 其中：卖出回购金融资产支出
-        item['Other_expenses'] += response.xpath('//table//tr[23]/td//text()').extract()[1:]  # 其他费用
+        try:
+            item['Income_date'] += response.xpath('//table//tr/th//text()').extract()  # 收入日期
+            item['Income'] += response.xpath('//table//tr[1]/td//text()').extract()[1:]  # 收入
+            item['Interest_income'] += response.xpath('//table//tr[2]/td//text()').extract()[1:]  # 利息收入
+            item['Interest_income_of_deposit'] += response.xpath('//table//tr[3]/td//text()').extract()[1:]  # 其中：存款利息收入
+            item['Interest_income_of_bond'] += response.xpath('//table//tr[4]/td//text()').extract()[2:]  # 其中：债券利息收入
+            item['Interest_income_of_asset_backed_securities'] += response.xpath('//table//tr[5]/td//text()').extract()[
+                                                                  2:]  # 其中：资产支持证券利息收入
+            item['Investment_income'] += response.xpath('//table//tr[6]/td//text()').extract()[2:]  # 投资收益
+            item['Income_of_stock_investment'] += response.xpath('//table//tr[7]/td//text()').extract()[2:]  # 其中：股票投资收益
+            item['Income_of_fund_investment'] += response.xpath('//table//tr[8]/td//text()').extract()[2:]  # 其中：基金投资收益
+            item['Income_of_bond_investment'] += response.xpath('//table//tr[9]/td//text()').extract()[2:]  # 其中：债券投资收益
+            item['Income_of_asset_backed_securities_investment'] += response.xpath('//table//tr[10]/td//text()').extract()[
+                                                                    2:]  # 其中：资产支持证券投资收益
+            item['Income_of_derivatives'] += response.xpath('//table//tr[11]/td//text()').extract()[2:]  # 其中：衍生工具收益
+            item['Dividend_income'] += response.xpath('//table//tr[12]/td//text()').extract()[2:]  # 其中：股利收益
+            item['Income_of_fair_value_change'] += response.xpath('//table//tr[13]/td//text()').extract()[2:]  # 公允价值变动收益
+            item['Exchange_earnings'] += response.xpath('//table//tr[14]/td//text()').extract()[2:]  # 汇兑收益
+            item['Other_Income'] += response.xpath('//table//tr[15]/td//text()').extract()[2:]  # 其他收入
+            item['Expense'] += response.xpath('//table//tr[16]/td//text()').extract()[1:]  # 费用
+            item['Managerial_compensation'] += response.xpath('//table//tr[17]/td//text()').extract()[1:]  # 管理人报酬
+            item['Trustee_fee'] += response.xpath('//table//tr[18]/td//text()').extract()[1:]  # 托管费
+            item['Sales_service_fee'] += response.xpath('//table//tr[19]/td//text()').extract()[1:]  # 销售服务费
+            item['Transaction_cost'] += response.xpath('//table//tr[20]/td//text()').extract()[1:]  # 交易费用
+            item['Interest_expense'] += response.xpath('//table//tr[21]/td//text()').extract()[1:]  # 利息支出
+            item['Sell_repurchase_financial_assets_expense'] += response.xpath('//table//tr[22]/td//text()').extract()[
+                                                                1:]  # 其中：卖出回购金融资产支出
+            item['Other_expenses'] += response.xpath('//table//tr[23]/td//text()').extract()[1:]  # 其他费用
 
-        item['Profit_before_tax'] += response.xpath('//table//tr[24]/td//text()').extract()[2:]  # 利润总额
-        item['Income_tax_expense'] += response.xpath('//table//tr[25]/td//text()').extract()[1:]  # 减：所得税费用
+            item['Profit_before_tax'] += response.xpath('//table//tr[24]/td//text()').extract()[2:]  # 利润总额
+            item['Income_tax_expense'] += response.xpath('//table//tr[25]/td//text()').extract()[1:]  # 减：所得税费用
 
-        item['Net_profit'] += response.xpath('//table//tr[26]/td//text()').extract()[2:]  # 净利润
+            item['Net_profit'] += response.xpath('//table//tr[26]/td//text()').extract()[2:]  # 净利润
+        except Exception as e:
+            print(e)
+            with open('Data/' + '错误日志' + '.log', 'a', encoding='utf-8') as f:
+                print('正在写入错误信息：', e)
+                f.write(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())) + '：' + str(e) + '\r\n')
+            f.close()
 
         year_list_pattern = re.compile(r'arryear:(.*?),curyear', re.S)
         current_year_pattern = re.compile(r',curyear:(.*?)};', re.S)
@@ -608,65 +728,91 @@ class TiantianJijinSpider(scrapy.Spider):
         else:
             self.year -= 1
             income_statements_url = 'http://fund.eastmoney.com/f10/FundArchivesDatas.aspx?type=lrfpb&code={0}&showtype=1&year={1}'.format(
-                item['Fund_code'],self.year)
+                item['Fund_code'], self.year)
             yield scrapy.Request(url=income_statements_url, callback=self.parse_income_statements,
                                  meta={'fund_item': item})
 
     def parse_income_analysis(self, response):
         item = response.meta['fund_item']
-        item['Income_analysis_Date'] = response.xpath(
-            "//table[@class='w782 comm income']/tbody/tr/td[1]//text()").extract()  # 报告期
-        item['Total_income'] = response.xpath(
-            "//table[@class='w782 comm income']/tbody/tr/td[2]//text()").extract()  # 收入合计
-        item['Stock_income'] = response.xpath(
-            "//table[@class='w782 comm income']/tbody/tr/td[3]//text()").extract()  # 股票收入
-        item['Stock_percent'] = response.xpath(
-            "//table[@class='w782 comm income']/tbody/tr/td[4]//text()").extract()  # 占比
-        item['Bond_income'] = response.xpath(
-            "//table[@class='w782 comm income']/tbody/tr/td[5]//text()").extract()  # 债券收入
-        item['Bond_percent'] = response.xpath(
-            "//table[@class='w782 comm income']/tbody/tr/td[6]//text()").extract()  # 占比
-        item['Dividends_income'] = response.xpath(
-            "//table[@class='w782 comm income']/tbody/tr/td[7]//text()").extract()  # 股利收入
-        item['Dividends_percent'] = response.xpath(
-            "//table[@class='w782 comm income']/tbody/tr/td[8]//text()").extract()  # 占比
+        try:
+            item['Income_analysis_Date'] = response.xpath(
+                "//table[@class='w782 comm income']/tbody/tr/td[1]//text()").extract()  # 报告期
+            item['Total_income'] = response.xpath(
+                "//table[@class='w782 comm income']/tbody/tr/td[2]//text()").extract()  # 收入合计
+            item['Stock_income'] = response.xpath(
+                "//table[@class='w782 comm income']/tbody/tr/td[3]//text()").extract()  # 股票收入
+            item['Stock_percent'] = response.xpath(
+                "//table[@class='w782 comm income']/tbody/tr/td[4]//text()").extract()  # 占比
+            item['Bond_income'] = response.xpath(
+                "//table[@class='w782 comm income']/tbody/tr/td[5]//text()").extract()  # 债券收入
+            item['Bond_percent'] = response.xpath(
+                "//table[@class='w782 comm income']/tbody/tr/td[6]//text()").extract()  # 占比
+            item['Dividends_income'] = response.xpath(
+                "//table[@class='w782 comm income']/tbody/tr/td[7]//text()").extract()  # 股利收入
+            item['Dividends_percent'] = response.xpath(
+                "//table[@class='w782 comm income']/tbody/tr/td[8]//text()").extract()  # 占比
+        except Exception as e:
+            print(e)
+            with open('Data/' + '错误日志' + '.log', 'a', encoding='utf-8') as f:
+                print('正在写入错误信息：', e)
+                f.write(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())) + '：' + str(e) + '\r\n')
+            f.close()
+
         expenses_analysis_url = 'http://fund.eastmoney.com/f10/fyfx_{0}.html'.format(
             item['Fund_code'])
         yield scrapy.Request(url=expenses_analysis_url, callback=self.parse_expenses_analysis, meta={'fund_item': item})
 
     def parse_expenses_analysis(self, response):
         item = response.meta['fund_item']
-        item['Expenses_analysis_date'] = response.xpath(
-            "//table[@class='w782 comm income']/tbody/tr/td[1]//text()").extract()  # 报告期
-        item['Total_expenses'] = response.xpath(
-            "//table[@class='w782 comm income']/tbody/tr/td[2]//text()").extract()  # 费用合计
-        item['Expenses_analysis_managerial_compensation'] = response.xpath(
-            "//table[@class='w782 comm income']/tbody/tr/td[3]//text()").extract()  # 管理人报酬
-        item['Managerial_compensation_percent'] = response.xpath(
-            "//table[@class='w782 comm income']/tbody/tr/td[4]//text()").extract()  # 占比
-        item['Expenses_analysis_trustee_fee'] = response.xpath(
-            "//table[@class='w782 comm income']/tbody/tr/td[5]//text()").extract()  # 托管费
-        item['Trustee_fee_percent'] = response.xpath(
-            "//table[@class='w782 comm income']/tbody/tr/td[6]//text()").extract()  # 托管费占比
-        item['Expenses_analysis_transaction_cost'] = response.xpath(
-            "//table[@class='w782 comm income']/tbody/tr/td[7]//text()").extract()  # 交易费
-        item['Transaction_cost_percent'] = response.xpath(
-            "//table[@class='w782 comm income']/tbody/tr/td[8]//text()").extract()  # 交易费占比
-        item['Expenses_analysis_sales_service_fee'] = response.xpath(
-            "//table[@class='w782 comm income']/tbody/tr/td[9]//text()").extract()  # 销售服务费
-        item['Sales_service_fee_percent'] = response.xpath(
-            "//table[@class='w782 comm income']/tbody/tr/td[10]//text()").extract()  # 销售服务费占比
+        try:
+            item['Expenses_analysis_date'] = response.xpath(
+                "//table[@class='w782 comm income']/tbody/tr/td[1]//text()").extract()  # 报告期
+            item['Total_expenses'] = response.xpath(
+                "//table[@class='w782 comm income']/tbody/tr/td[2]//text()").extract()  # 费用合计
+            item['Expenses_analysis_managerial_compensation'] = response.xpath(
+                "//table[@class='w782 comm income']/tbody/tr/td[3]//text()").extract()  # 管理人报酬
+            item['Managerial_compensation_percent'] = response.xpath(
+                "//table[@class='w782 comm income']/tbody/tr/td[4]//text()").extract()  # 占比
+            item['Expenses_analysis_trustee_fee'] = response.xpath(
+                "//table[@class='w782 comm income']/tbody/tr/td[5]//text()").extract()  # 托管费
+            item['Trustee_fee_percent'] = response.xpath(
+                "//table[@class='w782 comm income']/tbody/tr/td[6]//text()").extract()  # 托管费占比
+            item['Expenses_analysis_transaction_cost'] = response.xpath(
+                "//table[@class='w782 comm income']/tbody/tr/td[7]//text()").extract()  # 交易费
+            item['Transaction_cost_percent'] = response.xpath(
+                "//table[@class='w782 comm income']/tbody/tr/td[8]//text()").extract()  # 交易费占比
+            item['Expenses_analysis_sales_service_fee'] = response.xpath(
+                "//table[@class='w782 comm income']/tbody/tr/td[9]//text()").extract()  # 销售服务费
+            item['Sales_service_fee_percent'] = response.xpath(
+                "//table[@class='w782 comm income']/tbody/tr/td[10]//text()").extract()  # 销售服务费占比
+        except Exception as e:
+            print(e)
+            with open('Data/' + '错误日志' + '.log', 'a', encoding='utf-8') as f:
+                print('正在写入错误信息：', e)
+                f.write(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())) + '：' + str(e) + '\r\n')
+            f.close()
+
         fund_allocations_url = 'http://fund.eastmoney.com/f10/zcpz_{0}.html'.format(item['Fund_code'])
         yield scrapy.Request(url=fund_allocations_url, callback=self.parse_fund_allocations, meta={'fund_item': item})
 
     def parse_fund_allocations(self, response):
         item = response.meta['fund_item']
+        try:
+            item['Fund_allocations_Date'] = response.xpath(
+                "//table[@class='w782 comm tzxq']//tr/td[1]//text()").extract()  # 报告期
+            item['Fund_allocations_Stock_percent'] = response.xpath(
+                "//table[@class='w782 comm tzxq']//tr/td[2]//text()").extract()  # 股票占净比
+            item['Fund_allocations_Bond_percent'] = response.xpath(
+                "//table[@class='w782 comm tzxq']//tr/td[3]//text()").extract()  # 债券占净比
+            item['Cash_percent'] = response.xpath("//table[@class='w782 comm tzxq']//tr/td[4]//text()").extract()  # 现金占净比
+            item['Net_asset'] = response.xpath("//table[@class='w782 comm tzxq']//tr/td[5]//text()").extract()  # 净资产（亿元）
 
-        item['Fund_allocations_Date'] = response.xpath("//table[@class='w782 comm tzxq']//tr/td[1]//text()").extract()  # 报告期
-        item['Fund_allocations_Stock_percent'] = response.xpath("//table[@class='w782 comm tzxq']//tr/td[2]//text()").extract()  # 股票占净比
-        item['Fund_allocations_Bond_percent'] = response.xpath("//table[@class='w782 comm tzxq']//tr/td[3]//text()").extract()  # 债券占净比
-        item['Cash_percent'] = response.xpath("//table[@class='w782 comm tzxq']//tr/td[4]//text()").extract()  # 现金占净比
-        item['Net_asset'] = response.xpath("//table[@class='w782 comm tzxq']//tr/td[5]//text()").extract()  # 净资产（亿元）
+        except Exception as e:
+            print(e)
+            with open('Data/' + '错误日志' + '.log', 'a', encoding='utf-8') as f:
+                print('正在写入错误信息：', e)
+                f.write(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())) + '：' + str(e) + '\r\n')
+            f.close()
 
         history_NAV_url = 'http://fund.eastmoney.com/f10/F10DataApi.aspx?type=lsjz&code={0}&page=1&per=10000&sdate=&edate='.format(
             item['Fund_code'])
@@ -675,21 +821,39 @@ class TiantianJijinSpider(scrapy.Spider):
     def parse_history_NAV(self, response):
         item = response.meta['fund_item']
 
-        item['History_NAV_Date'] = [i.xpath('.//text()').extract_first() if i.xpath('.//text()').extract_first() else '' for i in response.xpath("//table[@class='w782 comm lsjz']/tbody/tr/td[1]")]  # 净值日期
-        item['NAV'] = [i.xpath('.//text()').extract_first() if i.xpath('.//text()').extract_first() else '' for i in response.xpath("//table[@class='w782 comm lsjz']/tbody/tr/td[2]")]  # 单位净值
-        item['ANAV'] = [i.xpath('.//text()').extract_first() if i.xpath('.//text()').extract_first() else '' for i in response.xpath("//table[@class='w782 comm lsjz']/tbody/tr/td[3]")]  # 累计净值
-        item['Day_change'] = [i.xpath('.//text()').extract_first() if i.xpath('.//text()').extract_first() else '' for i in response.xpath("//table[@class='w782 comm lsjz']/tbody/tr/td[4]")]  # 收益率
-        item['Purchase_status'] = [i.xpath('.//text()').extract_first() if i.xpath('.//text()').extract_first() else '' for i in response.xpath("//table[@class='w782 comm lsjz']/tbody/tr/td[5]")]  # 申购状态
-        item['Redeem_status'] = [i.xpath('.//text()').extract_first() if i.xpath('.//text()').extract_first() else '' for i in response.xpath("//table[@class='w782 comm lsjz']/tbody/tr/td[6]")]  # 赎回状态
-        item['Dividends_distribution'] = [i.xpath('.//text()').extract_first() if i.xpath('.//text()').extract_first() else '' for i in response.xpath("//table[@class='w782 comm lsjz']/tbody/tr/td[7]")]  # 分红配送
-        acworth_url = 'http://fund.eastmoney.com/api/PingZhongApi.ashx?m=0&fundcode={0}&indexcode=000300&type=se&callback='.format(item['Fund_code'])
-        yield scrapy.Request(url=acworth_url,callback=self.parse_acworth,meta={'fund_item':item})
+        item['History_NAV_Date'] = [i.xpath('.//text()').extract_first() if i.xpath('.//text()').extract_first() else ''
+                                    for i in response.xpath("//table[@class='w782 comm lsjz']/tbody/tr/td[1]")]  # 净值日期
+        item['NAV'] = [i.xpath('.//text()').extract_first() if i.xpath('.//text()').extract_first() else '' for i in
+                       response.xpath("//table[@class='w782 comm lsjz']/tbody/tr/td[2]")]  # 单位净值
+        item['ANAV'] = [i.xpath('.//text()').extract_first() if i.xpath('.//text()').extract_first() else '' for i in
+                        response.xpath("//table[@class='w782 comm lsjz']/tbody/tr/td[3]")]  # 累计净值
+        item['Day_change'] = [i.xpath('.//text()').extract_first() if i.xpath('.//text()').extract_first() else '' for i
+                              in response.xpath("//table[@class='w782 comm lsjz']/tbody/tr/td[4]")]  # 收益率
+        item['Purchase_status'] = [i.xpath('.//text()').extract_first() if i.xpath('.//text()').extract_first() else ''
+                                   for i in response.xpath("//table[@class='w782 comm lsjz']/tbody/tr/td[5]")]  # 申购状态
+        item['Redeem_status'] = [i.xpath('.//text()').extract_first() if i.xpath('.//text()').extract_first() else ''
+                                 for i in response.xpath("//table[@class='w782 comm lsjz']/tbody/tr/td[6]")]  # 赎回状态
+        item['Dividends_distribution'] = [
+            i.xpath('.//text()').extract_first() if i.xpath('.//text()').extract_first() else '' for i in
+            response.xpath("//table[@class='w782 comm lsjz']/tbody/tr/td[7]")]  # 分红配送
+        acworth_url = 'http://fund.eastmoney.com/api/PingZhongApi.ashx?m=0&fundcode={0}&indexcode=000300&type=se&callback='.format(
+            item['Fund_code'])
+        yield scrapy.Request(url=acworth_url, callback=self.parse_acworth, meta={'fund_item': item})
 
-    def parse_acworth(self,response):
+    def parse_acworth(self, response):
         item = response.meta['fund_item']
-        dict_json = json.loads(response.body.decode())
-        item['ACWorth_date'] = [str(int(int(i[0])/1000)) for i in dict_json[0]['data']]
-        item['this_fund_rate'] = [i[1] for i in dict_json[0]['data']]
-        item['similar_fund_rate'] = [i[1] for i in dict_json[1]['data']]
-        item['hs300_rate'] = [i[1] for i in dict_json[2]['data']]
+        try:
+            dict_json = json.loads(response.body.decode())
+            item['ACWorth_date'] = [str(int(int(i[0]) / 1000)) for i in dict_json[0]['data']]
+            item['this_fund_rate'] = [i[1] for i in dict_json[0]['data']]
+            item['similar_fund_rate'] = [i[1] for i in dict_json[1]['data']]
+            item['hs300_rate'] = [i[1] for i in dict_json[2]['data']]
+
+        except Exception as e:
+            print(e)
+            with open('Data/' + '错误日志' + '.log', 'a', encoding='utf-8') as f:
+                print('正在写入错误信息：', e)
+                f.write(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())) + '：' + str(e) + '\r\n')
+            f.close()
+
         yield item
