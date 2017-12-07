@@ -1,0 +1,1182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="045d9630-0cd3-4f99-a4aa-1dee7e16d038" name="默认的" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/TianTianJiJin$requests_jbgk.coverage" NAME="requests_jbgk Coverage Results" MODIFIED="1511516682020" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TianTianJiJin$main.coverage" NAME="main Coverage Results" MODIFIED="1512123930996" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TianTianJiJin" />
+    <SUITE FILE_PATH="coverage/TianTianJiJin$requests_test.coverage" NAME="requests_test Coverage Results" MODIFIED="1511861713333" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TianTianJiJin$xiaxiang_requests.coverage" NAME="xiaxiang_requests Coverage Results" MODIFIED="1512119355518" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TianTianJiJin$connect_to_mysql.coverage" NAME="connect_to_mysql Coverage Results" MODIFIED="1512109772059" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TianTianJiJin$test.coverage" NAME="test Coverage Results" MODIFIED="1510642606815" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TianTianJiJin" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="items.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TianTianJiJin/items.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="108">
+              <caret line="4" column="23" lean-forward="false" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pipelines.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TianTianJiJin/pipelines.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="162">
+              <caret line="8" column="11" lean-forward="false" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
+              <folding>
+                <element signature="e#192#206#0" expanded="true" />
+                <marker date="1512123319544" expanded="true" signature="1808:1965" ph="insert into aqi_data... " />
+                <marker date="1512123319544" expanded="true" signature="2187:2266" ph="select * fro... 财务报表" />
+                <marker date="1512123319544" expanded="true" signature="2303:2427" ph="select * fro... 基金概况表" />
+                <marker date="1512123319544" expanded="true" signature="2482:2604" ph="delete from " />
+                <marker date="1512123319544" expanded="true" signature="2482:2611" ph="delete from " />
+                <marker date="1512123319544" expanded="true" signature="2659:2814" ph="insert into fund_info... " />
+                <marker date="1512123319544" expanded="true" signature="2659:3122" ph="insert into 交通运输... " />
+                <marker date="1512123319544" expanded="true" signature="3989:4097" ph="select * fro... 基金规模变动表" />
+                <marker date="1512123319544" expanded="true" signature="3989:4126" ph="select * fro... 基金概况表" />
+                <marker date="1512123319544" expanded="true" signature="4185:4236" ph="insert into 规模变动表... " />
+                <marker date="1512123319544" expanded="true" signature="4185:4252" ph="insert into 规模变动表... " />
+                <marker date="1512123319544" expanded="true" signature="4185:4266" ph="insert into 规模变动表... " />
+                <marker date="1512123319544" expanded="true" signature="4185:4280" ph="insert into 规模变动表... " />
+                <marker date="1512123319544" expanded="true" signature="4185:4298" ph="insert into 规模变动表... " />
+                <marker date="1512123319544" expanded="true" signature="4185:4315" ph="insert into 规模变动表... " />
+                <marker date="1512123319544" expanded="true" signature="4185:4344" ph="insert into 基金规模变动表... " />
+                <marker date="1512123319544" expanded="true" signature="5010:5139" ph="select * fro... 基金持有人结构表" />
+                <marker date="1512123319544" expanded="true" signature="5198:5317" ph="insert into 基金持有人结构表... " />
+                <marker date="1512123319544" expanded="true" signature="5831:5965" ph="select * fro... 基金持仓明细表" />
+                <marker date="1512123319544" expanded="true" signature="5831:6020" ph="select * fro... 基金持仓明细表" />
+                <marker date="1512123319544" expanded="true" signature="6079:6263" ph="insert into 基金持有人结构表... " />
+                <marker date="1512123319544" expanded="true" signature="6863:7078" ph="select * fro... 重大变动表" />
+                <marker date="1512123319544" expanded="true" signature="7137:7333" ph="insert into 重大变动表... " />
+                <marker date="1512123319544" expanded="true" signature="7782:7945" ph="select * fro... 行业配置表" />
+                <marker date="1512123319544" expanded="true" signature="8004:8117" ph="insert into 行业配置表... " />
+                <marker date="1512123319544" expanded="true" signature="8596:8781" ph="select * fro... 行业配置比较表" />
+                <marker date="1512123319544" expanded="true" signature="8840:9009" ph="insert into 行业配置比较表... " />
+                <marker date="1512123319544" expanded="true" signature="9333:9494" ph="select * fro... 投资风格表" />
+                <marker date="1512123319544" expanded="true" signature="9553:9621" ph="insert into 投资风格表... " />
+                <marker date="1512123319544" expanded="true" signature="9767:9868" ph="select * fro... 跟踪指数指标表" />
+                <marker date="1512123319544" expanded="true" signature="9767:9929" ph="select * fro... 跟踪指数指标表" />
+                <marker date="1512123319544" expanded="true" signature="9767:9960" ph="select * fro... 跟踪指数指标表" />
+                <marker date="1512123319544" expanded="true" signature="10015:10126" ph="insert into 跟踪指数指标表... " />
+                <marker date="1512123319544" expanded="true" signature="10541:10708" ph="select * fro... 基金经理变动表" />
+                <marker date="1512123319544" expanded="true" signature="10541:10755" ph="select * fro... 基金经理变动表" />
+                <marker date="1512123319544" expanded="true" signature="10814:10943" ph="insert into 基金经理变动表... " />
+                <marker date="1512123319544" expanded="true" signature="11608:11885" ph="select * fro... 基金经理人历任基金表" />
+                <marker date="1512123319544" expanded="true" signature="11944:12199" ph="insert into 基金经理人历任基金表... " />
+                <marker date="1512123319544" expanded="true" signature="11944:12210" ph="insert into 基金经理人历任基金表... " />
+                <marker date="1512123319544" expanded="true" signature="13181:13314" ph="select * fro... 财务报表" />
+                <marker date="1512123319544" expanded="true" signature="13181:13315" ph="select * fro... 财务报表" />
+                <marker date="1512123319544" expanded="true" signature="13373:13712" ph="insert into 财务报表... " />
+                <marker date="1512123319544" expanded="true" signature="16008:16124" ph="select * fro... 资产负债表" />
+                <marker date="1512123319544" expanded="true" signature="16183:17124" ph="insert into 资产负债表... " />
+                <marker date="1512123319544" expanded="true" signature="19422:19536" ph="select * fro... 利润表" />
+                <marker date="1512123319544" expanded="true" signature="19595:20281" ph="insert into 利润表... " />
+                <marker date="1512123319544" expanded="true" signature="21307:21441" ph="select * fro... 收入分析表" />
+                <marker date="1512123319544" expanded="true" signature="21500:21684" ph="insert into 收入分析表... " />
+                <marker date="1512123319544" expanded="true" signature="22605:22743" ph="select * fro... 费用分析表" />
+                <marker date="1512123319544" expanded="true" signature="22802:23155" ph="insert into 费用分析表... " />
+                <marker date="1512123319544" expanded="true" signature="23843:23983" ph="select * fro... 基金资产分类配置表" />
+                <marker date="1512123319544" expanded="true" signature="24042:24206" ph="insert into 基金资产分类配置表... " />
+                <marker date="1512123319544" expanded="true" signature="24700:24828" ph="select * fro... 历史净值明细表" />
+                <marker date="1512123319544" expanded="true" signature="24887:25039" ph="insert into 历史净值明细表... " />
+                <marker date="1512123319544" expanded="true" signature="25427:25546" ph="select * fro... 收益率走势表" />
+                <marker date="1512123319544" expanded="true" signature="25605:25714" ph="insert into 收益率走势表... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tiantian_jijin.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/TianTianJiJin/spiders/tiantian_jijin.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="27">
+              <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="connect_to_mysql.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/connect_to_mysql.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="324">
+              <caret line="12" column="73" lean-forward="false" selection-start-line="12" selection-start-column="73" selection-end-line="12" selection-end-column="73" />
+              <folding>
+                <marker date="1512109905750" expanded="true" signature="392:427" ph="select * fro... 财务报表" />
+                <marker date="1512109905750" expanded="true" signature="392:469" ph="select * fro... 财务报表" />
+                <marker date="1512109905750" expanded="true" signature="392:471" ph="select * fro... 财务报表" />
+                <marker date="1512109905750" expanded="true" signature="392:483" ph="select * fro... 财务报表" />
+                <marker date="1512109905750" expanded="true" signature="392:487" ph="select * fro... 财务报表" />
+                <marker date="1512109905750" expanded="true" signature="392:488" ph="select * fro... 财务报表" />
+                <marker date="1512109905750" expanded="true" signature="392:489" ph="select * fro... 财务报表" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ALL_TEST.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TianTianJiJin/Data/ALL_TEST.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="334125">
+              <caret line="12375" column="29" lean-forward="false" selection-start-line="12375" selection-start-column="29" selection-end-line="12375" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="requests_test.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/requests_test.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="54">
+              <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="15" />
+              <folding>
+                <marker date="1512118697344" expanded="true" signature="2384:2448" ph="insert into 交通运输... " />
+                <marker date="1512118697344" expanded="true" signature="3240:3293" ph="update 交通运输、... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TianTianJiJin/test.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="999">
+              <caret line="37" column="26" lean-forward="false" selection-start-line="37" selection-start-column="26" selection-end-line="37" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>Fund_holder_Date</find>
+      <find>Institution</find>
+      <find>CSRC_setors_code</find>
+      <find>scrapy.Field()(.*)</find>
+      <find>= scrapy.Field()(.*)</find>
+      <find>Style_season</find>
+      <find>Tracking_index</find>
+      <find>Start_date</find>
+      <find>Ending_date</find>
+      <find>Fund_manager</find>
+      <find>Appointment_time</find>
+      <find>Held_fund_code</find>
+      <find>Fund_allocations_Date</find>
+      <find>scrapy.Field(.*)</find>
+      <find>= scrapy.Field(.*)</find>
+      <find>Setors_change</find>
+      <find>Current_fund_manager</find>
+      <find>Period_data_and_index</find>
+      <find>Ending_data_and_index</find>
+      <find>Interest_income</find>
+      <find>Interest_income_of_deposit</find>
+      <find>Fund_code</find>
+      <find>Income</find>
+      <find>Dividends_distribution</find>
+      <find>Operand</find>
+      <find>1</find>
+      <find>Financial_index_date</find>
+      <find>and</find>
+      <find>last_year = int(year_list[-1])</find>
+      <find>print</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>&quot;$1&quot;:&quot;$2&quot;,</replace>
+      <replace>extract_first()</replace>
+      <replace>//tbody</replace>
+      <replace>i.xpath</replace>
+      <replace>Fund_code</replace>
+      <replace>Ending</replace>
+      <replace>td[1]</replace>
+      <replace>response.xpath('//div[@class=&quot;txt_in&quot;]//table[@class=&quot;info w790&quot;]//td//text()')</replace>
+      <replace>extract()</replace>
+      <replace>table_item</replace>
+      <replace>extract()[0]</replace>
+      <replace>.xpath('.//text()')</replace>
+      <replace>current_year_pattern</replace>
+      <replace>response.xpath(&quot;//table[1]//tbody/tr[1]//text()&quot;).extract()[1:]</replace>
+      <replace>response.xpath('//table//tr[26]/td//text()').extract()[1:]</replace>
+      <replace>[]</replace>
+      <replace>response.xpath(&quot;//table[@class='w782 comm income']/tbody/tr/td[1]//text()&quot;).extract()</replace>
+      <replace>response.xpath(&quot;//table[@class='w782 comm income']/tbody/tr/td[8]//text()&quot;).extract()</replace>
+      <replace>response.xpath(&quot;//table[@class='w782 comm tzxq']//tr/td[5]//text()&quot;).extract()</replace>
+      <replace>response.xpath(&quot;//table[@class='w782 comm lsjz']/tbody/tr/td[7]//text()&quot;).extract()</replace>
+      <replace>[i.xpath('.//text()').extract_first() if i.xpath('.//text()').extract_first() else '' for i in response.xpath(&quot;//table[@class='w782 comm lsjz']/tbody/tr/td[7]&quot;)]</replace>
+      <replace>,</replace>
+      <replace>last_year = int(year_list[-1]) if year_list else current_year</replace>
+      <replace># print</replace>
+    </replaceStrings>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/TianTianJiJin/main.py" />
+        <option value="$PROJECT_DIR$/TianTianJiJin/total_jijin.html" />
+        <option value="$PROJECT_DIR$/TianTianJiJin/key_info.html" />
+        <option value="$PROJECT_DIR$/TianTianJiJin/Data/ACworth_TEST.txt" />
+        <option value="$PROJECT_DIR$/TianTianJiJin/Data/所有基金_data.txt" />
+        <option value="$PROJECT_DIR$/fund_glgm.html" />
+        <option value="$PROJECT_DIR$/TianTianJiJin/requests_jbgk.py" />
+        <option value="$PROJECT_DIR$/requests_jbgk.py" />
+        <option value="$PROJECT_DIR$/TianTianJiJin/fund_jbgk.html" />
+        <option value="$PROJECT_DIR$/TianTianJiJin/Data/ALL_TEST.txt" />
+        <option value="$PROJECT_DIR$/TianTianJiJin/settings.py" />
+        <option value="$PROJECT_DIR$/TianTianJiJin/test.py" />
+        <option value="$PROJECT_DIR$/TianTianJiJin/Data/Mysql错误日志.log" />
+        <option value="$PROJECT_DIR$/TianTianJiJin/items.py" />
+        <option value="$PROJECT_DIR$/connect_to_mysql.py" />
+        <option value="$PROJECT_DIR$/requests_test.py" />
+        <option value="$PROJECT_DIR$/xiaxiang.html" />
+        <option value="$PROJECT_DIR$/xiaxiang_requests.py" />
+        <option value="$PROJECT_DIR$/TianTianJiJin/spiders/elegomall.py" />
+        <option value="$PROJECT_DIR$/TianTianJiJin/pipelines.py" />
+        <option value="$PROJECT_DIR$/TianTianJiJin/spiders/tiantian_jijin.py" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="784" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TianTianJiJin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TianTianJiJin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TianTianJiJin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TianTianJiJin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TianTianJiJin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TianTianJiJin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TianTianJiJin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TianTianJiJin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spiders" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TianTianJiJin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TianTianJiJin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TianTianJiJin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="settings.editor.selected.configurable" value="fileTemplates" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\大学文档\作业\Python相关\Python爬虫\工作项目\TianTianJiJin" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Python.main">
+    <configuration default="false" name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/TianTianJiJin" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="TianTianJiJin" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TianTianJiJin/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="requests_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="TianTianJiJin" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/requests_test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="requests_jbgk" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="TianTianJiJin" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/requests_jbgk.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="connect_to_mysql" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="TianTianJiJin" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/connect_to_mysql.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="xiaxiang_requests" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="TianTianJiJin" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/xiaxiang_requests.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="DjangoTestsConfigurationType" factoryName="Django tests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="TianTianJiJin" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="TARGET" value="" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
+      <node-interpreter value="project" />
+      <working-dir value="" />
+      <envs />
+      <scope-kind value="ALL" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="PyBehaveRunConfigurationType" factoryName="Behave">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="TianTianJiJin" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="ADDITIONAL_ARGS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="PyLettuceRunConfigurationType" factoryName="Lettuce">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="TianTianJiJin" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="ADDITIONAL_ARGS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="TianTianJiJin" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Tox" factoryName="Tox">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <module name="TianTianJiJin" />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Doctests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="TianTianJiJin" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Nosetests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="TianTianJiJin" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="_new_regexPattern" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;.&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method />
+    </configuration>
+    <list size="5">
+      <item index="0" class="java.lang.String" itemvalue="Python.main" />
+      <item index="1" class="java.lang.String" itemvalue="Python.requests_test" />
+      <item index="2" class="java.lang.String" itemvalue="Python.requests_jbgk" />
+      <item index="3" class="java.lang.String" itemvalue="Python.connect_to_mysql" />
+      <item index="4" class="java.lang.String" itemvalue="Python.xiaxiang_requests" />
+    </list>
+    <recent_temporary>
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="Python.main" />
+        <item index="1" class="java.lang.String" itemvalue="Python.xiaxiang_requests" />
+        <item index="2" class="java.lang.String" itemvalue="Python.connect_to_mysql" />
+        <item index="3" class="java.lang.String" itemvalue="Python.requests_test" />
+        <item index="4" class="java.lang.String" itemvalue="Python.requests_jbgk" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="045d9630-0cd3-4f99-a4aa-1dee7e16d038" name="默认的" comment="" />
+      <created>1510286419660</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1510286419660</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17019667" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32973805" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="调试" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31432974" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32973805" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32973805" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.8597843" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="运行" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.91217256" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Concurrent Activities Diagram" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32973805" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="找到" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32973805" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="调试" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31432974" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32973805" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32973805" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="运行" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.8135593" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16792738" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Concurrent Activities Diagram" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32973805" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="找到" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="processedProjectFiles" value="true" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/TianTianJiJin/spiders/tiantian_jijin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3510">
+          <caret line="130" column="38" lean-forward="false" selection-start-line="130" selection-start-column="38" selection-end-line="130" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TianTianJiJin/pipelines.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1269">
+          <caret line="47" column="42" lean-forward="false" selection-start-line="47" selection-start-column="42" selection-end-line="47" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TianTianJiJin/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2808">
+          <caret line="104" column="24" lean-forward="true" selection-start-line="104" selection-start-column="24" selection-end-line="104" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TianTianJiJin/items.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1431">
+          <caret line="53" column="53" lean-forward="false" selection-start-line="53" selection-start-column="53" selection-end-line="53" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TianTianJiJin/Data/ACworth_TEST.txt">
+      <provider selected="true" editor-type-id="LargeFileEditor">
+        <state relative-caret-position="405">
+          <caret line="15" column="54" lean-forward="false" selection-start-line="15" selection-start-column="54" selection-end-line="15" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TianTianJiJin/spiders/tiantian_jijin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3510">
+          <caret line="130" column="38" lean-forward="false" selection-start-line="130" selection-start-column="38" selection-end-line="130" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TianTianJiJin/pipelines.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1242">
+          <caret line="47" column="42" lean-forward="false" selection-start-line="47" selection-start-column="42" selection-end-line="47" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TianTianJiJin/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="972">
+          <caret line="36" column="13" lean-forward="true" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TianTianJiJin/items.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1431">
+          <caret line="53" column="53" lean-forward="false" selection-start-line="53" selection-start-column="53" selection-end-line="53" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TianTianJiJin/Data/ACworth_TEST.txt">
+      <provider selected="true" editor-type-id="LargeFileEditor">
+        <state relative-caret-position="405">
+          <caret line="15" column="54" lean-forward="false" selection-start-line="15" selection-start-column="54" selection-end-line="15" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TianTianJiJin/spiders/tiantian_jijin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3510">
+          <caret line="130" column="38" lean-forward="false" selection-start-line="130" selection-start-column="38" selection-end-line="130" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TianTianJiJin/pipelines.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1242">
+          <caret line="47" column="42" lean-forward="false" selection-start-line="47" selection-start-column="42" selection-end-line="47" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TianTianJiJin/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1107">
+          <caret line="41" column="4" lean-forward="true" selection-start-line="41" selection-start-column="4" selection-end-line="41" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TianTianJiJin/items.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1431">
+          <caret line="53" column="53" lean-forward="false" selection-start-line="53" selection-start-column="53" selection-end-line="53" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TianTianJiJin/Data/ACworth_TEST.txt">
+      <provider selected="true" editor-type-id="LargeFileEditor">
+        <state relative-caret-position="405">
+          <caret line="15" column="54" lean-forward="true" selection-start-line="15" selection-start-column="54" selection-end-line="15" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TianTianJiJin/spiders/tiantian_jijin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3510">
+          <caret line="130" column="38" lean-forward="true" selection-start-line="130" selection-start-column="38" selection-end-line="130" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TianTianJiJin/pipelines.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1269">
+          <caret line="47" column="42" lean-forward="true" selection-start-line="47" selection-start-column="42" selection-end-line="47" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TianTianJiJin/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="837">
+          <caret line="31" column="4" lean-forward="true" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TianTianJiJin/items.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="783">
+          <caret line="29" column="93" lean-forward="false" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="93" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TianTianJiJin/pipelines.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="15" column="41" lean-forward="true" selection-start-line="15" selection-start-column="41" selection-end-line="15" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TianTianJiJin/spiders/tiantian_jijin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1674">
+          <caret line="62" column="43" lean-forward="true" selection-start-line="62" selection-start-column="43" selection-end-line="62" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TianTianJiJin/items.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TianTianJiJin/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="783">
+          <caret line="29" column="20" lean-forward="true" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TianTianJiJin/fund_jbgk.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TianTianJiJin/key_info.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TianTianJiJin/pipelines.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="10" column="33" lean-forward="false" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TianTianJiJin/spiders/tiantian_jijin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1296">
+          <caret line="48" column="38" lean-forward="true" selection-start-line="48" selection-start-column="38" selection-end-line="48" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TianTianJiJin/items.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TianTianJiJin/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="2" column="21" lean-forward="false" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TianTianJiJin/total_jijin.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="537" column="38" lean-forward="false" selection-start-line="537" selection-start-column="38" selection-end-line="537" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../Scrapy框架/TaobaoGoodsList/TaobaoGoodsList/pipelines.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="23" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TianTianJiJin/Data/全部基金.txt" />
+    <entry file="file://$PROJECT_DIR$/TianTianJiJin/key_info.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TianTianJiJin/Data/ACworth_TEST.txt">
+      <provider selected="true" editor-type-id="LargeFileEditor">
+        <state relative-caret-position="416">
+          <caret line="13095" column="24" lean-forward="false" selection-start-line="13095" selection-start-column="24" selection-end-line="13095" selection-end-column="24" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="280638">
+          <caret line="10394" column="34" lean-forward="false" selection-start-line="10394" selection-start-column="34" selection-end-line="10394" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fund_glgm.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1178">
+          <caret line="492" column="28" lean-forward="true" selection-start-line="492" selection-start-column="28" selection-end-line="492" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://E:/Anaconda3/Lib/site-packages/scrapy/utils/defer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="98" column="23" lean-forward="true" selection-start-line="98" selection-start-column="23" selection-end-line="98" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TianTianJiJin/Data/所有基金_data.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="4" column="28" lean-forward="false" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TianTianJiJin/fund_jbgk.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1323">
+          <caret line="49" column="9" lean-forward="false" selection-start-line="49" selection-start-column="9" selection-end-line="49" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requests_jbgk.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="557">
+          <caret line="21" column="46" lean-forward="false" selection-start-line="21" selection-start-column="46" selection-end-line="21" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TianTianJiJin/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="66" column="52" lean-forward="true" selection-start-line="66" selection-start-column="52" selection-end-line="66" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TianTianJiJin/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="999">
+          <caret line="37" column="26" lean-forward="false" selection-start-line="37" selection-start-column="26" selection-end-line="37" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TianTianJiJin/Data/Mysql错误日志.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="727">
+          <caret line="1356" column="40" lean-forward="true" selection-start-line="1356" selection-start-column="40" selection-end-line="1356" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TianTianJiJin/Data/ALL_TEST.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="334125">
+          <caret line="12375" column="29" lean-forward="false" selection-start-line="12375" selection-start-column="29" selection-end-line="12375" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xiaxiang.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="314">
+          <caret line="5101" column="31" lean-forward="false" selection-start-line="5101" selection-start-column="31" selection-end-line="5101" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/connect_to_mysql.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="12" column="73" lean-forward="false" selection-start-line="12" selection-start-column="73" selection-end-line="12" selection-end-column="73" />
+          <folding>
+            <marker date="1512109905750" expanded="true" signature="392:427" ph="select * fro... 财务报表" />
+            <marker date="1512109905750" expanded="true" signature="392:469" ph="select * fro... 财务报表" />
+            <marker date="1512109905750" expanded="true" signature="392:471" ph="select * fro... 财务报表" />
+            <marker date="1512109905750" expanded="true" signature="392:483" ph="select * fro... 财务报表" />
+            <marker date="1512109905750" expanded="true" signature="392:487" ph="select * fro... 财务报表" />
+            <marker date="1512109905750" expanded="true" signature="392:488" ph="select * fro... 财务报表" />
+            <marker date="1512109905750" expanded="true" signature="392:489" ph="select * fro... 财务报表" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TianTianJiJin/spiders/elegomall.py" />
+    <entry file="file://$PROJECT_DIR$/xiaxiang_requests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="12" column="75" lean-forward="false" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requests_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="15" />
+          <folding>
+            <marker date="1512118697344" expanded="true" signature="2384:2448" ph="insert into 交通运输... " />
+            <marker date="1512118697344" expanded="true" signature="3240:3293" ph="update 交通运输、... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TianTianJiJin/items.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="4" column="23" lean-forward="false" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TianTianJiJin/pipelines.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="8" column="11" lean-forward="false" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
+          <folding>
+            <element signature="e#192#206#0" expanded="true" />
+            <marker date="1512123319544" expanded="true" signature="1808:1965" ph="insert into aqi_data... " />
+            <marker date="1512123319544" expanded="true" signature="2187:2266" ph="select * fro... 财务报表" />
+            <marker date="1512123319544" expanded="true" signature="2303:2427" ph="select * fro... 基金概况表" />
+            <marker date="1512123319544" expanded="true" signature="2482:2604" ph="delete from " />
+            <marker date="1512123319544" expanded="true" signature="2482:2611" ph="delete from " />
+            <marker date="1512123319544" expanded="true" signature="2659:2814" ph="insert into fund_info... " />
+            <marker date="1512123319544" expanded="true" signature="2659:3122" ph="insert into 交通运输... " />
+            <marker date="1512123319544" expanded="true" signature="3989:4097" ph="select * fro... 基金规模变动表" />
+            <marker date="1512123319544" expanded="true" signature="3989:4126" ph="select * fro... 基金概况表" />
+            <marker date="1512123319544" expanded="true" signature="4185:4236" ph="insert into 规模变动表... " />
+            <marker date="1512123319544" expanded="true" signature="4185:4252" ph="insert into 规模变动表... " />
+            <marker date="1512123319544" expanded="true" signature="4185:4266" ph="insert into 规模变动表... " />
+            <marker date="1512123319544" expanded="true" signature="4185:4280" ph="insert into 规模变动表... " />
+            <marker date="1512123319544" expanded="true" signature="4185:4298" ph="insert into 规模变动表... " />
+            <marker date="1512123319544" expanded="true" signature="4185:4315" ph="insert into 规模变动表... " />
+            <marker date="1512123319544" expanded="true" signature="4185:4344" ph="insert into 基金规模变动表... " />
+            <marker date="1512123319544" expanded="true" signature="5010:5139" ph="select * fro... 基金持有人结构表" />
+            <marker date="1512123319544" expanded="true" signature="5198:5317" ph="insert into 基金持有人结构表... " />
+            <marker date="1512123319544" expanded="true" signature="5831:5965" ph="select * fro... 基金持仓明细表" />
+            <marker date="1512123319544" expanded="true" signature="5831:6020" ph="select * fro... 基金持仓明细表" />
+            <marker date="1512123319544" expanded="true" signature="6079:6263" ph="insert into 基金持有人结构表... " />
+            <marker date="1512123319544" expanded="true" signature="6863:7078" ph="select * fro... 重大变动表" />
+            <marker date="1512123319544" expanded="true" signature="7137:7333" ph="insert into 重大变动表... " />
+            <marker date="1512123319544" expanded="true" signature="7782:7945" ph="select * fro... 行业配置表" />
+            <marker date="1512123319544" expanded="true" signature="8004:8117" ph="insert into 行业配置表... " />
+            <marker date="1512123319544" expanded="true" signature="8596:8781" ph="select * fro... 行业配置比较表" />
+            <marker date="1512123319544" expanded="true" signature="8840:9009" ph="insert into 行业配置比较表... " />
+            <marker date="1512123319544" expanded="true" signature="9333:9494" ph="select * fro... 投资风格表" />
+            <marker date="1512123319544" expanded="true" signature="9553:9621" ph="insert into 投资风格表... " />
+            <marker date="1512123319544" expanded="true" signature="9767:9868" ph="select * fro... 跟踪指数指标表" />
+            <marker date="1512123319544" expanded="true" signature="9767:9929" ph="select * fro... 跟踪指数指标表" />
+            <marker date="1512123319544" expanded="true" signature="9767:9960" ph="select * fro... 跟踪指数指标表" />
+            <marker date="1512123319544" expanded="true" signature="10015:10126" ph="insert into 跟踪指数指标表... " />
+            <marker date="1512123319544" expanded="true" signature="10541:10708" ph="select * fro... 基金经理变动表" />
+            <marker date="1512123319544" expanded="true" signature="10541:10755" ph="select * fro... 基金经理变动表" />
+            <marker date="1512123319544" expanded="true" signature="10814:10943" ph="insert into 基金经理变动表... " />
+            <marker date="1512123319544" expanded="true" signature="11608:11885" ph="select * fro... 基金经理人历任基金表" />
+            <marker date="1512123319544" expanded="true" signature="11944:12199" ph="insert into 基金经理人历任基金表... " />
+            <marker date="1512123319544" expanded="true" signature="11944:12210" ph="insert into 基金经理人历任基金表... " />
+            <marker date="1512123319544" expanded="true" signature="13181:13314" ph="select * fro... 财务报表" />
+            <marker date="1512123319544" expanded="true" signature="13181:13315" ph="select * fro... 财务报表" />
+            <marker date="1512123319544" expanded="true" signature="13373:13712" ph="insert into 财务报表... " />
+            <marker date="1512123319544" expanded="true" signature="16008:16124" ph="select * fro... 资产负债表" />
+            <marker date="1512123319544" expanded="true" signature="16183:17124" ph="insert into 资产负债表... " />
+            <marker date="1512123319544" expanded="true" signature="19422:19536" ph="select * fro... 利润表" />
+            <marker date="1512123319544" expanded="true" signature="19595:20281" ph="insert into 利润表... " />
+            <marker date="1512123319544" expanded="true" signature="21307:21441" ph="select * fro... 收入分析表" />
+            <marker date="1512123319544" expanded="true" signature="21500:21684" ph="insert into 收入分析表... " />
+            <marker date="1512123319544" expanded="true" signature="22605:22743" ph="select * fro... 费用分析表" />
+            <marker date="1512123319544" expanded="true" signature="22802:23155" ph="insert into 费用分析表... " />
+            <marker date="1512123319544" expanded="true" signature="23843:23983" ph="select * fro... 基金资产分类配置表" />
+            <marker date="1512123319544" expanded="true" signature="24042:24206" ph="insert into 基金资产分类配置表... " />
+            <marker date="1512123319544" expanded="true" signature="24700:24828" ph="select * fro... 历史净值明细表" />
+            <marker date="1512123319544" expanded="true" signature="24887:25039" ph="insert into 历史净值明细表... " />
+            <marker date="1512123319544" expanded="true" signature="25427:25546" ph="select * fro... 收益率走势表" />
+            <marker date="1512123319544" expanded="true" signature="25605:25714" ph="insert into 收益率走势表... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TianTianJiJin/spiders/tiantian_jijin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="27">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
