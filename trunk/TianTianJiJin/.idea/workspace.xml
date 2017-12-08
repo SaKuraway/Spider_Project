@@ -24,7 +24,7 @@
         <entry file="file://$PROJECT_DIR$/TianTianJiJin/items.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="108">
-              <caret line="4" column="23" lean-forward="true" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
+              <caret line="4" column="23" lean-forward="false" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -33,8 +33,8 @@
       <file leaf-file-name="pipelines.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TianTianJiJin/pipelines.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2872">
-              <caret line="8" column="11" lean-forward="true" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
+            <state relative-caret-position="162">
+              <caret line="8" column="11" lean-forward="false" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
               <folding>
                 <element signature="e#192#206#0" expanded="true" />
                 <marker date="1512123319544" expanded="true" signature="1808:1965" ph="insert into aqi_data... " />
@@ -101,8 +101,8 @@
       <file leaf-file-name="tiantian_jijin.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TianTianJiJin/spiders/tiantian_jijin.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="4" column="13" lean-forward="true" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+            <state relative-caret-position="27">
+              <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -111,8 +111,8 @@
       <file leaf-file-name="connect_to_mysql.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/connect_to_mysql.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="12" column="73" lean-forward="true" selection-start-line="12" selection-start-column="73" selection-end-line="12" selection-end-column="73" />
+            <state relative-caret-position="324">
+              <caret line="12" column="73" lean-forward="false" selection-start-line="12" selection-start-column="73" selection-end-line="12" selection-end-column="73" />
               <folding>
                 <marker date="1512109905750" expanded="true" signature="392:427" ph="select * fro... 财务报表" />
                 <marker date="1512109905750" expanded="true" signature="392:469" ph="select * fro... 财务报表" />
@@ -121,7 +121,6 @@
                 <marker date="1512109905750" expanded="true" signature="392:487" ph="select * fro... 财务报表" />
                 <marker date="1512109905750" expanded="true" signature="392:488" ph="select * fro... 财务报表" />
                 <marker date="1512109905750" expanded="true" signature="392:489" ph="select * fro... 财务报表" />
-                <marker date="1512109905750" expanded="true" signature="392:1205" ph="select * fro... 财务报表" />
               </folding>
             </state>
           </provider>
@@ -663,7 +662,7 @@
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16792738" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17019667" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32973805" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="调试" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31432974" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32973805" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
@@ -979,14 +978,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/TianTianJiJin/Data/ACworth_TEST.txt">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="280638">
-          <caret line="10394" column="34" lean-forward="false" selection-start-line="10394" selection-start-column="34" selection-end-line="10394" selection-end-column="34" />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="LargeFileEditor">
         <state relative-caret-position="416">
           <caret line="13095" column="24" lean-forward="false" selection-start-line="13095" selection-start-column="24" selection-end-line="13095" selection-end-column="24" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="280638">
+          <caret line="10394" column="34" lean-forward="false" selection-start-line="10394" selection-start-column="34" selection-end-line="10394" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -1059,14 +1058,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="314">
           <caret line="5101" column="31" lean-forward="false" selection-start-line="5101" selection-start-column="31" selection-end-line="5101" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/connect_to_mysql.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="12" column="73" lean-forward="true" selection-start-line="12" selection-start-column="73" selection-end-line="12" selection-end-column="73" />
+        <state relative-caret-position="324">
+          <caret line="12" column="73" lean-forward="false" selection-start-line="12" selection-start-column="73" selection-end-line="12" selection-end-column="73" />
           <folding>
             <marker date="1512109905750" expanded="true" signature="392:427" ph="select * fro... 财务报表" />
             <marker date="1512109905750" expanded="true" signature="392:469" ph="select * fro... 财务报表" />
@@ -1075,26 +1073,15 @@
             <marker date="1512109905750" expanded="true" signature="392:487" ph="select * fro... 财务报表" />
             <marker date="1512109905750" expanded="true" signature="392:488" ph="select * fro... 财务报表" />
             <marker date="1512109905750" expanded="true" signature="392:489" ph="select * fro... 财务报表" />
-            <marker date="1512109905750" expanded="true" signature="392:1205" ph="select * fro... 财务报表" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TianTianJiJin/spiders/elegomall.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="20" column="58" lean-forward="true" selection-start-line="20" selection-start-column="58" selection-end-line="20" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/TianTianJiJin/spiders/elegomall.py" />
     <entry file="file://$PROJECT_DIR$/xiaxiang_requests.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
           <caret line="12" column="75" lean-forward="false" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="75" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1112,15 +1099,15 @@
     <entry file="file://$PROJECT_DIR$/TianTianJiJin/items.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
-          <caret line="4" column="23" lean-forward="true" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
+          <caret line="4" column="23" lean-forward="false" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/TianTianJiJin/pipelines.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2872">
-          <caret line="8" column="11" lean-forward="true" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
+        <state relative-caret-position="162">
+          <caret line="8" column="11" lean-forward="false" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
           <folding>
             <element signature="e#192#206#0" expanded="true" />
             <marker date="1512123319544" expanded="true" signature="1808:1965" ph="insert into aqi_data... " />
@@ -1185,8 +1172,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TianTianJiJin/spiders/tiantian_jijin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="4" column="13" lean-forward="true" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        <state relative-caret-position="27">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
           <folding />
         </state>
       </provider>

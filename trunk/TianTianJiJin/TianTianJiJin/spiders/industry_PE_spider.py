@@ -103,40 +103,40 @@ class Industry_PE(object):
 # to_mysql(jingTai,dongTai)
 
 if __name__ == '__main__':
-    while True:
-        industry_pe = Industry_PE('制造业行业市盈率',
-                                  'http://fund.eastmoney.com/f10/F10DataApi.aspx?type=hysyl&indcode=C&Y=2017&Q=3&lastestYear=1')
-        industry_pe.spide_to_mysql()
-        industry_pe = Industry_PE('电力、热力、燃气及水生产和供应业行业市盈率',
-                                  'http://fund.eastmoney.com/f10/F10DataApi.aspx?type=hysyl&indcode=D&Y=2017&Q=3&lastestYear=1')
-        industry_pe.spide_to_mysql()
-        industry_pe = Industry_PE('信息传输、软件和信息技术服务业行业市盈率',
-                                  'http://fund.eastmoney.com/f10/F10DataApi.aspx?type=hysyl&indcode=I&Y=2017&Q=3&lastestYear=1')
-        industry_pe.spide_to_mysql()
-        industry_pe = Industry_PE('批发和零售业行业市盈率',
-                                  'http://fund.eastmoney.com/f10/F10DataApi.aspx?type=hysyl&indcode=F&Y=2017&Q=3&lastestYear=1')
-        industry_pe.spide_to_mysql()
-        industry_pe = Industry_PE('文化、体育和娱乐业行业市盈率',
-                                  'http://fund.eastmoney.com/f10/F10DataApi.aspx?type=hysyl&indcode=R&Y=2017&Q=3&lastestYear=1')
-        industry_pe.spide_to_mysql()
-        industry_pe = Industry_PE('卫生和社会工作行业市盈率',
-                                  'http://fund.eastmoney.com/f10/F10DataApi.aspx?type=hysyl&indcode=Q&Y=2017&Q=3&lastestYear=1')
-        industry_pe.spide_to_mysql()
-        industry_pe = Industry_PE('租赁和商务服务业行业市盈率',
-                                  'http://fund.eastmoney.com/f10/F10DataApi.aspx?type=hysyl&indcode=L&Y=2017&Q=3&lastestYear=1')
-        industry_pe.spide_to_mysql()
-        industry_pe = Industry_PE('水利、环境和公共设施管理业行业市盈率',
-                                  'http://fund.eastmoney.com/f10/F10DataApi.aspx?type=hysyl&indcode=N&Y=2017&Q=3&lastestYear=1')
-        industry_pe.spide_to_mysql()
-        industry_pe = Industry_PE('科学研究和技术服务业行业市盈率',
-                                  'http://fund.eastmoney.com/f10/F10DataApi.aspx?type=hysyl&indcode=M&Y=2017&Q=3&lastestYear=1')
-        industry_pe.spide_to_mysql()
-        industry_pe = Industry_PE('采矿业行业市盈率',
-                                  'http://fund.eastmoney.com/f10/F10DataApi.aspx?type=hysyl&indcode=B&Y=2017&Q=3&lastestYear=1')
-        industry_pe.spide_to_mysql()
-        industry_pe = Industry_PE('交通运输、仓储和邮政业行业市盈率',
-                                  'http://fund.eastmoney.com/f10/F10DataApi.aspx?type=hysyl&indcode=G&Y=2017&Q=3&lastestYear=1')
-        industry_pe.spide_to_mysql()
+    # while True:
+    industry_pe = Industry_PE('制造业行业市盈率',
+                              'http://fund.eastmoney.com/f10/F10DataApi.aspx?type=hysyl&indcode=C&Y=2017&Q=3&lastestYear=1')
+    industry_pe.spide_to_mysql()
+    industry_pe = Industry_PE('电力、热力、燃气及水生产和供应业行业市盈率',
+                              'http://fund.eastmoney.com/f10/F10DataApi.aspx?type=hysyl&indcode=D&Y=2017&Q=3&lastestYear=1')
+    industry_pe.spide_to_mysql()
+    industry_pe = Industry_PE('信息传输、软件和信息技术服务业行业市盈率',
+                              'http://fund.eastmoney.com/f10/F10DataApi.aspx?type=hysyl&indcode=I&Y=2017&Q=3&lastestYear=1')
+    industry_pe.spide_to_mysql()
+    industry_pe = Industry_PE('批发和零售业行业市盈率',
+                              'http://fund.eastmoney.com/f10/F10DataApi.aspx?type=hysyl&indcode=F&Y=2017&Q=3&lastestYear=1')
+    industry_pe.spide_to_mysql()
+    industry_pe = Industry_PE('文化、体育和娱乐业行业市盈率',
+                              'http://fund.eastmoney.com/f10/F10DataApi.aspx?type=hysyl&indcode=R&Y=2017&Q=3&lastestYear=1')
+    industry_pe.spide_to_mysql()
+    industry_pe = Industry_PE('卫生和社会工作行业市盈率',
+                              'http://fund.eastmoney.com/f10/F10DataApi.aspx?type=hysyl&indcode=Q&Y=2017&Q=3&lastestYear=1')
+    industry_pe.spide_to_mysql()
+    industry_pe = Industry_PE('租赁和商务服务业行业市盈率',
+                              'http://fund.eastmoney.com/f10/F10DataApi.aspx?type=hysyl&indcode=L&Y=2017&Q=3&lastestYear=1')
+    industry_pe.spide_to_mysql()
+    industry_pe = Industry_PE('水利、环境和公共设施管理业行业市盈率',
+                              'http://fund.eastmoney.com/f10/F10DataApi.aspx?type=hysyl&indcode=N&Y=2017&Q=3&lastestYear=1')
+    industry_pe.spide_to_mysql()
+    industry_pe = Industry_PE('科学研究和技术服务业行业市盈率',
+                              'http://fund.eastmoney.com/f10/F10DataApi.aspx?type=hysyl&indcode=M&Y=2017&Q=3&lastestYear=1')
+    industry_pe.spide_to_mysql()
+    industry_pe = Industry_PE('采矿业行业市盈率',
+                              'http://fund.eastmoney.com/f10/F10DataApi.aspx?type=hysyl&indcode=B&Y=2017&Q=3&lastestYear=1')
+    industry_pe.spide_to_mysql()
+    industry_pe = Industry_PE('交通运输、仓储和邮政业行业市盈率',
+                              'http://fund.eastmoney.com/f10/F10DataApi.aspx?type=hysyl&indcode=G&Y=2017&Q=3&lastestYear=1')
+    industry_pe.spide_to_mysql()
 
-        time.sleep(86400)  # 每隔一天运行一次 24*60*60=86400s
+        # time.sleep(86400)  # 每隔一天运行一次 24*60*60=86400s
 

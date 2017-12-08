@@ -160,7 +160,7 @@ class TiantianjijinMysqlPipeline(object):
             cur.close()
 
         except pymysql.Error as e:
-            with open('Data/' + 'Mysql错误日志' + '.log', 'a', encoding='utf-8') as f:
+            with open('Data/' + '错误日志' + '.log', 'a', encoding='utf-8') as f:
                 print('正在写入错误信息：',e)
                 f.write(time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))+'：'+str(e) + '\r\n')
             f.close()
@@ -175,7 +175,7 @@ class TiantianjijinMysqlPipeline(object):
         try:
             sth
         except pymysql.Error as e:
-            with open('Data/' + 'Mysql错误日志' + '.log', 'a', encoding='utf-8') as f:
+            with open('Data/' + '错误日志' + '.log', 'a', encoding='utf-8') as f:
                 print('正在写入错误信息：',e)
                 f.write(time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))+'：'+str(e) + '\r\n')
             f.close()
