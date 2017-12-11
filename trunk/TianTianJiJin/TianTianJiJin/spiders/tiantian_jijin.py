@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 import json
 import re
 import time
@@ -846,7 +846,7 @@ class TiantianJijinSpider(scrapy.Spider):
             dict_json = json.loads(response.body.decode())
             item['ACWorth_date'] = [str(int(int(i[0]) / 1000)) for i in dict_json[0]['data']]
             item['this_fund_rate'] = [i[1] for i in dict_json[0]['data']]
-            item['similar_fund_rate'] = [i[1] if dict_json[1]['name']=='同类排名'else '' for i in dict_json[1]['data']] #可以不存在同类排名
+            item['similar_fund_rate'] = [i[1] if dict_json[1]['name']=='同类平均'else '' for i in dict_json[1]['data']] #可以不存在同类排名
             item['hs300_rate'] = [i[1] for i in dict_json[-1]['data']]
 
         except Exception as e:
