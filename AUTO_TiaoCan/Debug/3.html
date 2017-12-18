@@ -1,0 +1,1507 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-gb" xml:lang="en-gb">
+    <head>
+        <title>Policy Details System Search Results</title>
+
+        <!-- file mime.types -->
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta http-equiv="content-language" content="en-gb" />
+        <!-- content -->
+        <meta name="description" content="" />
+        <meta http-equiv="X-UA-Compatible" content="IE=8"/>
+        <meta http-equiv="imagetoolbar" content="no" />
+        <meta name="MSSmartTagsPreventParsing" content="true" />
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="/hansard/laf/resources/styles/print.css"           type="text/css" media="print" />
+        <link rel="stylesheet" href="/hansard/laf/resources/styles/reset.css"           type="text/css" media="all" />
+        <link rel="stylesheet" href="/hansard/laf/resources/styles/core/layout.css"     type="text/css" media="all" />
+        <link rel="stylesheet" href="/hansard/laf/resources/styles/core/tables.css"     type="text/css" media="all" />
+        <link rel="stylesheet" href="/hansard/laf/resources/styles/core/forms.css"      type="text/css" media="all" />
+        <link rel="stylesheet" href="/hansard/laf/resources/styles/core/typography.css" type="text/css" media="all" />
+        <link rel="stylesheet" href="/hansard/laf/resources/styles/core/misc.css"       type="text/css" media="all" />
+        <link rel="stylesheet" href="/hansard/laf/resources/styles/extended-style.css"  type="text/css" media="all" />
+        <link rel="stylesheet" href="/hansard/laf/resources/styles/print.css"           type="text/css" media="print" />
+        <link rel="stylesheet" href="/hansard/laf/resources/styles/jquery.cluetip.css"  type="text/css" />
+        <link rel="stylesheet" href="/hansard/laf/resources/styles/facebox.css"         type="text/css" />
+
+        <!--[if lte IE 6]>
+                <link rel="stylesheet" href="/hansard/laf/resources/styles/core/ie6.css" type="text/css" media="screen" />
+                <![endif]-->
+        <!--[if IE 7]>
+                <link rel="stylesheet" href="/hansard/laf/resources/styles/core/ie7.css" type="text/css" media="screen" />
+                <![endif]-->
+        <!--[if IE 8]>
+                <link rel="stylesheet" href="/hansard/laf/resources/styles/core/ie8.css" type="text/css" media="screen" />
+                <![endif]-->
+
+        <!-- Jquery / Javascript -->
+        <script type="text/javascript" src="/hansard/laf/resources/scripts/jquery-1.4.2.min.js"     ></script>
+        <script type="text/javascript" src="/hansard/laf/resources/scripts/jquery.uniform.js"       ></script>
+        <script type="text/javascript" src="/hansard/laf/resources/scripts/jquery.tools.min.js"     ></script>
+        <script type="text/javascript" src="/hansard/laf/resources/scripts/jquery.dataTables.js"    ></script>
+        <script type="text/javascript" src="/hansard/laf/resources/scripts/jquery.cluetip.js"       ></script>
+        <script type="text/javascript" src="/hansard/laf/resources/scripts/jquery.hoverIntent.js"   ></script> <!-- optional -->
+
+        <script type="text/javascript" src="/hansard/laf/resources/scripts/facebox.js"></script>
+
+        <script type="text/javascript" src="/hansard/laf/resources/scripts/fixedheader.js"></script>
+
+        <script type="text/javascript" src="/hansard/laf/resources/scripts/site_map.js"></script>
+        <script type="text/javascript" src="SearchResults.js?d=2016-12-14-1731"></script>
+        <script type="text/javascript" src="SearchWindowUtils.js"></script>
+        <script type="text/javascript" src="/hansard/js/util.js"></script>
+
+<script>
+    var policyData = [];
+
+    var InvalidDateError = "Invalid date - Please Re-Enter.";
+    var LeapYearError   = " is not a leap year - Please Re-Enter.";
+
+
+    function launchApp(windowName, url, paramList, useGet, big) {
+        openNewWindow(windowName, big);
+
+        var form = document.createElement("form");
+        form.setAttribute("method", useGet ? "get" : "post");
+        form.setAttribute("action", url);
+        form.setAttribute("target", windowName);
+
+        $.each(paramList, function(name, value) {
+            if ($.isArray(value)) {
+	            addEachItemToForm(form, name, value);
+            } else {
+	            addItemToForm(form, name, value);
+            }
+        });
+
+        document.body.appendChild(form);
+        form.submit();
+    }
+
+    function addItemToForm(form, name, value) {
+    	form.appendChild(createHiddenFormField(name, value));
+    }
+
+    function addEachItemToForm(form, name, array) {
+    	$.each(array, function(index, value) {
+            addItemToForm(form, name, value);
+    	});
+    }
+
+    function openNewWindow(windowName, big) {
+        var w = big ? 1280 : 1024;
+        var h = big ? 1024 : 768;
+
+        var namedWindow = window.open('', windowName ,'resizable=yes,location=no,scrollbars=yes,toolbar=yes,status=yes,screenx=10,screeny=10,width='+w+',height='+h+',left=10,top=10');
+        namedWindow.focus();
+
+    }
+
+    function createHiddenFormField(name, value) {
+        var field = document.createElement("input");
+        field.setAttribute("type", "hidden");
+        field.setAttribute("name", name);
+        field.setAttribute("value", value);
+        return field;
+    }
+
+    function launchPPdeal(screen, policyNumber, company) {
+        var params = {
+            "screen": screen,
+            "policyNumber": policyNumber,
+            "company": company,
+            "RequestedPage": "PPDealingLaunch"
+        }
+
+        // do not change the window name as this needs to match the same window as the front page link opens
+        // the slice is to match the frontpage opening exactly
+        var windowTitle = "PP Dealing";
+        var windowName = windowTitle.slice(0, windowTitle.indexOf(' '));
+        launchApp(windowName, "", params, true);
+    }
+
+    function launchWithdrawal( policyNumber, company) {
+
+                var results= parent.frames[1].document;
+                var locale = '';
+        if( parent.frames[0].document.top.LocaleField.value == 'select' ) {
+                    locale = $('#localeSelect',parent.frames[1].document).attr('value');
+        } else {
+                    locale = $('#localeDest input[name=Locale]', results).attr('value');
+                }
+
+        if( locale.indexOf(",") > -1) {
+                   var seperatorIdx = locale.indexOf(",");
+                   var country = locale.substr(0, seperatorIdx);
+                   var language = locale.substr(seperatorIdx+1, locale.length);
+
+                   locale = language + "_" + country;
+                }
+
+        var params = {
+               "policy": policyNumber,
+               "company": company
+            }
+
+        // do not change the window name as is a session based process that multiple screens would break
+        var windowTitle = "Withdrawal";
+        var windowName = windowTitle.slice(0, windowTitle.indexOf(' '));
+        var useGet = false;
+        var bigWindow = true;
+        launchApp(windowName, "/payments-out/payments-out", params, useGet, bigWindow);
+
+    }
+
+    function launchSurrenders(policyNumber, company, insuranceParty) {
+
+                var results= parent.frames[1].document;
+                var locale = '';
+        if( parent.frames[0].document.top.LocaleField.value == 'select' ) {
+                    locale = $('#localeSelect',parent.frames[1].document).attr('value');
+        } else {
+                    locale = $('#localeDest input[name=Locale]', results).attr('value');
+                }
+
+        if( insuranceParty === "UNION" && locale != "GB,en"){
+
+            alert("Union policies are only available in English");
+            return false;
+        }
+
+
+        if( locale.indexOf(",") > -1) {
+                   var seperatorIdx = locale.indexOf(",");
+                   var country = locale.substr(0, seperatorIdx);
+                   var language = locale.substr(seperatorIdx+1, locale.length);
+
+                   locale = language + "_" + country;
+                }
+
+        var params = {
+               "policy": policyNumber,
+               "company": company,
+               "rep": parent.frames[1].document.top.DocType[0].checked ? "html" : "pdf",
+               "locale": locale
+            }
+        launchApp(getWindowName('Surrenders', company, policyNumber), "/surrenders/browse/report", params);
+    }
+
+    function launchTopupOnline(policyNumber, policy, checkDigit, company) {
+        var params = {
+               "RequestedPage": "OLNBTopupLaunch",
+               "policyNumber": policyNumber,
+               "policy": policy,
+               "checkDigit": checkDigit,
+               "company": company
+            }
+        // do not change the window name as this needs to match the same window as the front page link opens
+        // the slice is to match the frontpage opening exactly
+        var windowTitle = "OLNB";
+        var windowName = windowTitle.slice(0, windowTitle.indexOf(' '));
+        launchApp(windowName, "", params, true);
+    }
+
+    function launchTimeline(policyLabel, policyNumber, policy, checkDigit, company) {
+        var win_name =  getWindowName('Launch '+policyLabel+' Timeline', company, policyNumber);
+        var params = {
+               "RequestedPage": "TimelineLaunch",
+               "policyNumber": policyNumber,
+               "policy": policy,
+               "checkDigit": checkDigit,
+               "company": company
+            }
+        launchApp(win_name, "", params, true, true);
+    }
+
+    function launchPIR(company, policyNumber, clientNumber, clientType) {
+        var params = {
+               "policy": company+"_"+policyNumber,
+               "clientId": clientNumber+"-"+clientType+"-"+company
+        }
+        launchApp("Personal_Investment_Review", "/fb/pir/client", params);
+    }
+
+    function launchOFS(company, policyNumber) {
+        var params = {
+               "policy": policyNumber,
+               "company": company
+            }
+           launchApp("Online_Fund_Switching", "/ofs/browse/pds/policy", params);
+    }
+
+    function launchBulkOFS() {
+        var policies = [];
+        // add each policy number as it's own parameter
+        $.each(selectionArray, function(index, value) {
+            policies.push(polNumArray[value + 1] + checkDigitArray[value + 1]);
+        });
+
+        var funds = [];
+        // if specific funds were searched for,add each as it's own parameter
+        var fundsText = 'null';
+        if (fundsText == 'null') {
+            fundsText = '';
+        }
+        var fundsArray = fundsText.split(',');
+        if (fundsArray.length > 0) {
+            $.each(fundsArray, function(index, value) {
+                if (value.length > 0) {
+                    funds.push(value);
+                }
+            });
+        }
+
+        var params = {
+	        "company": companyArray[selectionArray[0] + 1],
+	        "policy": policies,
+	        "fund" : funds
+        }
+        launchApp("Online_Fund_Switching", "/ofs/browse/pds/policies", params);
+    }
+
+    function languageChange(){
+        var batchSelected = $('#selectAllPol').attr('checked');
+        if (batchSelected === true){
+            selectionFinished();
+        }
+    }
+
+</script>
+
+<script type="text/javascript">
+    var reportName = new Array('Policy Booklet','Key Policy Information',
+            'Unit Allocation Statement','Historic UAS','Detailed Transaction Statement',
+            'Unit Fund Link Performance Graph','Unit Fund Link Performance Table',
+            'Policy Value Graph', 'Unit Fund Link Value Graph','Premium History',
+            'Detailed Premium History','Unit Fund Link Switch History','PP Policy Information',
+            'PP Cash Statement', 'PP Asset Statement', 'PP Valuation', 'PP Historic Valuation', 'Surrender Value Notification', 'Scanned Documents');
+
+            msg_nothistoricdate="The selected date is not historic.";
+             msg_start_date_prior_to_end ='Start date needs to be prior to the end date - Please Re-Enter';
+
+             var reportsAvailNamesArray;
+             var reportsAvailIDArray;
+
+            $(document).ready(function() {
+                  $('#confirmLink').click(function() {
+                    modifyConfirmationTable();
+                });
+
+                $.facebox.settings.closeImage = "/hansard/laf/resources/images/facebox/closelabel.gif";
+                $.facebox.settings.opacity=0.2;
+                $.facebox.settings.faceboxHtml  = '\
+<div id="facebox" style="display:none;"> \
+      <div class="popup"> \
+        <table> \
+          <tbody> \
+            <tr> \
+              <td class="tl"/><td class="b"/><td class="tr"/> \
+            </tr> \
+            <tr> \
+              <td class="b"/> \
+              <td class="body"> \
+                <div class="content"> \
+                </div> \
+              </td> \
+              <td class="b"/> \
+            </tr> \
+            <tr> \
+              <td class="bl"/><td class="b"/><td class="br"/> \
+          </tbody> \
+        </table> \
+      </div> \
+</div>';
+                $('a[rel*=facebox]').facebox();
+
+  sourceFrame = window.parent.frames[0].document;
+                var items = $('#localeList', sourceFrame).children().clone();
+                items.each(function(){
+                    if(this.innerHTML!=''){
+                     $('#localeDest').html(this.innerHTML);
+                    }
+                });
+
+                reportsAvailIDArray = $('#reportIds', sourceFrame).val().split(',');
+                reportsAvailNamesArray = $('#reportNames', sourceFrame).val().split(',');
+        for(i=0;i<reportsAvailNamesArray.length;i++) {
+            if(reportsAvailNamesArray[i].indexOf('UAS') != -1) {
+                        reportsAvailNamesArray[i] = reportsAvailNamesArray[i].replace('UAS', 'Unit Allocation Statement');
+                    }
+                }
+                reportName = reportsAvailNamesArray;
+
+        for(i=1;i<availableArray.length;i++) {
+                    var rowid = "#local"+(i-1);
+                    var reportRows = availableArray[i];
+                    var actualRow = $(rowid).children('span').eq(0);
+
+            for(j=0;j<reportRows.length;j++) {
+                if(reportRows.charAt(j)=='1') {
+                            var reportTitle = reportName[j+1];
+
+                    if(availableArray.length == companyArray.length && companyArray[i] == 'HIL') {
+                        switch(reportTitle) {
+                                    case 'Policy Booklet':
+                                        reportTitle = 'Contract Booklet';
+                                    break;
+                                    case 'Key Policy Information':
+                                        reportTitle = 'Key Contract Information';
+                                     break;
+                                     case 'Policy Value Graph':
+                                        reportTitle = 'Contract Value Graph';
+                                     break;
+                                     case 'Premium History':
+                                        reportTitle = 'Contribution History';
+                                     break;
+                                     case 'Detailed Premium History':
+                                        reportTitle = 'Detailed Contribution History';
+                                     break;
+                        }
+                    }
+
+                    var link = "<p class='pseudolink' onclick='runSpecifiedReportFor("+j+","+i+");'>"+reportTitle+"</p>";
+                    actualRow.before(link);
+                }
+            } //reports loop
+        }//policy loop
+
+        $('a.reportsAvailable').mouseover(function () {
+                    var offset = $(this).offset();
+                    //Hiding the elements below effectively closes the cluetip which makes end user navigation nicer
+                    $('#cluetip-outer').hide();
+                    $('.cluetip-hansard').hide();
+                    //Show a wait image
+                    $('#cluetip-waitimage').css({top: offset.top+20, left: offset.left+20}).show();
+                });
+
+        $('a.reportsAvailable').mouseout(function () {
+                    $('#cluetip-waitimage').hide();
+                });
+
+                $('a.reportsAvailable').cluetip({
+                    cluetipClass: 'hansard',
+                    mouseOutClose: true,
+                    sticky:true,
+                    closePosition: 'title',
+                    cursor:'pointer',
+                    closeText: '<img src="/hansard/laf/resources/images/ui/close_dates.png"/>',
+                    local: true,
+                    hide:true,
+                    waitImage: true,
+                    ajaxCache: false,
+                    onActivate: function(e) {
+                        clueTipActivate(e);
+                        showClueTip();
+                        return true;
+                    }
+                });
+
+                updateBatchLocale($('#localeSelect').get(0));
+
+                $('#localeSave').click(function(e){
+                   e.preventDefault();
+                   parent.frames[0].saveDefault();
+                   var currentlySelected = $("#localeSelect option:contains('default')");
+                   var value = currentlySelected.html();
+                   value = value.slice(0,value.indexOf(' (default'));
+                   currentlySelected.html(value);
+                   var newValue = $('#localeSelect :selected').text();
+                   $('#localeSelect :selected').text(newValue +" (default)");
+                   $.uniform.update('#localeSelect');
+                });
+
+                $("select").uniform();
+                $(":radio").uniform();
+                $(":checkbox").uniform();
+
+                // perform the on activate check for the first policy
+                // as this will run any ajax for the first policy and disable if not responding
+                // also first policy likely to be used anyway
+                var firstPol = $('#resultsRow0Enabled');
+        if( firstPol.length >0) {
+                    clueTipActivate(firstPol);
+                }
+
+                var checkboxOpenInNewWindowState = false;
+
+    			$('#radioReportFormatHtml').click(function(e) {
+    				$('#checkboxOpenInNewWindow').attr('checked', checkboxOpenInNewWindowState);
+    				$('#checkboxOpenInNewWindow').show();
+    				$.uniform.update();
+    			});
+
+    			$('#radioReportFormatPdf').click(function(e) {
+    				checkboxOpenInNewWindowState = $('#checkboxOpenInNewWindow').attr('checked');
+    				$('#checkboxOpenInNewWindow').attr('checked', false);
+    				$('#checkboxOpenInNewWindow').hide();
+    				$.uniform.update();
+    			});
+
+    			$('#paginationSize_' + 50).attr('selected', true);
+    			$.uniform.update();
+
+    			forceMultipleModeIfDisplayingMoreThan50Policies();
+            }); //end of document ready function
+
+           var ppdealingAvailable = true;
+           var paymentsoutServerAvailable = true;
+           var onlineNewBusinessAvailable = true;
+           var onlineFundSwitchingAvailable = true;
+
+            // Perform ajax calls that check if the policy can perform the action.
+    // Won't check if the link doesn't exist
+    function clueTipActivate(e) {
+                var text = e.attr('rel');
+                var index = text.substring(text.lastIndexOf('l')+1, text.length);
+                var policyIndex = parseInt(index) + 1;
+
+                var shown = cuetipShownArray[policyIndex];
+
+        if( shown == false) {
+            var polnum =  polNumArray[policyIndex];
+            var checkdigit = checkDigitArray[policyIndex];
+            var comp = companyArray[policyIndex];
+
+            var showActionsTitle = false;
+
+            // check New Biz Top up call if the link exists
+            if( $('#olnb' + index).length >0  && onlineNewBusinessAvailable) {
+                var result = checkForAccess( '/olnb/topup/policy/'+comp+'/'+polnum+checkdigit );
+                if( result == 'true') {
+                            $('#olnb' + index).css('display', 'block');
+                            showActionsTitle =true;
+                } else if( result != 'false' ) { // if result isn't true or false then there is an issue with the server
+                            onlineNewBusinessAvailable = false
+                }
+            }
+
+            // check PPDealing call if the link exists
+            if( $('#ppdeal' + index).length >0 && ppdealingAvailable ) {
+                        var result = checkForAccess( '/pp-dealing/browse/policyCheck?policyNumber='+polnum+checkdigit+'&company='+comp );
+                if( result == 'true') {
+                            $('#ppdeal' + index).css('display', 'block');
+                            showActionsTitle =true;
+                } else if( result != 'false') { // if result isn't true or false then there is an issue with the server
+                            ppdealingAvailable = false;
+                }
+            }
+
+            // check Withdrawal call if the link exists and server is available
+            if( $('#withdrawal' + index).length >0 && paymentsoutServerAvailable ) {
+                        var result = checkForAccess( '/payments-out/payments-out?type=auth&policyNumber='+polnum+'&company='+comp );
+                if( result == 'true') {
+                            $('#withdrawal' + index).css('display', 'block');
+                            showActionsTitle =true;
+                } else if( result != 'false') { // if result isn't true or false then there is an issue with the server
+                            paymentsoutServerAvailable = false;
+                }
+            }
+
+            // check OFS link exists (doesn't check the OFS app directly)
+            if( $('#ofs' + index).length >0 && onlineFundSwitchingAvailable ) {
+                $('#ofs' + index).css('display', 'block');
+                showActionsTitle =true;
+            }
+
+            if( showActionsTitle == true ) {
+                $('#actions' + index).css('display', 'block');
+            }
+            cuetipShownArray[policyIndex] = true;
+        }
+    }
+
+            // perform ajax call for cluetip activate
+    function checkForAccess(url) {
+                var ajaxResponse =  $.ajax({
+                    async: false,
+                    global: false,
+                    cache: false,
+                    timeout: 500,
+                    type: "GET",
+                    url: url
+                })
+
+                return ajaxResponse.responseText;
+            }
+
+           // show previous hidden cluetip
+    function showClueTip() {
+                 $('#cluetip-outer').show();
+                 $('.cluetip-hansard').show();
+                 $('#cluetip-waitimage').hide();
+           }
+</script>
+<style>
+            th.clientcol {
+                width: 208px;
+            }
+
+            p.pseudolink:hover {
+                cursor: pointer;
+                text-decoration: underline;
+            }
+
+            div#pageselector {
+                float: right;
+            }
+            div#pageselector div.selector {
+                width: 160px;
+                margin-right: 0px;
+            }
+            div#pageselector select {
+                width: 158px;
+            }
+</style>
+
+</head>
+
+    <body>
+        <script type="text/javascript" src="/hansard/laf/resources/scripts/jquery.blockUI.js"></script>
+<script type="text/javascript" src="/hansard/laf/resources/scripts/spin.js"></script>
+
+<div id="curtain" style="display: none;">
+    <p>Processing, please wait...</p>
+</div>
+
+<style type="text/css">
+    div.blockOverlay {
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+        -moz-opacity:.70;
+        opacity:.70;
+        background-color: white;
+        cursor: wait;
+    }
+
+    div.blockMsg {
+        width:  40%;
+        top:    40%;
+        left:   30%;
+        text-align: center;
+        cursor: wait;
+        color: gray;
+        font-size: 20px;
+    }
+
+    div#curtain p {
+        padding-top: 30px;
+    }
+
+    .spinner {
+        left: 50% !important;
+    }
+</style>
+
+<script>
+    jQuery.fx.off = true; // turn off any JQuery UI effects (like fading, etc.)
+
+    //clear out plugin default styling
+    $.blockUI.defaults.overlayCSS = {};
+    $.blockUI.defaults.css = {};
+
+    function showCurtainAndSubmitForm(formId) {
+    	var opts = {
+		  lines: 13, // The number of lines to draw
+		  length: 5, // The length of each line
+		  width: 3, // The line thickness
+		  radius: 8, // The radius of the inner circle
+		  corners: 1, // Corner roundness (0..1)
+		  rotate: 0, // The rotation offset
+		  color: '#000', // #rgb or #rrggbb
+		  speed: 1, // Rounds per second
+		  trail: 60, // Afterglow percentage
+		  shadow: false, // Whether to render a shadow
+		  hwaccel: false, // Whether to use hardware acceleration
+		  className: 'spinner', // The CSS class to assign to the spinner
+		  zIndex: 2e9, // The z-index (defaults to 2000000000)
+		  top: 'auto', // Top position relative to parent in px
+		  left: 'auto' // Left position relative to parent in px
+		};
+
+        var target = document.getElementById('curtain');
+        var spinner = new Spinner(opts).spin(target);
+
+    	$.blockUI({ message: $('#curtain') });
+    	$('#' + formId).submit();
+    }
+</script><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- //////////////////////////////////////////////////////////////////
+                HEADER
+    //////////////////////////////////////////////////////////////////-->
+
+    <!-- THIS IS THE GLOBAL NAVIGATION FOR HOME/SITEMAP/LOGOUT -->
+    <div id="banner">
+        <div id="banner-content">
+            <ul id="global_nav"  >
+               <li><a class="home" target="_top" href="/hansard/hansard/servlet/frontpage/FrontPage">Home</a></li>
+                <li><a id="site-map-trigger" class="sitemap" href="#">Library</a></li>
+                <li><a class="logout"  target="_top" href="/hansard/hansard/servlet/frontpage/FrontPage?RequestedPage=LoggedOut&Action=LogOut" >Log Out</a></li>
+            </ul>
+            <h1>Hansard OnLine</h1>
+        </div>
+    </div>
+    <!-- END GLOBAL NAVIGATION FOR HOME/SITEMAP/LOGOUT -->
+
+<div class="container">
+              <div class="container" style="padding-right:17px">
+            <h2>Policy Details System</h2>
+			<ul id="local_nav" style="margin-right:17px">
+				<li>
+					<a href="Pds?RequestedPage=AdvancedSearch" target="_top">Advanced Search</a>
+				</li>
+				<li>
+					<a href="Pds?RequestedPage=BasicSearch" target="_top">Basic Search</a>
+				</li>
+			</ul>
+		</div>
+
+            <div class="panel clearfix">
+                <div class="full">
+                    <div class="col_type_2">
+
+                        <fieldset>
+                            <form name="top" method="post">
+                                <div class="col">
+                                    <div class="radio_group">
+                                        <label id="labelReportFormat">Report Format</label>
+                                        <div id="reportSelector">
+                                            <input type="radio" id="radioReportFormatHtml"checked="checked" name="DocType" value="HTML" />
+
+                                            <label id="labelReportFormatHtml">HTML</label>
+											<input type="checkbox" id="checkboxOpenInNewWindow" name="OpenInNewWindow"/>
+											<label id="openInNewWindow">Open in New Window</label>
+<input type="radio"  id="radioReportFormatPdf" name="DocType" value="PDF" />
+                                            <label id="labelReportFormatPdf" >PDF</label>
+</div>
+                                        <div style="display:none" id="disabledReportSelector">
+                                            <label>Unavailable in Batch Mode</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col" id="localeDest"
+
+                                     >
+                                </div>
+                            <input type="hidden" NAME="Screen" Value="report" />
+                                <input type="hidden" NAME="PolicyNumber" />
+                                <input type="hidden" NAME="PolicyCheckDigit" />
+                                <input type="hidden" NAME="Language"  VALUE="english" />
+                                <input type="hidden" NAME="policy" value="6"  />
+                            </form>
+
+                        </fieldset>
+
+                    </div>
+                </div>
+
+                <div class="full">
+                    <div>
+                        <div class="pages" style="width:100%"> Search Results 1 - 1
+                            of 1<span style="margin-left: 25px">Search Type=Basic, Policy Number=564598A, Policy Status=Active</span>
+
+<div id="pageselector">
+                                <select name="paginationSize" onchange="setPaginationSize(this.value);">
+                                    <option id="paginationSize_50" value="50">50 results per page</option>
+                                    <option id="paginationSize_250" value="250">250 results per page</option>
+                                    <option id="paginationSize_1000" value="1000">1000 results per page</option>
+                                </select>
+                            </div>
+</div>
+
+                    </div>
+                            <br/>
+                            <div style="display:inline;">
+                            <div id="maincontent" style="display:inline;float:left">
+
+                    <form name="main" action="Pds" method="post"  target="PdsBatch">
+
+                        <input type="hidden" name="RequestedPage" value="Batch" />
+                        <input type="hidden" name="NumberOfPolicies" value="2" />
+                        <input type="hidden" id="PdfAllowed" name="PdfAllowed" value="true" />
+                        <input id="batchLocale" type="hidden" name="Locale" />
+
+<table class="search_result " id="results"  style="width:940px">
+                            <tr>
+                                <th width="54px" >Policy ID</th>
+                                <th>Company</th>
+                                <th width="129px" >Product</th>
+                                <th class="clientcol" >Client</th>
+                                <th width="16px"><abbr title="Servicing Broker">SB</abbr></th>
+                                <th width="16px"><abbr title="Fund Advisor">FA</abbr></th>
+                                <th width="60px" class="batchcol" >Batch  <input type="checkbox" onclick="selectAllPolicies();"  id="selectAllPol" ></input></th>
+                                <th class="hideonminimise">Status</th>
+                                <th class="hideonminimise">Broker</th>
+                                <th class="hideonminimise" >D.O.B.</th>
+                            </tr>
+<script>
+                                policyData[0] = {
+                                    lifeCompany: 'HIL',
+                                    policy: '564598A',
+                                    policyNumber: 564598,
+                                    checkDigit: 'A',
+                                    status: 'IFO',
+                                    isPP: false,
+                                    isFundAdvisor: true,
+                                    fundGroup: 'HILS2'
+                                }
+                            </script>
+
+                            <tr id="resultsRow0"  >
+
+                                 <td >
+                                    <a class="reportsAvailable"  rel="#local0" title="Options Available for 564598A" id="resultsRow0Enabled" href="#local0"    >
+                                        564598A</a>
+
+                                    <!-- We put out the policy number again so we can disable links -->
+                                    <span class="hideinitial showonminimise" id="resultsRow0Disabled" >
+                                        564598A</span>
+                                    <input type="hidden" name="avail1" onclick="return false;" style="display:none" />
+
+<!-- popup clue tip body showing available policy options, out-dented for easier reading -->
+<span style="display:none;">
+                                        <div id="local0" class="clueTiphidden">
+                                            <p style='font-weight:bold;'>
+                                                    Reports </p>
+                            				<!-- The following span is populated from availableArray -->
+                            				<!-- for more info - see actualRow.before(link) in this file above -->
+                                            <span></span>
+<p class='pseudolink' onclick="launchSurrenders('564598','HIL', 'HIL');">Surrender Value Notification</p>
+<p class="pseudolink" id="timeline0" onclick="launchTimeline('Contract','564598A','564598','A','HIL');">Contract Timeline</p>
+<p class="pseudolink" onclick="launchPIR('HIL','564598', '427035', 'PSN');">Personal Investment Review</p>
+<p class="pseudolink" id="tac0" onclick="runTacFor('564598','A','HIL');">Terms and Conditions</p>
+<p id="actions0" style="display: none;font-weight:bold;"> Actions </p>
+
+<p class="pseudolink" style="display: none;" id="ofs0" onclick="launchOFS('HIL', '564598A');">Instruct a Switch</p>
+<p class='pseudolink' style="display: none;"  id='withdrawal0' onclick="launchWithdrawal( '564598', 'HIL')"  >Instruct a Withdrawal</p>
+</div>
+</span>
+                                </td>
+                                <td id="insuranceCompany0">HIL</td>
+                                <td>Vantage Platinum II</td>
+
+                                <td class='clientName'>Min Gu</td>
+
+                                <td><img src="/hansard/laf/resources/images/tick.png"/></td>
+                                <td><img src="/hansard/laf/resources/images/tick.png"/></td>
+
+                                <td><input type="checkbox" id='selectRowCheck0' rel="#resultsRow0"  onclick="doCheckSelection($(this));"></input></td>
+                                <td class="hideonminimise">IFO</td>
+                                <td class="hideonminimise">PFS - Trussan</td>
+                                <td class="hideonminimise" style="width:76px">
+                                    28-Apr-1979<input type="hidden" name="CompanyPolicy0"
+                                        value="HIL,564598,A,111111100000" />
+                                </td>
+                            </tr>
+</table>
+                    </form>
+                        </div>
+
+                <div class="third" id="multipleReportSelector" style="display:none">
+
+<div id="bulkOfs">
+                        <button id="bulkOfsButton"  type="button" class="submit disabled" disabled="disabled" value="ofs" onclick="launchBulkOFS();">Process a Bulk Switch</button>
+                        <div id="ofsDisabledMessage">
+                            <p>
+                                Important Note; Instructions for one or more of the policies selected cannot be made:
+                                the reasons may include:
+                            </p>
+                            <ul style="margin-left: 20px;">
+                                <li type="disc" id="hasNotPickedAnyPoliciesMessage" style="display:none">You must selected at least one policy in order to process a switch</li>
+                                <li type="disc" id="hasAMixOfLifeCompaniesMessage"  style="display:none">The policies selected belong to different life companies</li>
+                                <li type="disc" id="containsPpPoliciesMessage"      style="display:none">One or more of the selected policies is a PP policy</li>
+                                <li type="disc" id="isNotFundAdvisorMessage"        style="display:none">You are not the recorded fund advisor (FA) for each selected policy</li>
+                                <li type="disc" id="containsInvalidStatusesMessage" style="display:none">One or more of the selected policies has the wrong status</li>
+                                <li type="disc" id="hasAMixOfFundGroupsMessage"     style="display:none">Mix of fund types Series 1, Series 2 or Gross Funds</li>
+                            </ul>
+                            <p>
+                                Please check your search criteria.
+                            </p>
+                        </div>
+                    </div>
+<div style="margin-left:16px;padding-bottom:12px;padding-top:12px">
+                    </div>
+                    <div id="multipleReportsBlocked" style="display:none">
+                        <fieldset>
+                            <legend>Reports Unavailable</legend>
+                            <p>
+                                Reports are not available when viewing more than 50 policies.
+                                Please choose the '50 results per page' option from the drop-down above.
+                            </p>
+                        </fieldset>
+                    </div>
+                    <div id="multipleReports">
+                        <form name="batch" ACTION="Pds" METHOD="POST" TARGET="pdsoutput2"  enctype="UTF-8" accept-charset="UTF-8">
+                            <div id="multiplePlaceHolder">
+                            </div>
+                            <input type="HIDDEN" name="type"                     value="PDF"/>
+                            <input type="HIDDEN" id="batchSize" name="BSize"     value="1"/>
+                            <input type="HIDDEN" name="Report"                   value="PolicyPack"/>
+                            <input type="HIDDEN" name="Batch"                    value="TRUE"/>
+                            <input type="HIDDEN" name="NumberOfReports"          value="11"/>
+                            <input type="HIDDEN" name="booktype"                 value="batch"/>
+                            <input type="HIDDEN" id="batchLocale2" name="Locale" value="GB,en"/>
+
+                            <input type="HIDDEN" name="ReportName0"  value="PolicyInformation" />
+                            <input type="HIDDEN" name="ReportName1"  value="UnitAllocation" />
+                            <input type="HIDDEN" name="ReportName2"  value="HistoricUAS" />
+                            <input type="HIDDEN" name="ReportName3"  value="FundPerformanceTable" />
+                            <input type="HIDDEN" name="ReportName4"  value="PremiumHistory" />
+                            <input type="HIDDEN" name="ReportName5"  value="DetailedPremiumHistory" />
+                            <input type="HIDDEN" name="ReportName6"  value="FundSwitchHistory" />
+                            <input type="HIDDEN" name="ReportName7"  value="PPPolicyInformation" />
+                            <input type="HIDDEN" name="ReportName8"  value="PPValuation" />
+                            <input type="HIDDEN" name="ReportName9"  value="PPHistoricValuation" />
+                            <input type="HIDDEN" name="ReportName10" value="PPCashStatement" />
+
+                            <fieldset id="reportSet" >
+                                <legend> Standard Reports</legend>
+
+                                <div class="col"  >
+                                    <input  id="report0" type="checkbox"  name="report0"   onclick="selectionFinished();"/><label for="report0" id="labelReport0">
+                                        Key Policy Information</label>
+                                </div>
+                                <div class="col">
+                                    <input  id="report3"  type="checkbox"  name="report3" onclick="selectionFinished();"   /><label for="report3" id="labelReport3">
+                                        Unit Fund Link Performance Table</label>
+                                </div>
+                                <div class="col" >
+                                    <input  id="report1" type="checkbox"  name="report1" onclick="selectionFinished();" /><label for="report1" id="labelReport1">
+                                        Unit Allocation Statement</label>
+                                </div>
+                                <div class="col" >
+                                    <input  id="report4" type="checkbox"  name="report4"  onclick="selectionFinished();"  />
+                                    <label for="report4" id="labelReport4">Premium History</label>
+                                </div>
+                                <div class="col" >
+                                    <input  id="report2"  type="checkbox"  name="report2"   onclick="selectionFinished();toggleSection('#HUAS_date')" />
+                                    <label for="report2" id="labelReport2">Historic Unit Allocation Statement</label><br/>
+                                    <div id="HUAS_date" style="display:none">
+                                        <div class="date_range">
+                                            <div class="day">
+                                                <select class="day" id="HUAS-startDay">
+                                                    <OPTION VALUE='01'>01
+<OPTION VALUE='02'>02
+<OPTION VALUE='03' SELECTED>03
+<OPTION VALUE='04'>04
+<OPTION VALUE='05'>05
+<OPTION VALUE='06'>06
+<OPTION VALUE='07'>07
+<OPTION VALUE='08'>08
+<OPTION VALUE='09'>09
+<OPTION VALUE='10'>10
+<OPTION VALUE='11'>11
+<OPTION VALUE='12'>12
+<OPTION VALUE='13'>13
+<OPTION VALUE='14'>14
+<OPTION VALUE='15'>15
+<OPTION VALUE='16'>16
+<OPTION VALUE='17'>17
+<OPTION VALUE='18'>18
+<OPTION VALUE='19'>19
+<OPTION VALUE='20'>20
+<OPTION VALUE='21'>21
+<OPTION VALUE='22'>22
+<OPTION VALUE='23'>23
+<OPTION VALUE='24'>24
+<OPTION VALUE='25'>25
+<OPTION VALUE='26'>26
+<OPTION VALUE='27'>27
+<OPTION VALUE='28'>28
+<OPTION VALUE='29'>29
+<OPTION VALUE='30'>30
+<OPTION VALUE='31'>31
+</select>
+                                            </div>
+                                            <div class="month">
+                                                <select class="month" id="HUAS-startMonth">
+                                                    <OPTION VALUE='Jan'>January
+<OPTION VALUE='Feb'>February
+<OPTION VALUE='Mar'>March
+<OPTION VALUE='Apr'>April
+<OPTION VALUE='May'>May
+<OPTION VALUE='Jun'>June
+<OPTION VALUE='Jul'>July
+<OPTION VALUE='Aug'>August
+<OPTION VALUE='Sep'>September
+<OPTION VALUE='Oct'>October
+<OPTION VALUE='Nov'>November
+<OPTION VALUE='Dec' SELECTED>December
+</select>
+                                            </div>
+                                            <div class="year">
+                                                <select class="year" id="HUAS-startYear">
+                                                    <OPTION VALUE='1990'>1990
+<OPTION VALUE='1991'>1991
+<OPTION VALUE='1992'>1992
+<OPTION VALUE='1993'>1993
+<OPTION VALUE='1994'>1994
+<OPTION VALUE='1995'>1995
+<OPTION VALUE='1996'>1996
+<OPTION VALUE='1997'>1997
+<OPTION VALUE='1998'>1998
+<OPTION VALUE='1999'>1999
+<OPTION VALUE='2000'>2000
+<OPTION VALUE='2001'>2001
+<OPTION VALUE='2002'>2002
+<OPTION VALUE='2003'>2003
+<OPTION VALUE='2004'>2004
+<OPTION VALUE='2005'>2005
+<OPTION VALUE='2006'>2006
+<OPTION VALUE='2007'>2007
+<OPTION VALUE='2008'>2008
+<OPTION VALUE='2009'>2009
+<OPTION VALUE='2010'>2010
+<OPTION VALUE='2011'>2011
+<OPTION VALUE='2012'>2012
+<OPTION VALUE='2013'>2013
+<OPTION VALUE='2014'>2014
+<OPTION VALUE='2015'>2015
+<OPTION VALUE='2016'>2016
+<OPTION VALUE='2017' SELECTED>2017
+</select>
+                                            </div>
+                                        </div>
+                                        <input type="hidden" id="HistoricUAS_StartDate" name="HistoricUAS_StartDate"/>
+                                    </div>
+                                </div>
+                                <div class="col" >
+                                    <input  id="report5"  type="checkbox"  name="report5" onclick="selectionFinished();toggleSection('#DPH_date')"  />
+                                    <label for="report5" id="labelReport5">Detailed Premium History</label><br/>
+                                    <div id="DPH_date" style="display:none">
+                                        <div class="date_range">
+                                            <div class="day">
+                                                <select class="day" id="DPH-startDay">
+                                                    <OPTION VALUE='01'>01
+<OPTION VALUE='02'>02
+<OPTION VALUE='03'>03
+<OPTION VALUE='04' SELECTED>04
+<OPTION VALUE='05'>05
+<OPTION VALUE='06'>06
+<OPTION VALUE='07'>07
+<OPTION VALUE='08'>08
+<OPTION VALUE='09'>09
+<OPTION VALUE='10'>10
+<OPTION VALUE='11'>11
+<OPTION VALUE='12'>12
+<OPTION VALUE='13'>13
+<OPTION VALUE='14'>14
+<OPTION VALUE='15'>15
+<OPTION VALUE='16'>16
+<OPTION VALUE='17'>17
+<OPTION VALUE='18'>18
+<OPTION VALUE='19'>19
+<OPTION VALUE='20'>20
+<OPTION VALUE='21'>21
+<OPTION VALUE='22'>22
+<OPTION VALUE='23'>23
+<OPTION VALUE='24'>24
+<OPTION VALUE='25'>25
+<OPTION VALUE='26'>26
+<OPTION VALUE='27'>27
+<OPTION VALUE='28'>28
+<OPTION VALUE='29'>29
+<OPTION VALUE='30'>30
+<OPTION VALUE='31'>31
+</select>
+                                            </div>
+                                            <div class="month">
+                                                <select class="month" id="DPH-startMonth">
+                                                    <OPTION VALUE='Jan'>January
+<OPTION VALUE='Feb'>February
+<OPTION VALUE='Mar'>March
+<OPTION VALUE='Apr'>April
+<OPTION VALUE='May'>May
+<OPTION VALUE='Jun'>June
+<OPTION VALUE='Jul'>July
+<OPTION VALUE='Aug'>August
+<OPTION VALUE='Sep'>September
+<OPTION VALUE='Oct'>October
+<OPTION VALUE='Nov'>November
+<OPTION VALUE='Dec' SELECTED>December
+</select>
+                                            </div>
+                                            <div class="year">
+                                                <select class="year" id="DPH-startYear">
+                                                    <OPTION VALUE='1990'>1990
+<OPTION VALUE='1991'>1991
+<OPTION VALUE='1992'>1992
+<OPTION VALUE='1993'>1993
+<OPTION VALUE='1994'>1994
+<OPTION VALUE='1995'>1995
+<OPTION VALUE='1996'>1996
+<OPTION VALUE='1997'>1997
+<OPTION VALUE='1998'>1998
+<OPTION VALUE='1999'>1999
+<OPTION VALUE='2000'>2000
+<OPTION VALUE='2001'>2001
+<OPTION VALUE='2002'>2002
+<OPTION VALUE='2003'>2003
+<OPTION VALUE='2004'>2004
+<OPTION VALUE='2005'>2005
+<OPTION VALUE='2006'>2006
+<OPTION VALUE='2007'>2007
+<OPTION VALUE='2008'>2008
+<OPTION VALUE='2009'>2009
+<OPTION VALUE='2010'>2010
+<OPTION VALUE='2011'>2011
+<OPTION VALUE='2012'>2012
+<OPTION VALUE='2013'>2013
+<OPTION VALUE='2014'>2014
+<OPTION VALUE='2015'>2015
+<OPTION VALUE='2016' SELECTED>2016
+<OPTION VALUE='2017'>2017
+</select>
+                                            </div>
+                                        </div>
+
+                                        <div class="date_range">
+                                            <div class="day">
+                                                <select class="day" id="DPH-endDay">
+                                                    <OPTION VALUE='01'>01
+<OPTION VALUE='02'>02
+<OPTION VALUE='03'>03
+<OPTION VALUE='04' SELECTED>04
+<OPTION VALUE='05'>05
+<OPTION VALUE='06'>06
+<OPTION VALUE='07'>07
+<OPTION VALUE='08'>08
+<OPTION VALUE='09'>09
+<OPTION VALUE='10'>10
+<OPTION VALUE='11'>11
+<OPTION VALUE='12'>12
+<OPTION VALUE='13'>13
+<OPTION VALUE='14'>14
+<OPTION VALUE='15'>15
+<OPTION VALUE='16'>16
+<OPTION VALUE='17'>17
+<OPTION VALUE='18'>18
+<OPTION VALUE='19'>19
+<OPTION VALUE='20'>20
+<OPTION VALUE='21'>21
+<OPTION VALUE='22'>22
+<OPTION VALUE='23'>23
+<OPTION VALUE='24'>24
+<OPTION VALUE='25'>25
+<OPTION VALUE='26'>26
+<OPTION VALUE='27'>27
+<OPTION VALUE='28'>28
+<OPTION VALUE='29'>29
+<OPTION VALUE='30'>30
+<OPTION VALUE='31'>31
+</select>
+                                            </div>
+                                            <div class="month">
+                                                <select class="month" id="DPH-endMonth">
+                                                    <OPTION VALUE='Jan'>January
+<OPTION VALUE='Feb'>February
+<OPTION VALUE='Mar'>March
+<OPTION VALUE='Apr'>April
+<OPTION VALUE='May'>May
+<OPTION VALUE='Jun'>June
+<OPTION VALUE='Jul'>July
+<OPTION VALUE='Aug'>August
+<OPTION VALUE='Sep'>September
+<OPTION VALUE='Oct'>October
+<OPTION VALUE='Nov'>November
+<OPTION VALUE='Dec' SELECTED>December
+</select>
+                                            </div>
+                                            <div class="year">
+                                                <select class="year" id="DPH-endYear">
+                                                    <OPTION VALUE='1990'>1990
+<OPTION VALUE='1991'>1991
+<OPTION VALUE='1992'>1992
+<OPTION VALUE='1993'>1993
+<OPTION VALUE='1994'>1994
+<OPTION VALUE='1995'>1995
+<OPTION VALUE='1996'>1996
+<OPTION VALUE='1997'>1997
+<OPTION VALUE='1998'>1998
+<OPTION VALUE='1999'>1999
+<OPTION VALUE='2000'>2000
+<OPTION VALUE='2001'>2001
+<OPTION VALUE='2002'>2002
+<OPTION VALUE='2003'>2003
+<OPTION VALUE='2004'>2004
+<OPTION VALUE='2005'>2005
+<OPTION VALUE='2006'>2006
+<OPTION VALUE='2007'>2007
+<OPTION VALUE='2008'>2008
+<OPTION VALUE='2009'>2009
+<OPTION VALUE='2010'>2010
+<OPTION VALUE='2011'>2011
+<OPTION VALUE='2012'>2012
+<OPTION VALUE='2013'>2013
+<OPTION VALUE='2014'>2014
+<OPTION VALUE='2015'>2015
+<OPTION VALUE='2016'>2016
+<OPTION VALUE='2017' SELECTED>2017
+</select>
+                                            </div>
+                                        </div>
+                                       <input type="hidden" id="DetailedPremiumHistory_StartDate" name="DetailedPremiumHistory_StartDate"/>
+                                       <input type="hidden" id="DetailedPremiumHistory_EndDate" name="DetailedPremiumHistory_EndDate"/>
+                                    </div>
+                                </div>
+                                <div class="col" >
+                                    <input  id="report6" type="checkbox"  name="report6"  onclick="selectionFinished();"  />
+                                    <label for="report6" id="labelReport6">Unit Fund Link Switch History</label>
+                                </div>
+                            </fieldset>
+
+                            <fieldset id="ppFieldset" >
+                                <legend> PPs Only</legend>
+
+                                <div class="col" >
+                                    <input  id="report7" type="checkbox"  name="report7" onclick="selectionFinished();"/>
+                                        <label for="report7" id="labelReport7"/>PP Policy Information</label>
+                                </div>
+                                <div class="col" >
+                                    <input  id="report8" type="checkbox"  name="report8" onclick="selectionFinished();"/>
+                                        <label for="report8" id="labelReport8"/>PP Valuation</label>
+                                </div>
+                                <div class="col"  >
+                                    <input  id="report9" type="checkbox"  name="report9"   onclick="selectionFinished();toggleSection('#PPVal_date')"/>
+                                    <label for="report9" id="labelReport9">PP Historic Valuation</label>
+                                    <div id="PPVal_date" style="display:none">
+                                        <div class="date_range">
+                                            <div class="day">
+                                                <select class="day" id="PPVal-startDay">
+                                                    <OPTION VALUE='01'>01
+<OPTION VALUE='02'>02
+<OPTION VALUE='03'>03
+<OPTION VALUE='04' SELECTED>04
+<OPTION VALUE='05'>05
+<OPTION VALUE='06'>06
+<OPTION VALUE='07'>07
+<OPTION VALUE='08'>08
+<OPTION VALUE='09'>09
+<OPTION VALUE='10'>10
+<OPTION VALUE='11'>11
+<OPTION VALUE='12'>12
+<OPTION VALUE='13'>13
+<OPTION VALUE='14'>14
+<OPTION VALUE='15'>15
+<OPTION VALUE='16'>16
+<OPTION VALUE='17'>17
+<OPTION VALUE='18'>18
+<OPTION VALUE='19'>19
+<OPTION VALUE='20'>20
+<OPTION VALUE='21'>21
+<OPTION VALUE='22'>22
+<OPTION VALUE='23'>23
+<OPTION VALUE='24'>24
+<OPTION VALUE='25'>25
+<OPTION VALUE='26'>26
+<OPTION VALUE='27'>27
+<OPTION VALUE='28'>28
+<OPTION VALUE='29'>29
+<OPTION VALUE='30'>30
+<OPTION VALUE='31'>31
+</select>
+                                            </div>
+                                            <div class="month">
+                                                <select class="month" id="PPVal-startMonth">
+                                                    <OPTION VALUE='Jan'>January
+<OPTION VALUE='Feb'>February
+<OPTION VALUE='Mar'>March
+<OPTION VALUE='Apr'>April
+<OPTION VALUE='May'>May
+<OPTION VALUE='Jun'>June
+<OPTION VALUE='Jul'>July
+<OPTION VALUE='Aug'>August
+<OPTION VALUE='Sep'>September
+<OPTION VALUE='Oct'>October
+<OPTION VALUE='Nov'>November
+<OPTION VALUE='Dec' SELECTED>December
+</select>
+                                            </div>
+                                            <div class="year">
+                                                <select class="year" id="PPVal-startYear">
+                                                    <OPTION VALUE='1990'>1990
+<OPTION VALUE='1991'>1991
+<OPTION VALUE='1992'>1992
+<OPTION VALUE='1993'>1993
+<OPTION VALUE='1994'>1994
+<OPTION VALUE='1995'>1995
+<OPTION VALUE='1996'>1996
+<OPTION VALUE='1997'>1997
+<OPTION VALUE='1998'>1998
+<OPTION VALUE='1999'>1999
+<OPTION VALUE='2000'>2000
+<OPTION VALUE='2001'>2001
+<OPTION VALUE='2002'>2002
+<OPTION VALUE='2003'>2003
+<OPTION VALUE='2004'>2004
+<OPTION VALUE='2005'>2005
+<OPTION VALUE='2006'>2006
+<OPTION VALUE='2007'>2007
+<OPTION VALUE='2008'>2008
+<OPTION VALUE='2009'>2009
+<OPTION VALUE='2010'>2010
+<OPTION VALUE='2011'>2011
+<OPTION VALUE='2012'>2012
+<OPTION VALUE='2013'>2013
+<OPTION VALUE='2014'>2014
+<OPTION VALUE='2015'>2015
+<OPTION VALUE='2016' SELECTED>2016
+<OPTION VALUE='2017'>2017
+</select>
+                                            </div>
+                                        </div>
+                                        <input type="hidden" id="PPHistoricValuation_StartDate" name="PPHistoricValuation_StartDate"/>
+                                    </div>
+                                </div>
+                                <div class="col" >
+                                    <input  id="report10"  type="checkbox"  name="report10"   onclick="selectionFinished();toggleSection('#PPCash_date')" />
+                                    <label for="report10" id="labelReport10">PP Cash Statement</label>
+                                    <div id="PPCash_date" style="display:none">
+                                        <div class="date_range">
+                                            <div class="day">
+                                                <select class="day" id="PPCash-startDay">
+                                                    <OPTION VALUE='01'>01
+<OPTION VALUE='02'>02
+<OPTION VALUE='03'>03
+<OPTION VALUE='04' SELECTED>04
+<OPTION VALUE='05'>05
+<OPTION VALUE='06'>06
+<OPTION VALUE='07'>07
+<OPTION VALUE='08'>08
+<OPTION VALUE='09'>09
+<OPTION VALUE='10'>10
+<OPTION VALUE='11'>11
+<OPTION VALUE='12'>12
+<OPTION VALUE='13'>13
+<OPTION VALUE='14'>14
+<OPTION VALUE='15'>15
+<OPTION VALUE='16'>16
+<OPTION VALUE='17'>17
+<OPTION VALUE='18'>18
+<OPTION VALUE='19'>19
+<OPTION VALUE='20'>20
+<OPTION VALUE='21'>21
+<OPTION VALUE='22'>22
+<OPTION VALUE='23'>23
+<OPTION VALUE='24'>24
+<OPTION VALUE='25'>25
+<OPTION VALUE='26'>26
+<OPTION VALUE='27'>27
+<OPTION VALUE='28'>28
+<OPTION VALUE='29'>29
+<OPTION VALUE='30'>30
+<OPTION VALUE='31'>31
+</select>
+                                            </div>
+                                            <div class="month">
+                                                <select class="month" id="PPCash-startMonth">
+                                                    <OPTION VALUE='Jan'>January
+<OPTION VALUE='Feb'>February
+<OPTION VALUE='Mar'>March
+<OPTION VALUE='Apr'>April
+<OPTION VALUE='May'>May
+<OPTION VALUE='Jun'>June
+<OPTION VALUE='Jul'>July
+<OPTION VALUE='Aug'>August
+<OPTION VALUE='Sep'>September
+<OPTION VALUE='Oct'>October
+<OPTION VALUE='Nov'>November
+<OPTION VALUE='Dec' SELECTED>December
+</select>
+                                            </div>
+                                            <div class="year">
+                                                <select class="year" id="PPCash-startYear">
+                                                    <OPTION VALUE='1990'>1990
+<OPTION VALUE='1991'>1991
+<OPTION VALUE='1992'>1992
+<OPTION VALUE='1993'>1993
+<OPTION VALUE='1994'>1994
+<OPTION VALUE='1995'>1995
+<OPTION VALUE='1996'>1996
+<OPTION VALUE='1997'>1997
+<OPTION VALUE='1998'>1998
+<OPTION VALUE='1999'>1999
+<OPTION VALUE='2000'>2000
+<OPTION VALUE='2001'>2001
+<OPTION VALUE='2002'>2002
+<OPTION VALUE='2003'>2003
+<OPTION VALUE='2004'>2004
+<OPTION VALUE='2005'>2005
+<OPTION VALUE='2006'>2006
+<OPTION VALUE='2007'>2007
+<OPTION VALUE='2008'>2008
+<OPTION VALUE='2009'>2009
+<OPTION VALUE='2010'>2010
+<OPTION VALUE='2011'>2011
+<OPTION VALUE='2012'>2012
+<OPTION VALUE='2013'>2013
+<OPTION VALUE='2014'>2014
+<OPTION VALUE='2015'>2015
+<OPTION VALUE='2016'>2016
+<OPTION VALUE='2017' SELECTED>2017
+</select>
+                                            </div>
+                                        </div>
+                                        <input type="hidden" id="PPCashStatement_StartDate" name="PPCashStatement_StartDate"/>
+                                    </div>
+                                </div>
+
+                                </fieldset>
+                            <div class="controls_wrap">
+                                <div id="UnionWarning" style="display:none;">
+                                    <p style="color:red;font-weight:bold;">Union policies are only available in English.</p>
+                                </div>
+                                <div class="controls">
+                                     <button id="confirmLinkButtonDisabled"  type="button" class="disabled" value="Run" disabled="disabled">Continue</button>
+                                     <a id="confirmLink" rel="#facebox"  href="#confirmationBox" title="Batch Summary"><button id="confirmLinkButton"  rel="#facebox"  href="#confirmationBox"  type="button" class="submit" value="Run" onclick="checkForValidReports();">Continue</button></a>
+                                     <button type="button" class="reset"  onclick="clearAllPolicies();">Clear Batch</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <form id="search" name="search">
+                        <div>
+                            <input type="hidden" name="PaginationSize" />
+                            <input type="hidden" name="Start" />
+                            <input type="hidden" name="RequestedPage" value="SearchResults" />
+                            <input type="hidden" name="POLICYSTATUSCHECK" value="on" />
+                            <input type="hidden" name="POLICYNUMBERCHECK" value="on" />
+                            <input type="hidden" name="POLICYSTATUS" value="Active" />
+                            <input type="hidden" name="SORT" value="None" />
+                            <input type="hidden" name="POLICYNUMBER" value="564598A" />
+                            <input type="hidden" name="PRODUCTGROUP" value="All" />
+                            </div>
+                    </form>
+                </div>
+                            </div>
+
+
+                        <div class="pages"> Search Results 1 - 1
+                            of 1</div>
+                        </div>
+                    </div>
+        </div>
+        <div id="confirmationBox" style="display:none;width:900px">
+            <div style="border:24px solid white;">
+             <p style="font-size:18px; font-weight:bold; font-family: Arial,Helvetica,sans-serif;">Report Confirmation</p>
+
+            <table  style="width:800px;border: 12px solid white;">
+                <tr>
+                    <td style="background-color:white;">
+                        <div style="width:620px;height:200px; overflow:auto;border: 1px solid black;">
+                     <table class="tablelegendclear" id="confirmTable" style="width:600px">
+                         <thead>
+                        <tr style="border:1px solid black">
+                            <th width="60px" style="padding-left:4px;border-left:1px solid black;border-bottom:1px solid black">Policy</th>
+                            <th style="padding-left:4px;border-bottom:1px solid black">Name</th>
+                            <th style="padding-left:4px;border-bottom:1px solid black">Product</th>
+                            <th style="background-color:red; background-image:none;padding:none;margin:none;border-bottom:1px solid black">&nbsp;</th>
+                            <th style="background-color:lightgreen; background-image:none;border-bottom:1px solid black">&nbsp;</th>
+                            <th style="background-color:blue; background-image:none;border-bottom:1px solid black">&nbsp;</th>
+                            <th style="background-color:purple; background-image:none;border-bottom:1px solid black">&nbsp;</th>
+                            <th style="background-color:gray; background-image:none;border-bottom:1px solid black">&nbsp;</th>
+                            <th style="background-color:cyan; background-image:none;border-bottom:1px solid black">&nbsp;</th>
+                            <th style="background-color:yellow; background-image:none;border-bottom:1px solid black">&nbsp;</th>
+                            <th style="background-color:orange; background-image:none;border-bottom:1px solid black">&nbsp;</th>
+                            <th style="background-color:darkkhaki; background-image:none;border-bottom:1px solid black">&nbsp;</th>
+                            <th style="background-color:black; background-image:none;border-bottom:1px solid black">&nbsp;</th>
+                            <th style="background-color:magenta; background-image:none;border-bottom:1px solid black">&nbsp;</th>
+                            </tr>
+                         </thead>
+                            <tbody>
+                        <tr id="confirmRow0"  style="display:none;">
+                            <td style="padding-left:4px">
+
+                                <!-- We put out the policy number again so we can disable links -->
+                                <span>
+                                    564598A</span>
+
+                            </td>
+
+                            <td>Min Gu</td>
+                            <td>Vantage Platinum II</td>
+
+
+                            <td>
+
+                                <img src='/hansard/laf/resources/images/tick.png'/></td>
+                            <td>
+                                <img src='/hansard/laf/resources/images/tick.png'/></td>
+                            <td>
+                                <img src='/hansard/laf/resources/images/tick.png'/></td>
+                            <td>
+                                <img src='/hansard/laf/resources/images/tick.png'/></td>
+                            <td>
+                                <img src='/hansard/laf/resources/images/tick.png'/></td>
+                            <td>
+                                <img src='/hansard/laf/resources/images/tick.png'/></td>
+                            <td>
+                                <img src='/hansard/laf/resources/images/tick.png'/></td>
+                            <td>
+                                <img src='/hansard/laf/resources/images/cross.png'/></td>
+                            <td>
+                                <img src='/hansard/laf/resources/images/cross.png'/></td>
+                            <td>
+                                <img src='/hansard/laf/resources/images/cross.png'/></td>
+                             <td>
+                                <img src='/hansard/laf/resources/images/cross.png'/></td>
+                            </tr>
+                        <tr id="lastrow"/>
+                            </tbody>
+                    </table>
+                        </div>
+                    </td>
+                        <td style="width:12px;background-color:white;">
+                        &nbsp;
+                        </td>
+                        <td style="border: 12px solid white;background-color:white;">
+                         <table class="tablelegend" style="width:175px; border: 1px solid black;">
+
+
+                            <tr id="confirmLabel0"><td><div style="height:8px;width:8px;background-color: red;border: 2px inset black;float:left;margin-top:6px;margin-left:12px;margin-right:6px;"></div>Policy Information Report</td></tr>
+                            <tr id="confirmLabel3"><td><div style="height:8px;width:8px;background-color: lightgreen;border: 2px inset black;float:left;margin-top:6px;margin-left:12px;margin-right:6px;"></div>Fund Performance Table</td></tr>
+                            <tr id="confirmLabel1"><td><div style="height:8px;width:8px;background-color: blue;border: 2px inset black;float:left;margin-top:6px;margin-left:12px;margin-right:6px;"></div>Unit Allocation Statement</td></tr>
+                            <tr id="confirmLabel4"><td><div style="height:8px;width:8px;background-color: purple;border: 2px inset black;float:left;margin-top:6px;margin-left:12px;margin-right:6px;"></div>Premium History</td></tr>
+                            <tr id="confirmLabel2"><td><div style="height:8px;width:8px;background-color: gray;border: 2px inset black;float:left;margin-top:6px;margin-left:12px;margin-right:6px;"></div>Historic UAS</td></tr>
+                            <tr id="confirmLabel5"><td><div style="height:8px;width:8px;background-color: cyan;border: 2px inset black;float:left;margin-top:6px;margin-left:12px;margin-right:6px;"></div>Detailed Premium History</td></tr>
+                            <tr id="confirmLabel6"><td><div style="height:8px;width:8px;background-color: yellow;border: 2px inset black;float:left;margin-top:6px;margin-left:12px;margin-right:6px;"></div>Funds Switch History</td></tr>
+                            <tr id="confirmLabel7"><td><div style="height:8px;width:8px;background-color: orange;border: 2px inset black;float:left;margin-top:6px;margin-left:12px;margin-right:6px;"></div>PP Policy Information</td></tr>
+                            <tr id="confirmLabel8"><td><div style="height:8px;width:8px;background-color: darkkhaki;border: 2px inset black;float:left;margin-top:6px;margin-left:12px;margin-right:6px;"></div>PP Valuation</td></tr>
+                            <tr id="confirmLabel9"><td><div style="height:8px;width:8px;background-color: black;border: 2px inset black;float:left;margin-top:6px;margin-left:12px;margin-right:6px;"></div>PP Historic Valuation</td></tr>
+                            <tr id="confirmLabel10"><td><div style="height:8px;width:8px;background-color: magenta;border: 2px inset black;float:left;margin-top:6px;margin-left:12px;margin-right:6px;"></div>PP Cash Statement</td></tr>
+                        </table>
+                        </td>
+                        </tr>
+                            <tr>
+                                <td  style="margin-top:16px;background-color:white;padding-top:8px">
+                                    &nbsp;<br/>
+                                    <div style="border:1px solid gray; background-color:#e0f2ff;padding:16px;color:#606060;line-height:1.0em"><strong style="color:#606060">
+                                      The table above shows the reports that are available for the booklet. Click on the 'Run' button
+                                           to produce the booklet, or close the window to change your selections.</strong>
+                                    </div>
+                                </td>
+                                <td colspan="2" style="background-color:white;">
+                                                               <div class="controls_wrap" style="padding-top:40px;">
+                                        <div class="controls">
+                                        <button type="button" class="submit" value="Run" OnClick='runBatchFromCallout();'  id="batchRunButton">Run</button>
+                                        <button  type="button" class="reset" value="Cancel" OnClick="jQuery(document).trigger('close.facebox')" style="" id="cancelRunButton">Cancel</button>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                    </table>
+            </div>
+               </div>
+        <div id="pageheader-overlay-container"></div>
+    </body>
+    <script type="text/javascript">
+        var polNumArray = new Array('void' ,'564598');
+        var checkDigitArray = new Array('void'  ,'A');
+        var availableArray = new Array('void' ,'111111111111000001');
+        var companyArray = new Array('void' ,'HIL');
+        var cuetipShownArray = new Array(false , false );
+
+        var top = parent.frames[0];
+        </script>
+</html>
