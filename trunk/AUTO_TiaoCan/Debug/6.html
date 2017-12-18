@@ -1,0 +1,231 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en_GB" xml:lang="en-gb"><head profile="http://www.w3.org/2005/10/profile">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <link rel="icon" type="image/ico" href="/ofs/images/icons/favicon.ico" />
+        <title>Hansard OnLine</title>
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+
+        <link rel="stylesheet" href="/ofs/css/reset.css" type="text/css" media="all" />
+
+<link rel="stylesheet" href="/ofs/css/core/layout.css" type="text/css" media="all" />
+<link rel="stylesheet" href="/ofs/css/core/tables.css" type="text/css" media="all" />
+<link rel="stylesheet" href="/ofs/css/core/forms.css" type="text/css" media="all" />
+<link rel="stylesheet" href="/ofs/css/core/typography.css" type="text/css" media="all" />
+<link rel="stylesheet" href="/ofs/css/core/misc.css" type="text/css" media="all" />
+<link rel="stylesheet" href="/ofs/css/extended-style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="/ofs/css/print.css" type="text/css" media="print" />
+<!--[if lte IE 6]>
+        <link rel="stylesheet" href="/ofs/css/core/ie6.css" type="text/css" media="screen" />
+        <![endif]-->
+<!--[if IE 7]>
+        <link rel="stylesheet" href="/ofs/css/core/ie7.css" type="text/css" media="screen" />
+        <![endif]-->
+<!--[if IE 8]>
+        <link rel="stylesheet" href="/ofs/css/core/ie8.css" type="text/css" media="screen" />
+        <![endif]-->
+
+<link href="/ofs/css/facebox.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="/ofs/css/stdValErrs.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="/ofs/css/jquery-cluetip/jquery.cluetip.css" media="screen" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/ofs/js/jquery/jquery.js"></script>
+<script type="text/javascript" src="/ofs/js/jquery/jquery.validate.js"></script>
+<script type="text/javascript" src="/ofs/js/jquery/jquery.uniform.js"></script>
+<script type="text/javascript" src="/ofs/js/jquery/jquery.tools.min.js"></script>
+<script type="text/javascript" src="/ofs/js/jquery/site_map.js"></script>
+<script type="text/javascript" src="/ofs/js/jquery/facebox/facebox.js"></script>
+<script type="text/javascript" src="/ofs/js/jquery/jquery.livequery.min.js"></script>
+<script type="text/javascript" src="/ofs/js/jquery/stdValErrs.js"></script>
+<script type="text/javascript" src="/ofs/js/jquery/jquery-cluetip/jquery.cluetip.js"></script>
+
+<script type="text/javascript">
+
+	if(!Array.indexOf){
+        Array.prototype.indexOf = function(obj){
+            for(var i=0; i&lt;this.length; i++){
+                if(this[i]==obj){
+                    return i;
+                }
+            }
+            return -1;
+        }
+    }
+
+
+    $.facebox.settings.closeImage = "";
+    $.facebox.settings.opacity=0.2;
+    $.facebox.settings.faceboxHtml  = '\
+        &lt;div id="facebox" style="display:none;"&gt; \
+          &lt;div class="popup"&gt; \
+            &lt;table&gt; \
+              &lt;tbody&gt; \
+                &lt;tr&gt; \
+                  &lt;td class="tl"/&gt;&lt;td class="b"/&gt;&lt;td class="tr"/&gt; \
+                &lt;/tr&gt; \
+                &lt;tr&gt; \
+                  &lt;td class="b"/&gt; \
+                  &lt;td class="body"&gt; \
+                    &lt;div class="content"&gt; \
+                    &lt;/div&gt; \
+                  &lt;/td&gt; \
+                  &lt;td class="b"/&gt; \
+                &lt;/tr&gt; \
+                &lt;tr&gt; \
+                  &lt;td class="bl"/&gt;&lt;td class="b"/&gt;&lt;td class="br"/&gt; \
+                &lt;/tr&gt; \
+              &lt;/tbody&gt; \
+            &lt;/table&gt; \
+          &lt;/div&gt; \
+        &lt;/div&gt;';
+
+
+        function faceboxMe(anchor) {
+            jQuery.fn.facebox({
+                loadingImage : '/ofs/js/jquery/facebox/loading.gif',
+                closeImage   : '/ofs/js/jquery/facebox/closelabel.gif'
+            });
+
+            var url = anchor.href;
+            if (url.substring(0, 11).toLowerCase() == 'javascript:')
+                url = eval(url);
+
+            jQuery.facebox({ ajax: url });
+            return false;
+        }
+
+    $(document).ready(function() {
+        var myselects = $('select:not(.nonuniform)');
+        if (myselects.length &gt; 0) {
+        	myselects.uniform();
+        }
+
+        $(":radio").uniform();
+        $(":checkbox").uniform();
+
+        $('div.help').hide();
+
+        $('a.question').click(function() {
+            $(this).next().slideToggle('fast');
+            return false;
+        });
+        $('a.close').click(function() {
+            $(this).parent().slideToggle('fast');
+            return false;
+        });
+
+        $('a[rel*=facebox]').facebox({
+            loadingImage : '/ofs/js/jquery/facebox/loading.gif',
+            closeImage   : '/ofs/js/jquery/facebox/closelabel.gif'
+        });
+
+        // direct the header home and logout links to the right place
+        var frontPage = "/hansard/hansard/servlet/frontpage/FrontPage";
+        $("a#global_nav_home").attr("href", frontPage);
+        $("a#logout").click(function() {
+        	window.location = frontPage+"?RequestedPage=LoggedOut&amp;Action=LogOut";
+        	return false;
+        });
+
+    });
+</script>
+        <meta name="decorator" content="really-plain" />
+    <style type="text/css"></style></head>
+    <body class="" id="ofs">
+        <div id="page">
+            <div id="content">
+
+        <script type="text/javascript" src="/ofs/js/jquery/jquery.blockUI.js"></script>
+<script type="text/javascript" src="/ofs/js/spin.js"></script>
+
+
+
+<style type="text/css">
+    div.blockOverlay {
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+        -moz-opacity:.70;
+        opacity:.70;
+        background-color: white;
+        cursor: wait;
+    }
+
+    div.blockMsg {
+        width:  40%;
+        top:    40%;
+        left:   30%;
+        text-align: center;
+        cursor: wait;
+        color: gray;
+        font-size: 20px;
+    }
+
+    div#curtain p {
+        padding-top: 30px;
+    }
+
+    .spinner {
+        left: 50% !important;
+    }
+</style>
+
+<script>
+    function setupSpinner() {
+        //clear out plugin default styling
+        $.blockUI.defaults.overlayCSS = {};
+        $.blockUI.defaults.css = {};
+
+        var spinnerOptions = {
+                lines: 13, // The number of lines to draw
+                length: 5, // The length of each line
+                width: 3, // The line thickness
+                radius: 8, // The radius of the inner circle
+                corners: 1, // Corner roundness (0..1)
+                rotate: 0, // The rotation offset
+                color: '#000', // #rgb or #rrggbb
+                speed: 1, // Rounds per second
+                trail: 60, // Afterglow percentage
+                shadow: false, // Whether to render a shadow
+                hwaccel: false, // Whether to use hardware acceleration
+                className: 'spinner', // The CSS class to assign to the spinner
+                zIndex: 2e9, // The z-index (defaults to 2000000000)
+                top: 'auto', // Top position relative to parent in px
+                left: 'auto' // Left position relative to parent in px
+              };
+
+        var target = document.getElementById('curtain');
+        var spinner = new Spinner(spinnerOptions).spin(target);
+    }
+
+    function showCurtainAndSubmitForm(formId) {
+    	setupSpinner();
+    	$.blockUI({ message: $('#curtain') });
+    	$('#' + formId).submit();
+    }
+
+    function showCurtainAndFollowLink() {
+    	setupSpinner();
+        $.blockUI({ message: $('#curtain') });
+        return true; // ensure we follow the original link
+    }
+</script><form id="retrieve" method="POST" action="/ofs/browse/policy">
+            <input type="hidden" name="company" value="HIL" />
+
+            <input type="hidden" name="policy" value="566519P" />
+            </form>
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+            	jQuery.fx.off = true; // turn off any JQuery UI effects (like fading, etc.)
+            	showCurtainAndSubmitForm('retrieve');
+            });
+        </script>
+    </div>
+        </div>
+
+        <!-- [Eng] unspecified -->
+        <!-- [Eng] unspecified -->
+
+
+        <div id="facebox" style="display:none;">           <div class="popup">             <table>               <tbody>                 <tr>                   <td class="tl"></td><td class="b"></td><td class="tr"></td>                 </tr>                 <tr>                   <td class="b"></td>                   <td class="body">                     <div class="content">                     </div>                   </td>                   <td class="b"></td>                 </tr>                 <tr>                   <td class="bl"></td><td class="b"></td><td class="br"></td>                 </tr>               </tbody>             </table>           </div>         </div><div class="blockUI" style="display:none"></div><div class="blockUI blockOverlay" style="z-index: 1000; border: none; margin: 0px; padding: 0px; width: 100%; height: 100%; top: 0px; left: 0px; position: fixed;"></div><div class="blockUI blockMsg blockPage" style="z-index: 1011; position: fixed;"><div id="curtain" style=""><div class="spinner" role="progressbar" style="position: relative; width: 0px; z-index: 2000000000; left: 0px; top: 0px;"><div style="position: absolute; top: -1px; opacity: 0.25; animation: opacity-60-25-0-13 1s linear infinite;"><div style="position: absolute; width: 8px; height: 3px; background: rgb(0, 0, 0); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(0deg) translate(8px, 0px); border-radius: 1px;"></div></div><div style="position: absolute; top: -1px; opacity: 0.25; animation: opacity-60-25-1-13 1s linear infinite;"><div style="position: absolute; width: 8px; height: 3px; background: rgb(0, 0, 0); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(27deg) translate(8px, 0px); border-radius: 1px;"></div></div><div style="position: absolute; top: -1px; opacity: 0.25; animation: opacity-60-25-2-13 1s linear infinite;"><div style="position: absolute; width: 8px; height: 3px; background: rgb(0, 0, 0); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(55deg) translate(8px, 0px); border-radius: 1px;"></div></div><div style="position: absolute; top: -1px; opacity: 0.25; animation: opacity-60-25-3-13 1s linear infinite;"><div style="position: absolute; width: 8px; height: 3px; background: rgb(0, 0, 0); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(83deg) translate(8px, 0px); border-radius: 1px;"></div></div><div style="position: absolute; top: -1px; opacity: 0.25; animation: opacity-60-25-4-13 1s linear infinite;"><div style="position: absolute; width: 8px; height: 3px; background: rgb(0, 0, 0); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(110deg) translate(8px, 0px); border-radius: 1px;"></div></div><div style="position: absolute; top: -1px; opacity: 0.25; animation: opacity-60-25-5-13 1s linear infinite;"><div style="position: absolute; width: 8px; height: 3px; background: rgb(0, 0, 0); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(138deg) translate(8px, 0px); border-radius: 1px;"></div></div><div style="position: absolute; top: -1px; opacity: 0.25; animation: opacity-60-25-6-13 1s linear infinite;"><div style="position: absolute; width: 8px; height: 3px; background: rgb(0, 0, 0); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(166deg) translate(8px, 0px); border-radius: 1px;"></div></div><div style="position: absolute; top: -1px; opacity: 0.25; animation: opacity-60-25-7-13 1s linear infinite;"><div style="position: absolute; width: 8px; height: 3px; background: rgb(0, 0, 0); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(193deg) translate(8px, 0px); border-radius: 1px;"></div></div><div style="position: absolute; top: -1px; opacity: 0.25; animation: opacity-60-25-8-13 1s linear infinite;"><div style="position: absolute; width: 8px; height: 3px; background: rgb(0, 0, 0); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(221deg) translate(8px, 0px); border-radius: 1px;"></div></div><div style="position: absolute; top: -1px; opacity: 0.25; animation: opacity-60-25-9-13 1s linear infinite;"><div style="position: absolute; width: 8px; height: 3px; background: rgb(0, 0, 0); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(249deg) translate(8px, 0px); border-radius: 1px;"></div></div><div style="position: absolute; top: -1px; opacity: 0.25; animation: opacity-60-25-10-13 1s linear infinite;"><div style="position: absolute; width: 8px; height: 3px; background: rgb(0, 0, 0); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(276deg) translate(8px, 0px); border-radius: 1px;"></div></div><div style="position: absolute; top: -1px; opacity: 0.25; animation: opacity-60-25-11-13 1s linear infinite;"><div style="position: absolute; width: 8px; height: 3px; background: rgb(0, 0, 0); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(304deg) translate(8px, 0px); border-radius: 1px;"></div></div><div style="position: absolute; top: -1px; opacity: 0.25; animation: opacity-60-25-12-13 1s linear infinite;"><div style="position: absolute; width: 8px; height: 3px; background: rgb(0, 0, 0); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(332deg) translate(8px, 0px); border-radius: 1px;"></div></div></div>
+    <p>Processing, please wait...</p>
+</div></div></body></html>
