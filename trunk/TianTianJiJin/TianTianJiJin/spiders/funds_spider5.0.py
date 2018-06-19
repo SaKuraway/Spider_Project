@@ -1,4 +1,4 @@
-# -*-coding:utf-8-*-
+﻿# -*-coding:utf-8-*-
 import requests, pymysql, time, re, json, collections, sys
 from lxml import etree
 
@@ -443,7 +443,7 @@ class TiantianJijinSpider(object):
                 i.xpath('.//text()')[0] if i.xpath('.//text()') else '' for i in
                 response.xpath("//div[@class='txt_in']/div[@class='box']//tr//td[5]")]  # 任职回报
 
-            item['Held_fund_manager'] = ''.join(response.xpath("//div[@class='jl_intro']/div[@class='text']/p[1]/a//text()"))
+            item['Held_fund_manager'] = ''.join(response.xpath("//div[@class='jl_intro'][1]/div[@class='text']/p[1]/a//text()"))
             item['Held_fund_code'] = [i.xpath('.//text()')[0] if i.xpath('.//text()') else ''
                                       for i in
                                       response.xpath("//div[@class='txt_in']/div[@class='box nb']//div[@class='jl_office'][1]//tr//td[1]")]  # 基金名称
