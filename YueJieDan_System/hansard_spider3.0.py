@@ -268,12 +268,19 @@ for policy_no in policy_no_list[1:]:
             fund_name = allocation_response.xpath(
                 "//div[@class='results']//table//tr[" + str(length) + "]/td[2]//text()")[0]
             time.sleep(1)
+            
+        # 上传到tb_allocation
         if not cur.execute("select * from tb_allocation where policy_no='" + full_policy_no + "' and date='" + Spider_Date + "';"):
             for Fund_code,Fund_name,unit,type,price_date,bid_price,fund_value,rate,uks in zip(Fund_code,Fund_name,unit,type,price_date,bid_price,fund_value,rate,uks):
                 # print(Fund_code,Fund_name,unit.replace(',',''),type,date_to_num(price_date),bid_price.replace(',',''),fund_value[:3],fund_value[3:].replace(',',''),rate,uks.replace(',',''))
                 print(full_policy_no, Spider_Date, product, Fund_name, Fund_code, fund_value[:3],fund_value[3:].replace(',',''),bid_price.replace(',',''),policy_currency,uks.replace(',', ''), 1 if type=='Initial' else 2,unit.replace(',', ''),float(rate.replace(',', '')),float(uks.replace(',', ''))/total_value,date_to_num(price_date))
                 try_except(cur.execute("insert into tb_allocation(policy_no,date,product,fund,fund_code,fund_currency,value1,price,policy_currency,value2,type,unit,forex,percent,price_date) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
                     (full_policy_no, Spider_Date, product, Fund_name, Fund_code, fund_value[:3],fund_value[3:].replace(',',''),bid_price.replace(',',''),policy_currency,uks.replace(',', ''), 2 if type=='Initial' else 3,unit.replace(',', ''),float(rate.replace(',', '')),float(uks.replace(',', ''))/total_value,date_to_num(price_date))))
+        # 上传到tb_accountvalue
+        if not cur.execute("select * from tb_accountvalue where policy_no='" + full_policy_no + "' and date='" + date_to_num(price_date[0]) + "';"):
+            print("insert into tb_accountvalue(policy_no,date,currency,total_value) VALUES(%s,%s,%s,%s)",(full_policy_no, date_to_num(price_date[0]), policy_currency, total_value))
+            try_except(cur.execute("insert into tb_accountvalue(policy_no,date,currency,total_value) VALUES(%s,%s,%s,%s)",(full_policy_no, date_to_num(price_date[0]), policy_currency, total_value)))
+
         time.sleep(1)
         # 获取premium
         history_data = {
