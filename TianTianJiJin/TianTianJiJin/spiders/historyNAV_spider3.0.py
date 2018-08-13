@@ -112,7 +112,7 @@ for Fund_code in Fund_codes:
                 annualised_return = str(results[index + 1][2])
                 print(behind_date,ANAV)
                 print('此时before_7days_annualised_return和annualised_return分别为：',before_7days_annualised_return,annualised_return)
-                if '%' in annualised_return :
+                if 'None' in annualised_return :
                     print("UPDATE History_NAV SET ANAV='"+str(ANAV)+"' WHERE Fund_code='"+Fund_code+"' and History_NAV_Date='"+behind_date+"';")
                     cur.execute("UPDATE History_NAV SET ANAV='"+str(ANAV)+"' WHERE Fund_code='"+Fund_code+"' and History_NAV_Date='"+behind_date+"';")
             except:
