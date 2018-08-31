@@ -247,7 +247,7 @@ for policy_no in policy_no_list[1:]:
         full_policy_no = ''.join(allocation_response.xpath("//div[@class='full list_2_col']//ul/li[2]/text()")).strip().replace(' ','')
         product = ''.join(allocation_response.xpath("//div[@class='full list_2_col']//ul/li[1]/text()")).strip().replace(' ','')
         policy_currency = ''.join(allocation_response.xpath("//div[@class='full list_2_col']/ul/li[last()]/text()")).strip().replace(' ','')
-        total_value = float(''.join(allocation_response.xpath("//tr[@class='bottom']/td[@class='number']//text()")).strip().replace(',','').replace(' ','')) if allocation_response.xpath("//tr[@class='bottom']/td[@class='number']") else 1
+        total_value = float(''.join(allocation_response.xpath("//tr[@class='bottom']/td[@class='number']//text()")).strip().replace(',','').replace('#','').replace('*','').replace(' ','')) if allocation_response.xpath("//tr[@class='bottom']/td[@class='number']") else 1
         print('full_policy_no',full_policy_no)
         for length in range(2,len(allocation_response.xpath("//div[@class='results']//table//tr"))):
             if allocation_response.xpath("//div[@class='results']//table//tr[" + str(length) + "]/td[1]//text()")[0] == u'\xa0':
@@ -276,10 +276,10 @@ for policy_no in policy_no_list[1:]:
         # 上传到tb_allocation
         if not cur.execute("select * from tb_allocation where policy_no='" + full_policy_no + "' and date='" + Spider_Date + "';"):
             for Fund_code,Fund_name,unit,type,price_date,bid_price,fund_value,rate,uks in zip(Fund_code,Fund_name,unit,type,price_date,bid_price,fund_value,rate,uks):
-                # print(Fund_code,Fund_name,unit.replace(',',''),type,date_to_num(price_date),bid_price.replace(',',''),fund_value[:3],fund_value[3:].replace(',',''),rate,uks.replace(',',''))
-                print(full_policy_no, Spider_Date, product, Fund_name, Fund_code, fund_value[:3],fund_value[3:].replace(',',''),bid_price.replace(',',''),policy_currency,uks.replace(',', ''), 1 if type=='Initial' else 2,unit.replace(',', ''),float(rate.replace(',', '')),float(uks.replace(',', ''))/total_value,date_to_num(price_date))
+                # print(Fund_code,Fund_name,unit.replace(',','').replace('#','').replace('*',''),type,date_to_num(price_date),bid_price.replace(',','').replace('#','').replace('*',''),fund_value[:3],fund_value[3:].replace(',','').replace('#','').replace('*',''),rate,uks.replace(',','').replace('#','').replace('*',''))
+                print(full_policy_no, Spider_Date, product, Fund_name, Fund_code, fund_value[:3],fund_value[3:].replace(',','').replace('#','').replace('*',''),bid_price.replace(',','').replace('#','').replace('*',''),policy_currency,uks.replace(',', ''), 1 if type=='Initial' else 2,unit.replace(',', ''),float(rate.replace(',', '')),float(uks.replace(',', ''))/total_value,date_to_num(price_date))
                 try_except(cur.execute("insert into tb_allocation(policy_no,date,product,fund,fund_code,fund_currency,value1,price,policy_currency,value2,type,unit,forex,percent,price_date) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
-                    (full_policy_no, Spider_Date, product, Fund_name, Fund_code, fund_value[:3],fund_value[3:].replace(',',''),bid_price.replace(',',''),policy_currency,uks.replace(',', ''), 2 if type=='Initial' else 3,unit.replace(',', ''),float(rate.replace(',', '')),float(uks.replace(',', ''))/total_value,date_to_num(price_date))))
+                    (full_policy_no, Spider_Date, product, Fund_name, Fund_code, fund_value[:3],fund_value[3:].replace(',','').replace('#','').replace('*',''),bid_price.replace(',','').replace('#','').replace('*',''),policy_currency,uks.replace(',', ''), 2 if type=='Initial' else 3,unit.replace(',', ''),float(rate.replace(',', '')),float(uks.replace(',', ''))/total_value,date_to_num(price_date))))
         mysql_client.commit()
 
         time.sleep(1)
@@ -300,7 +300,7 @@ for policy_no in policy_no_list[1:]:
         premium_response = etree.HTML(premium_html.text)
         # premium_infos:
         term = re.sub("\D", "", ''.join(premium_response.xpath("//div[@class='results']/div[@class='full list_2_col'][1]/ul/li[3]/text()")))[:2]
-        prem = ''.join(premium_response.xpath("//div[@class='results']/div[@class='full list_2_col'][1]/ul/li[last()-4]/text()")).strip().replace(' ','').replace(',','') # contribution
+        prem = ''.join(premium_response.xpath("//div[@class='results']/div[@class='full list_2_col'][1]/ul/li[last()-4]/text()")).strip().replace(' ','').replace(',','').replace('#','').replace('*','') # contribution
         frequency = ''.join(premium_response.xpath("//div[@class='results']/div[@class='full list_2_col'][1]/ul/li[last()-3]/text()")).strip().replace(' ','')
         tb_frequency = frequency_to_num(frequency)
 
@@ -389,17 +389,17 @@ for policy_no in policy_no_list[1:]:
                     continue
                 bouns = 0
                 if i == 0:
-                    # first_prem = premium_contribution_list[0].replace(',','')
+                    # first_prem = premium_contribution_list[0].replace(',','').replace('#','').replace('*','')
                     # print('first_prem',first_prem)
                     bouns = float(prem) * int(term) * bonusget(frequency) / 100
                     print('bouns:',bouns)
                 # print(premium_date,date_to_num(premium_date))
 
                 if (date_to_num(premium_date) not in existed_date) and (premium_date != date_to_num(premium_date)) :
-                    # print(full_policy_no,Spider_Date,date_to_num(premium_date),1 if float(premium_contribution.replace(',',''))>=0 else 2,premium_status,premium_currency,premium_contribution.replace(',',''),bouns)
-                    # try_except(cur.execute("insert into tb_premium(policy_no,Spider_Date,date,type,status,currency,value,bonus,frequency) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s)",(full_policy_no,Spider_Date,date_to_num(premium_date),1 if float(premium_contribution.replace(',',''))>=0 else 2,2 if premium_status=='Payment Processed' else 1, ,premium_contribution.replace(',',''),bouns,frequency)))
-                    print("insert into tb_premium(policy_no,Spider_Date,date,type,status,currency,value,bonus,frequency,invested_premium) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",(full_policy_no,Spider_Date,date_to_num(premium_date),1,2,premium_contribution.strip()[:3] if premium_contribution.strip().replace(',','') else invested_premium.strip()[:3],premium_contribution.strip().replace(',','')[3:] if premium_contribution.strip().replace(',','') else 0,bouns,tb_frequency,invested_premium.strip().replace(',','')[3:] if invested_premium.strip().replace(',','') else 0))
-                    try_except(cur.execute("insert into tb_premium(policy_no,Spider_Date,date,type,status,currency,value,bonus,frequency,invested_premium) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",(full_policy_no,Spider_Date,date_to_num(premium_date),1,2,premium_contribution.strip()[:3] if premium_contribution.strip().replace(',','') else invested_premium.strip()[:3],premium_contribution.strip().replace(',','')[3:] if premium_contribution.strip().replace(',','') else 0,bouns,tb_frequency,invested_premium.strip().replace(',','')[3:] if invested_premium.strip().replace(',','') else 0)))
+                    # print(full_policy_no,Spider_Date,date_to_num(premium_date),1 if float(premium_contribution.replace(',','').replace('#','').replace('*',''))>=0 else 2,premium_status,premium_currency,premium_contribution.replace(',','').replace('#','').replace('*',''),bouns)
+                    # try_except(cur.execute("insert into tb_premium(policy_no,Spider_Date,date,type,status,currency,value,bonus,frequency) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s)",(full_policy_no,Spider_Date,date_to_num(premium_date),1 if float(premium_contribution.replace(',','').replace('#','').replace('*',''))>=0 else 2,2 if premium_status=='Payment Processed' else 1, ,premium_contribution.replace(',','').replace('#','').replace('*',''),bouns,frequency)))
+                    print("insert into tb_premium(policy_no,Spider_Date,date,type,status,currency,value,bonus,frequency,invested_premium) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",(full_policy_no,Spider_Date,date_to_num(premium_date),1,2,premium_contribution.strip()[:3] if premium_contribution.strip().replace(',','').replace('#','').replace('*','') else invested_premium.strip()[:3],premium_contribution.strip().replace(',','').replace('#','').replace('*','')[3:] if premium_contribution.strip().replace(',','').replace('#','').replace('*','') else 0,bouns,tb_frequency,invested_premium.strip().replace(',','').replace('#','').replace('*','')[3:] if invested_premium.strip().replace(',','').replace('#','').replace('*','') else 0))
+                    try_except(cur.execute("insert into tb_premium(policy_no,Spider_Date,date,type,status,currency,value,bonus,frequency,invested_premium) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",(full_policy_no,Spider_Date,date_to_num(premium_date),1,2,premium_contribution.strip()[:3] if premium_contribution.strip().replace(',','').replace('#','').replace('*','') else invested_premium.strip()[:3],premium_contribution.strip().replace(',','').replace('#','').replace('*','')[3:] if premium_contribution.strip().replace(',','').replace('#','').replace('*','') else 0,bouns,tb_frequency,invested_premium.strip().replace(',','').replace('#','').replace('*','')[3:] if invested_premium.strip().replace(',','').replace('#','').replace('*','') else 0)))
                 i += 1
 
         time.sleep(2)
