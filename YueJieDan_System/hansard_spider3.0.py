@@ -246,7 +246,7 @@ for policy_no in policy_no_list[1:]:
         accumulator_flag = 0
         full_policy_no = ''.join(allocation_response.xpath("//div[@class='full list_2_col']//ul/li[2]/text()")).strip().replace(' ','')
         product = ''.join(allocation_response.xpath("//div[@class='full list_2_col']//ul/li[1]/text()")).strip().replace(' ','')
-        policy_currency = ''.join(allocation_response.xpath("//div[@class='full list_2_col']/ul/li[last()]/text()")).strip().replace(' ','')
+        policy_currency = ''.join(allocation_response.xpath("//div[@class='full list_2_col']/ul/li[last()]/text()")).strip().upper().replace(' ','').replace('GBP','UKS')
         total_value = float(''.join(allocation_response.xpath("//tr[@class='bottom']/td[@class='number']//text()")).strip().replace(',','').replace('#','').replace('*','').replace(' ','')) if allocation_response.xpath("//tr[@class='bottom']/td[@class='number']") else 1
         print('full_policy_no',full_policy_no)
         for length in range(2,len(allocation_response.xpath("//div[@class='results']//table//tr"))):
