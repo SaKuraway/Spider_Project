@@ -136,80 +136,84 @@ class ITA_Spider(object):
         # print existed_fee
 
         for item in data_dict['ListPlanTable']:
-            NO = item['PlanNumber']
-            product = item['Product']
-            print('https://ita.secureaccountaccess.com' + item['UrlPolicy'])
-            # print(item['UrlPolicy'][8:])
-            eq = item['UrlPolicy'][11:]
-            # element = {'policy_no':NO,'product':self.switch_product_name(product)}
-            # element['name'] = item['PolicyHolderName']
+            try:
+                NO = item['PlanNumber']
+                product = item['Product']
+                print('https://ita.secureaccountaccess.com' + item['UrlPolicy'])
+                # print(item['UrlPolicy'][8:])
+                eq = item['UrlPolicy'][11:]
+                # element = {'policy_no':NO,'product':self.switch_product_name(product)}
+                # element['name'] = item['PolicyHolderName']
 
-            headers = {
-                "Host": "ita.secureaccountaccess.com",
-                "Connection": "keep-alive",
-                "Upgrade-Insecure-Requests": '1',
-                "User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36",
-                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
-                # "Referer":"https://ita.secureaccountaccess.com/Policy?eq=O5%2fu6AMIiIGJA9cqVqxbLwfMuDQDtIzIbSRRrh1e%2bJN6K2CZAM%2bXt0rYuN30OsoeT1mA%2fbHRboVFdCHw%2fJt8sART5VHL1vsqVddBB342k7d3x302DD1WNPtEdPKYiWYE9Rbh5lRFVKXSF4AA7frSrA%3d%3d",
-                "Accept-Language": "zh-CN,zh;q=0.9",
-                # "Cookie":"_ga=GA1.2.758213080.1533626117; _gid=GA1.2.690528990.1535940277; mfesecure_visit=1; ASP.NET_SessionId=bjzvbt1sz5lpagazuqrn2eib; __RequestVerificationToken=h2BmH8e_lGF4FhDiEfS8avq1hWoL-BnOw_p37-ChKU0SkPDYp2sv8m5hLSbRpbdcY7S5N8QhT3P8oYzvR1O7zW11Wzg1; .ASPXFORMSAUTH=07F9F0B0B955F998FA1627873A73E06C579AE676C0F6B9EE202C0BE308ECFE1023F95E552F45E05ECD0DDA23B4837D536641FC3594A0437D5716079AC895ABF208679A3FB9D5470683004B230E00F64CE76FA1CBD31C193C9D535391D6147F117846441D1EBE4BC145FCF4C73D27AEC754C7CCBEE7228A83CCFD19EB6C9D96922FFDC53B44B517E244A02810E97DF44C27FBDD6C; _gat=1",
-                "Accept-Encoding": "gzip, deflate"
-            }
+                headers = {
+                    "Host": "ita.secureaccountaccess.com",
+                    "Connection": "keep-alive",
+                    "Upgrade-Insecure-Requests": '1',
+                    "User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36",
+                    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
+                    # "Referer":"https://ita.secureaccountaccess.com/Policy?eq=O5%2fu6AMIiIGJA9cqVqxbLwfMuDQDtIzIbSRRrh1e%2bJN6K2CZAM%2bXt0rYuN30OsoeT1mA%2fbHRboVFdCHw%2fJt8sART5VHL1vsqVddBB342k7d3x302DD1WNPtEdPKYiWYE9Rbh5lRFVKXSF4AA7frSrA%3d%3d",
+                    "Accept-Language": "zh-CN,zh;q=0.9",
+                    # "Cookie":"_ga=GA1.2.758213080.1533626117; _gid=GA1.2.690528990.1535940277; mfesecure_visit=1; ASP.NET_SessionId=bjzvbt1sz5lpagazuqrn2eib; __RequestVerificationToken=h2BmH8e_lGF4FhDiEfS8avq1hWoL-BnOw_p37-ChKU0SkPDYp2sv8m5hLSbRpbdcY7S5N8QhT3P8oYzvR1O7zW11Wzg1; .ASPXFORMSAUTH=07F9F0B0B955F998FA1627873A73E06C579AE676C0F6B9EE202C0BE308ECFE1023F95E552F45E05ECD0DDA23B4837D536641FC3594A0437D5716079AC895ABF208679A3FB9D5470683004B230E00F64CE76FA1CBD31C193C9D535391D6147F117846441D1EBE4BC145FCF4C73D27AEC754C7CCBEE7228A83CCFD19EB6C9D96922FFDC53B44B517E244A02810E97DF44C27FBDD6C; _gat=1",
+                    "Accept-Encoding": "gzip, deflate"
+                }
 
-            headers['Referer'] = home_url
-            # 保单页面
-            policy_page = self.ssion.get(url='https://ita.secureaccountaccess.com' + item['UrlPolicy'],
-                                         headers=headers).text
-            # print(policy_page)
-            headers['Referer'] = 'https://ita.secureaccountaccess.com' + item['UrlPolicy']
-            # # 供款页面
-            # # premium_pattern = re.compile("Policy\/Billing\?eq=(.*?) ")
-            # print(self.ssion.get(url='https://ita.secureaccountaccess.com/Policy/Billing?eq=' + eq,headers=headers).text)
-            #
-            # # allocation页面
-            # # allocation_pattern = re.compile("Policy\/Benefit\?eq=(.*?) ")
-            # print(self.ssion.get(url='https://ita.secureaccountaccess.com/Policy/Summary/GetFunds?eq=' + eq,headers=headers).text)
+                headers['Referer'] = home_url
+                # 保单页面
+                policy_page = self.ssion.get(url='https://ita.secureaccountaccess.com' + item['UrlPolicy'],
+                                             headers=headers).text
+                # print(policy_page)
+                headers['Referer'] = 'https://ita.secureaccountaccess.com' + item['UrlPolicy']
+                # # 供款页面
+                # # premium_pattern = re.compile("Policy\/Billing\?eq=(.*?) ")
+                # print(self.ssion.get(url='https://ita.secureaccountaccess.com/Policy/Billing?eq=' + eq,headers=headers).text)
+                #
+                # # allocation页面
+                # # allocation_pattern = re.compile("Policy\/Benefit\?eq=(.*?) ")
+                # print(self.ssion.get(url='https://ita.secureaccountaccess.com/Policy/Summary/GetFunds?eq=' + eq,headers=headers).text)
 
-            # 成本页面
-            fee_pattern = re.compile("Policy\/FundActivity\?eq=(.*?) ")
-            fee_url = 'https://ita.secureaccountaccess.com/Policy/FundActivity?eq=' + fee_pattern.findall(policy_page)[
-                0]
+                # 成本页面
+                fee_pattern = re.compile("Policy\/FundActivity\?eq=(.*?) ")
+                fee_url = 'https://ita.secureaccountaccess.com/Policy/FundActivity?eq=' + fee_pattern.findall(policy_page)[
+                    0]
 
-            # print(fee_url)
-            fees_page_response = etree.HTML(self.ssion.get(url=fee_url, headers=headers).text)
-            fee_data = {
-                # "FundActivityIDEncrypt":"Dfqs%2Byrn0M3lyqNo%2F5SU6V6Itpp8fmAjqNcHm9B2t3iwliWVmazGFjFF%2F%2FU0D9DFbOE%2FUeNjJXxVJe%2F474zPqntjmN0CihcMPvkjA4ARoi7DZS83uTeB0HlfUfenaS6fwYwxDJU66HkaYpn2j53VotR7SiQWb4CxvweYb4fTrQJkIoKTIazAcKAml%2BenZs1B5iJyMBJQIoh02jqZBWUwIjIWyV7WN%2BCTT8W%2FuPaxuyVrIPRP1HwUv3ifx4HdlYW%2FSh9rTaR%2Bp8g%3D",
-                "ActivityDateFromFilter": "01/01/2017",
-                "ActivityDateToFilter": time.strftime('%d/%m/%Y', time.localtime(time.time())),
-                "ActivityTypeFilter": "",
-                "StatusFilter": "",
-                "FundCodeFilter": "",
-                "AmountFromFilter": "",
-                "AmountToFilter": "",
-                "UnitsFromFilter": "",
-                "UnitsToFilter": "",
-                "UnitRateFromFilter": "",
-                "UnitRateToFilter": "",
-                "X-Requested-With": "XMLHttpRequest"
-            }
-            hidden_names = fees_page_response.xpath("//input[@type='hidden']//@name")
-            # print(hidden_names)
-            hidden_values = [fees_page_response.xpath("//input[@name='" + hidden_name + "']/@value") for hidden_name in
-                             hidden_names]
-            # print(hidden_values)
-            for hidden_name, hidden_value in zip(hidden_names, hidden_values):
-                if hidden_name == 'FundActivityIDEncrypt':
-                    fee_data[hidden_name] = hidden_value[0] if hidden_value else ''
-            # print(fee_data)
-            time.sleep(2)
-            # 成本fee_json
-            headers['Referer'] = fee_url
-            fee_json = self.ssion.post(url='https://ita.secureaccountaccess.com/Policy/FundActivity/SearchFundActivity',
-                                       headers=headers, data=fee_data).json()
-            # to_mysql
-            self.fees_to_mysql(NO, product, fee_json)
-            time.sleep(1)
-            print('~~~~~~~~~~~~~~')
+                # print(fee_url)
+                fees_page_response = etree.HTML(self.ssion.get(url=fee_url, headers=headers).text)
+                fee_data = {
+                    # "FundActivityIDEncrypt":"Dfqs%2Byrn0M3lyqNo%2F5SU6V6Itpp8fmAjqNcHm9B2t3iwliWVmazGFjFF%2F%2FU0D9DFbOE%2FUeNjJXxVJe%2F474zPqntjmN0CihcMPvkjA4ARoi7DZS83uTeB0HlfUfenaS6fwYwxDJU66HkaYpn2j53VotR7SiQWb4CxvweYb4fTrQJkIoKTIazAcKAml%2BenZs1B5iJyMBJQIoh02jqZBWUwIjIWyV7WN%2BCTT8W%2FuPaxuyVrIPRP1HwUv3ifx4HdlYW%2FSh9rTaR%2Bp8g%3D",
+                    "ActivityDateFromFilter": "01/01/2017",
+                    "ActivityDateToFilter": time.strftime('%d/%m/%Y', time.localtime(time.time())),
+                    "ActivityTypeFilter": "",
+                    "StatusFilter": "",
+                    "FundCodeFilter": "",
+                    "AmountFromFilter": "",
+                    "AmountToFilter": "",
+                    "UnitsFromFilter": "",
+                    "UnitsToFilter": "",
+                    "UnitRateFromFilter": "",
+                    "UnitRateToFilter": "",
+                    "X-Requested-With": "XMLHttpRequest"
+                }
+                hidden_names = fees_page_response.xpath("//input[@type='hidden']//@name")
+                # print(hidden_names)
+                hidden_values = [fees_page_response.xpath("//input[@name='" + hidden_name + "']/@value") for hidden_name in
+                                 hidden_names]
+                # print(hidden_values)
+                for hidden_name, hidden_value in zip(hidden_names, hidden_values):
+                    if hidden_name == 'FundActivityIDEncrypt':
+                        fee_data[hidden_name] = hidden_value[0] if hidden_value else ''
+                # print(fee_data)
+                time.sleep(2)
+                # 成本fee_json
+                headers['Referer'] = fee_url
+                fee_json = self.ssion.post(url='https://ita.secureaccountaccess.com/Policy/FundActivity/SearchFundActivity',
+                                           headers=headers, data=fee_data).json()
+                # to_mysql
+                self.fees_to_mysql(NO, product, fee_json)
+                time.sleep(1)
+                print('~~~~~~~~~~~~~~')
+            except Exception as e :
+                print('error!',e)
+                time.sleep(10)
 
         self.cursor.close()
         self.conn.close()
